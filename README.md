@@ -10,7 +10,7 @@ git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsA
 scram b -j 4
 pip install --user flake8
 pip install --user --upgrade numpy
-pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
+pip install --user https://github.com/jmduarte/rhalphalib/archive/automcstat.zip
 ```
 
 ## Get input file
