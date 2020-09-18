@@ -14,13 +14,15 @@ def get_hist(inputfile, name, obs):
     upfile = uproot.open(inputfile)
     hist_values = upfile[name].values
     hist_edges = upfile[name].edges
+    hist_uncs = upfile[name].variances
     if obs.binning != hist_edges:
         # rebin (assumes new bins are a subset of existing bins)
         edge_mask = np.in1d(hist_edges,obs.binning)
         hist_mask = np.logical_and(edge_mask[0:-1], edge_mask[1:])
         hist_values = hist_values[hist_mask]
         hist_edges = hist_edges[edge_mask]
-    return (hist_values, hist_edges, obs.name)
+        hist_uncs = hist_uncs[hist_mask]
+    return (hist_values, hist_edges, obs.name, hist_uncs)
 
 def create_datacard(inputfile, carddir):
 
@@ -41,8 +43,8 @@ def create_datacard(inputfile, carddir):
     # pseudodata MC template
     failTempl = get_hist(inputfile, 'histJet2Mass_fail_QCD', obs=msd)
     passTempl = get_hist(inputfile, 'histJet2Mass_QCD', obs=msd)
-    failCh.setObservation(failTempl)
-    passCh.setObservation(passTempl)
+    failCh.setObservation(failTempl[:-1])
+    passCh.setObservation(passTempl[:-1])
     qcdfail = failCh.getObservation().sum()
     qcdpass = passCh.getObservation().sum()
 
@@ -106,8 +108,11 @@ def create_datacard(inputfile, carddir):
             stype = rl.Sample.SIGNAL if sName == 'HH' else rl.Sample.BACKGROUND
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
             
-            # set nuisance valies
+            # set nuisance values
             sample.setParamEffect(lumi, 1.027)
+
+            # set mc stat uncs
+            sample.autoMCStats()
 
             ch.addSample(sample)
 
