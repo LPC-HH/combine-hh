@@ -39,3 +39,8 @@ source build.sh
 combine -M AsymptoticLimits HHModel_combined.root -t -1
 combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 20 --setParameters r=1
 ```
+
+## Run F-test (1st vs 2nd order):
+```
+python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
+```
