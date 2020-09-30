@@ -24,14 +24,14 @@ def get_hist(inputfile, name, obs):
         hist_uncs = hist_uncs[hist_mask]
     return (hist_values, hist_edges, obs.name, hist_uncs)
 
-def create_datacard(inputfile, carddir):
+def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF):
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
-    msdbins = np.linspace(35, 215, 9+1)
+    msdbins = np.linspace(35, nbins*20.0+35.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
     msdpts = msdbins[:-1] + 0.5 * np.diff(msdbins)
-    msdscaled = (msdpts - 35.)/(215. - 35.)
+    msdscaled = (msdpts - 35.)/(20.0*nbins)
 
     # Build qcd MC pass+fail model and fit to polynomial
     qcdmodel = rl.Model('qcdmodel')
@@ -49,7 +49,7 @@ def create_datacard(inputfile, carddir):
     qcdpass = passCh.getObservation().sum()
 
     qcdeff = qcdpass / qcdfail
-    tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (2,), ['msd'], limits=(0, 10))
+    tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (nMCTF,), ['msd'], limits=(0, 10))
     tf_MCtempl_params = qcdeff * tf_MCtempl(msdscaled)
     
     failCh = qcdmodel['fail']
@@ -83,7 +83,7 @@ def create_datacard(inputfile, carddir):
     decoVector = rl.DecorrelatedNuisanceVector.fromRooFitResult(tf_MCtempl.name + '_deco', qcdfit, param_names)
     tf_MCtempl.parameters = decoVector.correlated_params.reshape(tf_MCtempl.parameters.shape)
     tf_MCtempl_params_final = tf_MCtempl(msdscaled)
-    tf_dataResidual = rl.BernsteinPoly("tf_dataResidual", (2,), ['msd'], limits=(0, 10))
+    tf_dataResidual = rl.BernsteinPoly("tf_dataResidual", (nDataTF,), ['msd'], limits=(0, 10))
     tf_dataResidual_params = tf_dataResidual(msdscaled)
     tf_params = qcdeff * tf_MCtempl_params_final * tf_dataResidual_params
 
@@ -150,9 +150,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help= 'output card directory')
+    parser.add_argument('--nbins', default=9, type=int, dest='nbins', help= 'number of bins')
+    parser.add_argument('--nMCTF', default=2, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
+    parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help= 'order of polynomial for TF from Data')
     
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
 
-    create_datacard(args.inputfile, args.carddir)
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF)
