@@ -170,7 +170,7 @@ if __name__ == '__main__':
     parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help= 'output card directory')
     parser.add_argument('--nbins', default=9, type=int, dest='nbins', help= 'number of bins')
-    parser.add_argument('--nMCTF', default=2, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
+    parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help= 'order of polynomial for TF from Data')
     
     args = parser.parse_args()
