@@ -24,14 +24,14 @@ def get_hist(inputfile, name, obs):
         hist_uncs = hist_uncs[hist_mask]
     return (hist_values, hist_edges, obs.name, hist_uncs)
 
-def create_datacard(inputfile, carddir):
+def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName):
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
-    msdbins = np.linspace(35, 215, 9+1)
+    msdbins = np.linspace(35, nbins*20.0+35.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
     msdpts = msdbins[:-1] + 0.5 * np.diff(msdbins)
-    msdscaled = (msdpts - 35.)/(215. - 35.)
+    msdscaled = (msdpts - 35.)/(20.0*nbins)
 
     # Build qcd MC pass+fail model and fit to polynomial
     qcdmodel = rl.Model('qcdmodel')
@@ -41,15 +41,15 @@ def create_datacard(inputfile, carddir):
     qcdmodel.addChannel(failCh)
     qcdmodel.addChannel(passCh)
     # pseudodata MC template
-    failTempl = get_hist(inputfile, 'histJet2Mass_fail_QCD', obs=msd)
-    passTempl = get_hist(inputfile, 'histJet2Mass_QCD', obs=msd)
+    failTempl = get_hist(inputfile, 'histJet2Mass_'+failBinName+'_QCD', obs=msd)
+    passTempl = get_hist(inputfile, 'histJet2Mass_'+passBinName+'_QCD', obs=msd)
     failCh.setObservation(failTempl[:-1])
     passCh.setObservation(passTempl[:-1])
     qcdfail = failCh.getObservation().sum()
     qcdpass = passCh.getObservation().sum()
 
     qcdeff = qcdpass / qcdfail
-    tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (2,), ['msd'], limits=(0, 10))
+    tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (nMCTF,), ['msd'], limits=(0, 10))
     tf_MCtempl_params = qcdeff * tf_MCtempl(msdscaled)
     
     failCh = qcdmodel['fail']
@@ -83,7 +83,7 @@ def create_datacard(inputfile, carddir):
     decoVector = rl.DecorrelatedNuisanceVector.fromRooFitResult(tf_MCtempl.name + '_deco', qcdfit, param_names)
     tf_MCtempl.parameters = decoVector.correlated_params.reshape(tf_MCtempl.parameters.shape)
     tf_MCtempl_params_final = tf_MCtempl(msdscaled)
-    tf_dataResidual = rl.BernsteinPoly("tf_dataResidual", (2,), ['msd'], limits=(0, 10))
+    tf_dataResidual = rl.BernsteinPoly("tf_dataResidual", (nDataTF,), ['msd'], limits=(0, 10))
     tf_dataResidual_params = tf_dataResidual(msdscaled)
     tf_params = qcdeff * tf_MCtempl_params_final * tf_dataResidual_params
 
@@ -95,14 +95,16 @@ def create_datacard(inputfile, carddir):
 
         isPass = region == 'pass'
         templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('' if isPass else '_fail'), obs=msd),
-            'ggH': get_hist(inputfile, 'histJet2Mass%s_H'%('' if isPass else '_fail'), obs=msd),
-            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('' if isPass else '_fail'), obs=msd),
-            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('' if isPass else '_fail'), obs=msd),
-            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('' if isPass else '_fail'), obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('' if isPass else '_fail'), obs=msd),
+            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'H': get_hist(inputfile, 'histJet2Mass%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'others': get_hist(inputfile, 'histJet2Mass%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'Data': get_hist(inputfile, 'histJet2Mass%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
         }
-        for sName in ['TTJets', 'ggH', 'HH', 'VH', 'ttH']:
+        for sName in ['TTJets', 'H', 'HH', 'VH', 'ttH', 'others']:
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if sName == 'HH' else rl.Sample.BACKGROUND
@@ -113,11 +115,28 @@ def create_datacard(inputfile, carddir):
 
             # set mc stat uncs
             sample.autoMCStats()
+        
+            #shape systematics
+            valuesNominal =  templ[0]
+            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr']
+            for syst in systs:
+                valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesDown = get_hist(inputfile, 'histJet2Mass%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                effectUp = np.ones_like(valuesNominal)
+                effectDown = np.ones_like(valuesNominal)
+                for i in range(len(valuesNominal)):
+                    if valuesNominal[i] >  0.:
+                        effectUp[i]   = valuesUp[i]/valuesNominal[i]
+                        effectDown[i]   = valuesDown[i]/valuesNominal[i]
 
+                syst_param = rl.NuisanceParameter(syst, 'shape')
+                sample.setParamEffect(syst_param, effectUp, effectDown)
+              
             ch.addSample(sample)
 
         # make up a data_obs by summing the MC templates above
-        yields = sum(tpl[0] for tpl in templates.values())
+        #yields = sum(tpl[0] for tpl in templates.values())
+        yields = templates['Data'][0]
         data_obs = (yields, msd.binning, msd.name)
         ch.setObservation(data_obs)        
 
@@ -150,9 +169,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help= 'output card directory')
+    parser.add_argument('--nbins', default=9, type=int, dest='nbins', help= 'number of bins')
+    parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
+    parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help= 'order of polynomial for TF from Data')
     
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
 
-    create_datacard(args.inputfile, args.carddir)
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, "FitCR1", "failFitCR1")
