@@ -15,6 +15,8 @@ pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 
 ## Get input file
 
+The latest input file can be found here: https://zhicaiz.web.cern.ch/zhicaiz/sharebox/HH/combine/HHTo4BPlots_Run2.root
+
 ## Checkout this repo and create datacards
 ```
 git clone https://github.com/LPC-HH/combine-hh

@@ -24,7 +24,7 @@ def get_hist(inputfile, name, obs):
         hist_uncs = hist_uncs[hist_mask]
     return (hist_values, hist_edges, obs.name, hist_uncs)
 
-def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF):
+def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName):
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
@@ -41,8 +41,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF):
     qcdmodel.addChannel(failCh)
     qcdmodel.addChannel(passCh)
     # pseudodata MC template
-    failTempl = get_hist(inputfile, 'histJet2Mass_fail_QCD', obs=msd)
-    passTempl = get_hist(inputfile, 'histJet2Mass_QCD', obs=msd)
+    failTempl = get_hist(inputfile, 'histJet2Mass_'+failBinName+'_QCD', obs=msd)
+    passTempl = get_hist(inputfile, 'histJet2Mass_'+passBinName+'_QCD', obs=msd)
     failCh.setObservation(failTempl[:-1])
     passCh.setObservation(passTempl[:-1])
     qcdfail = failCh.getObservation().sum()
@@ -95,14 +95,16 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF):
 
         isPass = region == 'pass'
         templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('' if isPass else '_fail'), obs=msd),
-            'ggH': get_hist(inputfile, 'histJet2Mass%s_H'%('' if isPass else '_fail'), obs=msd),
-            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('' if isPass else '_fail'), obs=msd),
-            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('' if isPass else '_fail'), obs=msd),
-            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('' if isPass else '_fail'), obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('' if isPass else '_fail'), obs=msd),
+            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'H': get_hist(inputfile, 'histJet2Mass%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'others': get_hist(inputfile, 'histJet2Mass%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'Data': get_hist(inputfile, 'histJet2Mass%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
         }
-        for sName in ['TTJets', 'ggH', 'HH', 'VH', 'ttH']:
+        for sName in ['TTJets', 'H', 'HH', 'VH', 'ttH', 'others']:
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if sName == 'HH' else rl.Sample.BACKGROUND
@@ -113,11 +115,28 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF):
 
             # set mc stat uncs
             sample.autoMCStats()
+        
+            #shape systematics
+            valuesNominal =  templ[0]
+            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr']
+            for syst in systs:
+                valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesDown = get_hist(inputfile, 'histJet2Mass%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                effectUp = np.ones_like(valuesNominal)
+                effectDown = np.ones_like(valuesNominal)
+                for i in range(len(valuesNominal)):
+                    if valuesNominal[i] >  0.:
+                        effectUp[i]   = valuesUp[i]/valuesNominal[i]
+                        effectDown[i]   = valuesDown[i]/valuesNominal[i]
 
+                syst_param = rl.NuisanceParameter(syst, 'shape')
+                sample.setParamEffect(syst_param, effectUp, effectDown)
+              
             ch.addSample(sample)
 
         # make up a data_obs by summing the MC templates above
-        yields = sum(tpl[0] for tpl in templates.values())
+        #yields = sum(tpl[0] for tpl in templates.values())
+        yields = templates['Data'][0]
         data_obs = (yields, msd.binning, msd.name)
         ch.setObservation(data_obs)        
 
@@ -158,4 +177,4 @@ if __name__ == '__main__':
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
 
-    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF)
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, "FitCR1", "failFitCR1")
