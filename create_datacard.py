@@ -28,10 +28,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
-    msdbins = np.linspace(35, nbins*20.0+35.0, nbins+1)
+    msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
     msdpts = msdbins[:-1] + 0.5 * np.diff(msdbins)
-    msdscaled = (msdpts - 35.)/(20.0*nbins)
+    msdscaled = (msdpts - 50.)/(10.0*nbins)
 
     # Build qcd MC pass+fail model and fit to polynomial
     qcdmodel = rl.Model('qcdmodel')
@@ -169,7 +169,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help= 'output card directory')
-    parser.add_argument('--nbins', default=9, type=int, dest='nbins', help= 'number of bins')
+    parser.add_argument('--nbins', default=17, type=int, dest='nbins', help= 'number of bins')
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help= 'order of polynomial for TF from Data')
     
