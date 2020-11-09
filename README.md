@@ -15,7 +15,7 @@ pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 
 ## Get input file
 
-The latest input file can be found here: https://zhicaiz.web.cern.ch/zhicaiz/sharebox/HH/combine/HHTo4BPlots_Run2.root
+The latest input file can be found here: /eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2.root
 
 ## Checkout this repo and create datacards
 ```
