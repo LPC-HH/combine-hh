@@ -15,7 +15,14 @@ pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 
 ## Get input file
 
-The latest input file can be found here: /eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2.root
+The latest input file can be found here: 
+
+```
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_BDTv24.root (signal region, v24 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_BDTv8p2.root (signal region v8p2 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_ttbarSkim_BDTv24.root  (ttbar CR, v24 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root (ttbar CR, v8p2 BDT)
+```
 
 ## Checkout this repo and create datacards
 ```
