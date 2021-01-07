@@ -11,6 +11,7 @@ scram b -j 4
 pip install --user flake8
 pip install --user --upgrade numpy
 pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
+pip install --user --upgrade uproot # use uproot4
 ```
 
 ## Get input file
