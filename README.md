@@ -37,7 +37,7 @@ python create_shapecard.py
 cd cards/HHModel
 source build.sh
 combine -M AsymptoticLimits HHModel_combined.root -t -1
-combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 20 --setParameters r=1
+combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 20 --setParameters r=1 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
 ```
 
 
@@ -46,7 +46,7 @@ combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 
 cd cards_shpaes/HHModel
 source build.sh
 combine -M AsymptoticLimits HHModel_combined.root -t -1
-combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 20 --setParameters r=1
+combine -M FitDiagnostics HHModel_combined.root -t -1 --plots --rMin -20 --rMax 20 --setParameters r=1 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
 ```
 
 ## Run F-test (1st vs 2nd order):

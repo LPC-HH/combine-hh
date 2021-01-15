@@ -41,51 +41,52 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdmodel.addChannel(failCh)
     qcdmodel.addChannel(passCh)
     # pseudodata MC template
-    failTempl = get_hist(inputfile, 'histJet2Mass_'+failBinName+'_QCD', obs=msd)
-    passTempl = get_hist(inputfile, 'histJet2Mass_'+passBinName+'_QCD', obs=msd)
+    failTempl = get_hist(inputfile, 'histJet2MassBlind_'+failBinName+'_QCD', obs=msd)
+    passTempl = get_hist(inputfile, 'histJet2MassBlind_'+passBinName+'_QCD', obs=msd)
     failCh.setObservation(failTempl[:-1])
     passCh.setObservation(passTempl[:-1])
     qcdfail = failCh.getObservation().sum()
     qcdpass = passCh.getObservation().sum()
 
     qcdeff = qcdpass / qcdfail
-    tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (nMCTF,), ['msd'], limits=(0, 10))
-    tf_MCtempl_params = qcdeff * tf_MCtempl(msdscaled)
+    #tf_MCtempl = rl.BernsteinPoly("tf_MCtempl", (nMCTF,), ['msd'], limits=(0, 10))
+    #tf_MCtempl_params = qcdeff * tf_MCtempl(msdscaled)
     
-    failCh = qcdmodel['fail']
-    passCh = qcdmodel['pass']
-    failObs = failCh.getObservation()
-    qcdparams = np.array([rl.IndependentParameter('qcdparam_msdbin%d'%i, 0) for i in range(msd.nbins)])
-    sigmascale = 10.
-    scaledparams = failObs * (1 + sigmascale/np.maximum(1., np.sqrt(failObs)))**qcdparams
-    fail_qcd = rl.ParametericSample('fail_qcd', rl.Sample.BACKGROUND, msd, scaledparams)
-    failCh.addSample(fail_qcd)
-    pass_qcd = rl.TransferFactorSample('pass_qcd', rl.Sample.BACKGROUND, tf_MCtempl_params, fail_qcd)
-    passCh.addSample(pass_qcd)
+    #failCh = qcdmodel['fail']
+    #passCh = qcdmodel['pass']
+    #failObs = failCh.getObservation()
+    #qcdparams = np.array([rl.IndependentParameter('qcdparam_msdbin%d'%i, 0) for i in range(msd.nbins)])
+    #sigmascale = 10.
+    #scaledparams = failObs * (1 + sigmascale/np.maximum(1., np.sqrt(failObs)))**qcdparams
+    #fail_qcd = rl.ParametericSample('fail_qcd', rl.Sample.BACKGROUND, msd, scaledparams)
+    #failCh.addSample(fail_qcd)
+    #pass_qcd = rl.TransferFactorSample('pass_qcd', rl.Sample.BACKGROUND, tf_MCtempl_params, fail_qcd)
+    #passCh.addSample(pass_qcd)
     
-    qcdfit_ws = ROOT.RooWorkspace('qcdfit_ws')
-    simpdf, obs = qcdmodel.renderRoofit(qcdfit_ws)
-    qcdfit = simpdf.fitTo(obs,
-                          ROOT.RooFit.Extended(True),
-                          ROOT.RooFit.SumW2Error(True),
-                          ROOT.RooFit.Strategy(2),
-                          ROOT.RooFit.Save(),
-                          ROOT.RooFit.Minimizer('Minuit2', 'migrad'),
-                          ROOT.RooFit.PrintLevel(-1),
-                          )
-    qcdfit_ws.add(qcdfit)
-    if "pytest" not in sys.modules:
-         qcdfit_ws.writeToFile(os.path.join(str(carddir), 'HHModel_qcdfit.root'))
-    if qcdfit.status() != 0:
-        raise RuntimeError('Could not fit qcd')
+    #qcdfit_ws = ROOT.RooWorkspace('qcdfit_ws')
+    #simpdf, obs = qcdmodel.renderRoofit(qcdfit_ws)
+    #qcdfit = simpdf.fitTo(obs,
+    #                      ROOT.RooFit.Extended(True),
+    #                      ROOT.RooFit.SumW2Error(True),
+    #                      ROOT.RooFit.Strategy(2),
+    #                      ROOT.RooFit.Save(),
+    #                      ROOT.RooFit.Minimizer('Minuit2', 'migrad'),
+    #                      ROOT.RooFit.PrintLevel(-1),
+    #                      )
+    #qcdfit_ws.add(qcdfit)
+    #if "pytest" not in sys.modules:
+    #     qcdfit_ws.writeToFile(os.path.join(str(carddir), 'HHModel_qcdfit.root'))
+    #if qcdfit.status() != 0:
+    #    raise RuntimeError('Could not fit qcd')
 
-    param_names = [p.name for p in tf_MCtempl.parameters.reshape(-1)]
-    decoVector = rl.DecorrelatedNuisanceVector.fromRooFitResult(tf_MCtempl.name + '_deco', qcdfit, param_names)
-    tf_MCtempl.parameters = decoVector.correlated_params.reshape(tf_MCtempl.parameters.shape)
-    tf_MCtempl_params_final = tf_MCtempl(msdscaled)
+    #param_names = [p.name for p in tf_MCtempl.parameters.reshape(-1)]
+    #decoVector = rl.DecorrelatedNuisanceVector.fromRooFitResult(tf_MCtempl.name + '_deco', qcdfit, param_names)
+    #tf_MCtempl.parameters = decoVector.correlated_params.reshape(tf_MCtempl.parameters.shape)
+    #tf_MCtempl_params_final = tf_MCtempl(msdscaled)
     tf_dataResidual = rl.BernsteinPoly("tf_dataResidual", (nDataTF,), ['msd'], limits=(0, 10))
     tf_dataResidual_params = tf_dataResidual(msdscaled)
-    tf_params = qcdeff * tf_MCtempl_params_final * tf_dataResidual_params
+    #tf_params = qcdeff * tf_MCtempl_params_final * tf_dataResidual_params
+    tf_params = qcdeff * tf_dataResidual_params
 
     # build actual fit model now
     model = rl.Model("HHModel")
@@ -95,14 +96,14 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
         isPass = region == 'pass'
         templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'H': get_hist(inputfile, 'histJet2Mass%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'others': get_hist(inputfile, 'histJet2Mass%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'Data': get_hist(inputfile, 'histJet2Mass%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'TTJets': get_hist(inputfile, 'histJet2MassBlind%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'H': get_hist(inputfile, 'histJet2MassBlind%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'HH': get_hist(inputfile, 'histJet2MassBlind%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'VH': get_hist(inputfile, 'histJet2MassBlind%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'ttH': get_hist(inputfile, 'histJet2MassBlind%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'others': get_hist(inputfile, 'histJet2MassBlind%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'QCD': get_hist(inputfile, 'histJet2MassBlind%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'Data': get_hist(inputfile, 'histJet2MassBlind%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
         }
         for sName in ['TTJets', 'H', 'HH', 'VH', 'ttH', 'others']:
             # get templates
@@ -118,10 +119,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         
             #shape systematics
             valuesNominal =  templ[0]
-            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr']
+            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr', 'BDTShape', 'PNetShape']
             for syst in systs:
-                valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
-                valuesDown = get_hist(inputfile, 'histJet2Mass%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesUp = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesDown = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
                 for i in range(len(valuesNominal)):
@@ -167,7 +168,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
+    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_BDTv24.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help= 'output card directory')
     parser.add_argument('--nbins', default=17, type=int, dest='nbins', help= 'number of bins')
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help= 'order of polynomial for TF from MC')
@@ -176,5 +177,18 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, "Bin4", "fail")
 
-    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, "FitCR1", "failFitCR1")
+    #for fitbin in ["FitCR", "Bin1", "Bin2", "Bin3", "Bin4"]:
+    #    os.system("rm -rf cards_"+fitbin)
+    #    os.system("mkdir cards_"+fitbin)
+    #    create_datacard(args.inputfile, "cards_"+fitbin, args.nbins, args.nMCTF, args.nDataTF, fitbin, "fail"+fitbin)
+    #create_datacard(args.inputfile, "cards_FitCR", args.nbins, args.nMCTF, args.nDataTF, "FitCR", "failFitCR")
+    #create_datacard(args.inputfile, "cards_Bin1", args.nbins, args.nMCTF, args.nDataTF, "Bin1", "fail")
+    #create_datacard(args.inputfile, "cards_Bin2", args.nbins, args.nMCTF, args.nDataTF, "Bin2", "fail")
+    #create_datacard(args.inputfile, "cards_Bin3", args.nbins, args.nMCTF, args.nDataTF, "Bin3", "fail")
+    #create_datacard(args.inputfile, "cards_Bin4", args.nbins, args.nMCTF, args.nDataTF, "Bin4", "fail")
+
+    #os.system("rm -rf cards_SRBin1")
+    #os.system("mkdir cards_SRBin1")
+    #create_datacard(args.inputfile, "cards_SRBin1", args.nbins, args.nMCTF, args.nDataTF, "Bin1", "fail")

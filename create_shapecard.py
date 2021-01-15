@@ -28,14 +28,14 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
 
         isPass = region == 'pass'
         templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'H': get_hist(inputfile, 'histJet2Mass%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'HH': get_hist(inputfile, 'histJet2Mass%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'VH': get_hist(inputfile, 'histJet2Mass%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'ttH': get_hist(inputfile, 'histJet2Mass%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'others': get_hist(inputfile, 'histJet2Mass%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'Data': get_hist(inputfile, 'histJet2Mass%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'TTJets': get_hist(inputfile, 'histJet2MassBlind%s_TTJets'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'H': get_hist(inputfile, 'histJet2MassBlind%s_H'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'HH': get_hist(inputfile, 'histJet2MassBlind%s_HH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'VH': get_hist(inputfile, 'histJet2MassBlind%s_VH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'ttH': get_hist(inputfile, 'histJet2MassBlind%s_ttH'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'others': get_hist(inputfile, 'histJet2MassBlind%s_others'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'QCD': get_hist(inputfile, 'histJet2MassBlind%s_QCD'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+            'Data': get_hist(inputfile, 'histJet2MassBlind%s_Data'%('_'+passBinName if isPass else '_'+failBinName), obs=msd),
         }
         for sName in ['TTJets', 'H', 'HH', 'VH', 'ttH', 'QCD']:
             # get templates
@@ -52,8 +52,8 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
             valuesNominal =  templ[0]
             systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr']
             for syst in systs:
-                valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
-                valuesDown = get_hist(inputfile, 'histJet2Mass%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesUp = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
+                valuesDown = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
                 for i in range(len(valuesNominal)):
@@ -86,11 +86,19 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2.root', type=str, dest='inputfile', help='input ROOT file')
+    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_BDTv24.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards_shapes', type=str, dest='carddir', help= 'output card directory')
     
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
-        os.mkdir(args.carddir)
+        os.mkdir(args.carddir+"_Bin1")
+        os.mkdir(args.carddir+"_Bin2")
+        os.mkdir(args.carddir+"_Bin3")
+        os.mkdir(args.carddir+"_Bin4")
 
-    create_datacard(args.inputfile, args.carddir, "FitCR1", "failFitCR1")
+    create_datacard(args.inputfile, args.carddir+"_Bin1", "Bin1", "fail")
+    create_datacard(args.inputfile, args.carddir+"_Bin2", "Bin2", "fail")
+    create_datacard(args.inputfile, args.carddir+"_Bin3", "Bin3", "fail")
+    create_datacard(args.inputfile, args.carddir+"_Bin4", "Bin4", "fail")
+
+
