@@ -12,9 +12,9 @@ rl.ParametericSample.PreferRooParametricHist = False
 
 def get_hist(inputfile, name, obs):
     upfile = uproot.open(inputfile)
-    hist_values = upfile[name].values
-    hist_edges = upfile[name].edges
-    hist_uncs = upfile[name].variances
+    hist_values = upfile[name].values()
+    hist_edges = upfile[name].axis().edges()
+    hist_uncs = upfile[name].variances()
     if obs.binning != hist_edges:
         # rebin (assumes new bins are a subset of existing bins)
         edge_mask = np.in1d(hist_edges,obs.binning)
