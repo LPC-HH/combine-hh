@@ -51,7 +51,7 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
             sample.autoMCStats()
             #shape systematics
             valuesNominal =  templ[0]
-            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr', 'BDTShape']
+            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr', 'BDTShape', 'PNetShape']
             #systs = ['JMS', 'JMR']
             for syst in systs:
                 valuesUp = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
@@ -89,22 +89,22 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     #parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_ttbarSkim.root', type=str, dest='inputfile', help='input ROOT file')
-    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_BDTv8p2.root', type=str, dest='inputfile', help='input ROOT file')
+    parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_BDTv24.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards_shapes', type=str, dest='carddir', help= 'output card directory')
     
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
 
-    os.mkdir(args.carddir+"_FitCR")
+    #os.mkdir(args.carddir+"_FitCR")
     os.mkdir(args.carddir+"_Bin1")
     os.mkdir(args.carddir+"_Bin2")
     os.mkdir(args.carddir+"_Bin3")
-    #os.mkdir(args.carddir+"_Bin4")
+    os.mkdir(args.carddir+"_Bin4")
 
-    create_datacard(args.inputfile, args.carddir+"_FitCR", "FitCR", "failFitCR")
+    #create_datacard(args.inputfile, args.carddir+"_FitCR", "FitCR", "failFitCR")
     create_datacard(args.inputfile, args.carddir+"_Bin1", "Bin1", "fail")
     create_datacard(args.inputfile, args.carddir+"_Bin2", "Bin2", "fail")
     create_datacard(args.inputfile, args.carddir+"_Bin3", "Bin3", "fail")
-    #create_datacard(args.inputfile, args.carddir+"_Bin4", "Bin4", "fail")
+    create_datacard(args.inputfile, args.carddir+"_Bin4", "Bin4", "fail")
 

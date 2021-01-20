@@ -50,7 +50,7 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
             sample.autoMCStats()
             #shape systematics
             valuesNominal =  templ[0]
-            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr']
+            systs = ['JMS', 'JMR', 'BDTMassShape', 'ttJetsCorr', 'BDTShape', 'PNetShape']
             for syst in systs:
                 valuesUp = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sUp'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
                 valuesDown = get_hist(inputfile, 'histJet2MassBlind%s_%s_%sDown'%('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
