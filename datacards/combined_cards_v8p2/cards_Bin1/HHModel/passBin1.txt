@@ -1,0 +1,124 @@
+# Datacard for <Channel (passBin1) instance at 0x7fcb90183610> generated on 2021-01-28 11:21:42.218415
+imax 1 # number of categories ('bins' but here we are using shape templates)
+jmax 6 # number of samples minus 1
+kmax 93 # number of nuisance parameters
+shapes * passBin1 HHModel.root HHModel:passBin1_$PROCESS HHModel:passBin1_$PROCESS_$SYSTEMATIC
+bin passBin1
+observation 40.000
+bin                                 passBin1  passBin1  passBin1  passBin1  passBin1  passBin1  passBin1
+process                                   HH    TTJets         H        VH       ttH    others       qcd
+process                                    0         1         2         3         4         5         6
+rate                                   0.417    15.829     0.312     2.487     0.672     0.592     1.000
+BDTMassShape shape                         -         -         -     1.000         -         -         -
+BDTMassShape shape                         -         -         -         -     1.000         -         -
+BDTMassShape shape                     1.000         -         -         -         -         -         -
+BDTMassShape shape                         -         -     1.000         -         -         -         -
+BDTMassShape shape                         -         -         -         -         -     1.000         -
+BDTMassShape shape                         -     1.000         -         -         -         -         -
+BDTShape shape                             -     1.000         -         -         -         -         -
+BDTShape shape                         1.000         -         -         -         -         -         -
+BDTShape shape                             -         -     1.000         -         -         -         -
+BDTShape shape                             -         -         -     1.000         -         -         -
+BDTShape shape                             -         -         -         -         -     1.000         -
+BDTShape shape                             -         -         -         -     1.000         -         -
+CMS_lumi lnN                           1.027     1.027     1.027     1.027     1.027     1.027         -
+JMR shape                                  -         -         -         -     1.000         -         -
+JMR shape                                  -     1.000         -         -         -         -         -
+JMR shape                                  -         -         -     1.000         -         -         -
+JMR shape                                  -         -     1.000         -         -         -         -
+JMR shape                                  -         -         -         -         -     1.000         -
+JMR shape                              1.000         -         -         -         -         -         -
+JMS shape                                  -     1.000         -         -         -         -         -
+JMS shape                                  -         -         -     1.000         -         -         -
+JMS shape                              1.000         -         -         -         -         -         -
+JMS shape                                  -         -         -         -     1.000         -         -
+JMS shape                                  -         -     1.000         -         -         -         -
+JMS shape                                  -         -         -         -         -     1.000         -
+PNetShape shape                            -         -         -     1.000         -         -         -
+PNetShape shape                        1.000         -         -         -         -         -         -
+PNetShape shape                            -         -         -         -     1.000         -         -
+PNetShape shape                            -         -         -         -         -     1.000         -
+PNetShape shape                            -     1.000         -         -         -         -         -
+PNetShape shape                            -         -     1.000         -         -         -         -
+passBin1_HH_mcstat_bin0 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin1 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin10 shape         1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin11 shape         1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin12 shape         1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin13 shape         1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin15 shape         1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin2 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin3 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin4 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin5 shape          1.000         -         -         -         -         -         -
+passBin1_HH_mcstat_bin9 shape          1.000         -         -         -         -         -         -
+passBin1_H_mcstat_bin13 shape              -         -     1.000         -         -         -         -
+passBin1_H_mcstat_bin2 shape               -         -     1.000         -         -         -         -
+passBin1_H_mcstat_bin4 shape               -         -     1.000         -         -         -         -
+passBin1_H_mcstat_bin5 shape               -         -     1.000         -         -         -         -
+passBin1_TTJets_mcstat_bin0 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin1 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin10 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin11 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin12 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin13 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin14 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin15 shape         -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin2 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin3 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin4 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin5 shape          -     1.000         -         -         -         -         -
+passBin1_TTJets_mcstat_bin9 shape          -     1.000         -         -         -         -         -
+passBin1_VH_mcstat_bin0 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin1 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin11 shape             -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin2 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin3 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin4 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin5 shape              -         -         -     1.000         -         -         -
+passBin1_VH_mcstat_bin9 shape              -         -         -     1.000         -         -         -
+passBin1_others_mcstat_bin0 shape          -         -         -         -         -     1.000         -
+passBin1_others_mcstat_bin1 shape          -         -         -         -         -     1.000         -
+passBin1_others_mcstat_bin14 shape         -         -         -         -         -     1.000         -
+passBin1_others_mcstat_bin3 shape          -         -         -         -         -     1.000         -
+passBin1_others_mcstat_bin4 shape          -         -         -         -         -     1.000         -
+passBin1_others_mcstat_bin5 shape          -         -         -         -         -     1.000         -
+passBin1_ttH_mcstat_bin0 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin1 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin10 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin11 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin12 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin13 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin14 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin15 shape            -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin2 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin3 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin4 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin5 shape             -         -         -         -     1.000         -         -
+passBin1_ttH_mcstat_bin9 shape             -         -         -         -     1.000         -         -
+ttJetsCorr shape                           -     1.000         -         -         -         -         -
+ttJetsCorr shape                           -         -         -         -     1.000         -         -
+ttJetsCorr shape                           -         -         -         -         -     1.000         -
+ttJetsCorr shape                           -         -     1.000         -         -         -         -
+ttJetsCorr shape                       1.000         -         -         -         -         -         -
+ttJetsCorr shape                           -         -         -     1.000         -         -         -
+qcdparam_msdbin0 extArg HHModel.root:HHModel
+qcdparam_msdbin1 extArg HHModel.root:HHModel
+qcdparam_msdbin10 extArg HHModel.root:HHModel
+qcdparam_msdbin11 extArg HHModel.root:HHModel
+qcdparam_msdbin12 extArg HHModel.root:HHModel
+qcdparam_msdbin13 extArg HHModel.root:HHModel
+qcdparam_msdbin14 extArg HHModel.root:HHModel
+qcdparam_msdbin15 extArg HHModel.root:HHModel
+qcdparam_msdbin16 extArg HHModel.root:HHModel
+qcdparam_msdbin2 extArg HHModel.root:HHModel
+qcdparam_msdbin3 extArg HHModel.root:HHModel
+qcdparam_msdbin4 extArg HHModel.root:HHModel
+qcdparam_msdbin5 extArg HHModel.root:HHModel
+qcdparam_msdbin6 extArg HHModel.root:HHModel
+qcdparam_msdbin7 extArg HHModel.root:HHModel
+qcdparam_msdbin8 extArg HHModel.root:HHModel
+qcdparam_msdbin9 extArg HHModel.root:HHModel
+tf_dataResidual_Bin1_msd_par0 extArg HHModel.root:HHModel
+tf_dataResidual_Bin1_msd_par1 extArg HHModel.root:HHModel
+tf_dataResidual_Bin1_msd_par2 extArg HHModel.root:HHModel
