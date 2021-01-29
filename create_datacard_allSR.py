@@ -185,7 +185,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     import pathlib2 as pathlib
-    pathlib.Path(args.carddir).mkdir(parents=True, exist_ok=True) 
+    pathlib.Path(args.carddir).mkdir(parents=True, exist_ok=True)
 
     for fitbin in ["Bin1", "Bin2", "Bin3", "Bin4"]:
         fitdir = os.path.join(args.carddir, 'cards_{}'.format(fitbin))

@@ -163,7 +163,7 @@ def plotftest(iToys, iCentral, prob, iLabel, options):
         chi2_func.SetParameter(0, lH.Integral())
         chi2_func.SetParameter(1, 50)
         chi2_func.Draw('same')
-        lH.Fit(chi2_func,"mle")        
+        lH.Fit(chi2_func, "mle")        
     lH.Draw("pezsame")
     lLine.Draw()
         
@@ -172,13 +172,13 @@ def plotftest(iToys, iCentral, prob, iLabel, options):
     tLeg.SetLineWidth(0)
     tLeg.SetFillStyle(0)
     tLeg.SetTextFont(42)
-    tLeg.AddEntry(lH,"toy data (N_{toys}=%i)" % len(iToys), "lep")
-    tLeg.AddEntry(lLine,"observed = %.1f" % iCentral, "l")
-    tLeg.AddEntry(lH_cut,"p-value = %.2f" % (1-prob), "f")
+    tLeg.AddEntry(lH, "toy data (N_{toys}=%i)" % len(iToys), "lep")
+    tLeg.AddEntry(lLine, "observed = %.1f" % iCentral, "l")
+    tLeg.AddEntry(lH_cut, "p-value = %.2f" % (1-prob), "f")
     if options.method == 'FTest':
-        tLeg.AddEntry(fdist,"F-dist, ndf = (%.0f, %.0f) " % (fdist.GetParameter(1),fdist.GetParameter(2)),"l")        
+        tLeg.AddEntry(fdist, "F-dist, ndf = (%.0f, %.0f) " % (fdist.GetParameter(1),fdist.GetParameter(2)), "l")        
     elif options.method == 'GoodnessOfFit' and options.algo == 'saturated':
-        tLeg.AddEntry(chi2_func,"#chi^{2} fit, ndf = %.1f #pm %.1f" % (chi2_func.GetParameter(1),chi2_func.GetParError(1)),"l")
+        tLeg.AddEntry(chi2_func, "#chi^{2} fit, ndf = %.1f #pm %.1f" % (chi2_func.GetParameter(1),chi2_func.GetParError(1)), "l")
             
     tLeg.Draw("same")
 
@@ -187,15 +187,15 @@ def plotftest(iToys, iCentral, prob, iLabel, options):
     l.SetTextSize(0.06)
     l.SetTextFont(62)
     l.SetNDC()
-    l.DrawLatex(0.12,0.91,"CMS")
+    l.DrawLatex(0.12, 0.91, "CMS")
     l.SetTextSize(0.05)
     l.SetTextFont(52)
     if options.isData:
-        l.DrawLatex(0.23,0.91,"Preliminary")
+        l.DrawLatex(0.23, 0.91, "Preliminary")
     else:
-        l.DrawLatex(0.23,0.91,"Simulation")
+        l.DrawLatex(0.23, 0.91, "Simulation")
     l.SetTextFont(42)
-    l.DrawLatex(0.65,0.91,"%.0f fb^{-1} (13 TeV)"%options.lumi)
+    l.DrawLatex(0.65,0.91, "%.0f fb^{-1} (13 TeV)"%options.lumi)
     l.SetTextFont(52)
     l.SetTextSize(0.045)
 
@@ -251,9 +251,11 @@ def ftest(base, alt, ntoys, iLabel, options):
     if not options.justPlot:
         baseName = base.split('/')[-1].replace('.root', '')
         altName = alt.split('/')[-1].replace('.root', '')
-        exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s'% (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
+        exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s' \
+                % (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
         exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
-        exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s' % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
+        exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s' \ 
+                % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
         exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
         exec_me('rm %s/toys*.root' % (options.odir), options.dryRun)
         if ntoys<=100:
@@ -261,7 +263,8 @@ def ftest(base, alt, ntoys, iLabel, options):
             exec_me('cp higgsCombine%s.GenerateOnly.mH120.%s.root %s/' % (baseName, options.seed, options.odir), options.dryRun)
             exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s' % (base, options.rMax, options.rMin,ntoys, options.odir, baseName, options.seed, baseName, options.freezeNuisances, options.seed, options.setParameters), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys1_%s.root' % (baseName, options.seed, options.odir, options.seed), options.dryRun)
-            exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s' % (alt, options.rMax, options.rMin,ntoys, options.odir, baseName, options.seed, altName, options.freezeNuisances, options.seed, options.setParameters), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s' \
+                    % (alt, options.rMax, options.rMin,ntoys, options.odir, baseName, options.seed, altName, options.freezeNuisances, options.seed, options.setParameters), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys2_%s.root' % (altName, options.seed, options.odir, options.seed), options.dryRun)
         else:
             # if too many toys are requested, run them in parallel, 100 toys each
@@ -289,10 +292,10 @@ def ftest(base, alt, ntoys, iLabel, options):
 
     if options.dryRun: 
         sys.exit()
-    nllBase=fStat("%s/base1.root"%options.odir,"%s/base2.root" % options.odir, options.p1, options.p2, options.n)
+    nllBase=fStat("%s/base1.root"%options.odir, "%s/base2.root" % options.odir, options.p1, options.p2, options.n)
     if not options.justPlot:
         print("Using these toys input %s/toys1_%s.root and %s/toys2_%s.root" % (options.odir, options.seed, options.odir, options.seed))
-        nllToys=fStat("%s/toys1_%s.root" % (options.odir, options.seed),"%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
+        nllToys=fStat("%s/toys1_%s.root" % (options.odir, options.seed), "%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
     else:
         nToys1 = len(glob.glob("%s/toys1_*.root" % (options.odir)))
         nToys2 = len(glob.glob("%s/toys2_*.root" % (options.odir)))
@@ -407,13 +410,13 @@ def bias(base, alt, ntoys, mu, iLabel, options):
         exec_me(generate_base, options.dryRun)
 
         # generate and fit separately:
-        fitDiag_base = "combine -M FitDiagnostics %s --toysFile higgsCombine%s.GenerateOnly.mH120.%s.root -n %s  --redefineSignalPOIs %s" %(base, iLabel, options.seed, iLabel, options.poi)
+        fitDiag_base = "combine -M FitDiagnostics %s --toysFile higgsCombine%s.GenerateOnly.mH120.%s.root -n %s  --redefineSignalPOIs %s" % (base, iLabel, options.seed, iLabel, options.poi)
         fitDiag_base += ' --robustFit 1 --saveNLL  --saveWorkspace --setRobustFitAlgo Minuit2,Migrad'
         fitDiag_base += ' -t %s -s %s ' % (ntoys, options.seed)
         fitDiag_base += " --freezeParameters %s " % (options.freezeNuisances) 
         fitDiag_base += " --setParameterRange r=%s,%s:r_z=%s,%s " % (options.rMin, options.rMax, options.rMin, options.rMax) 
         if options.scaleLumi > 0:
-            fitDiag_base += " --setParameters %s,lumiscale=%s " %(options.setParamters, options.scaleLumi)
+            fitDiag_base += " --setParameters %s,lumiscale=%s " % (options.setParamters, options.scaleLumi)
         else:
             fitDiag_base += " --setParameters %s " % (options.setParameters) 
         fitDiag_base += " %s " % (toysOptString)
@@ -441,15 +444,15 @@ def plotmass(base, mass):
 
 
 def setup(iLabel, mass, iBase, iRalph):
-    exec_me('sed "s@XXX@%s@g" card_%s_tmp2.txt > %s/card_%s.txt' %(mass,iBase,iLabel,iBase))
-    exec_me('cp %s*.root %s' % (iBase,iLabel))
-    exec_me('cp %s*.root %s' % (iRalph,iLabel))
+    exec_me('sed "s@XXX@%s@g" card_%s_tmp2.txt > %s/card_%s.txt' % (mass, iBase, iLabel, iBase))
+    exec_me('cp %s*.root %s' % (iBase, iLabel))
+    exec_me('cp %s*.root %s' % (iRalph, iLabel))
 
 
 def setupMC(iLabel,mass,iBase):
     exec_me('mkdir %s' % iLabel)
-    exec_me('sed "s@XXX@%s@g" mc_tmp2.txt > %s/mc.txt' %(mass,iLabel))
-    exec_me('cp %s*.root %s' % (iBase,iLabel))
+    exec_me('sed "s@XXX@%s@g" mc_tmp2.txt > %s/mc.txt' % (mass, iLabel))
+    exec_me('cp %s*.root %s' % (iBase, iLabel))
 
 
 def generate(mass, toys):
