@@ -149,7 +149,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.setParamEffect(lumi, 1.027)
 
             # set mc stat uncs
-            sample.autoMCStats()
+            #sample.autoMCStats()
         
             #shape systematics
             valuesNominal =  templ[0]
