@@ -1,1 +1,7 @@
+*.pyc
 *~
+*.out
+higgsCombine*.root
+fitDiagnostics*.root
+HHModel*
+*.png
