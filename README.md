@@ -12,9 +12,10 @@ pip install --user flake8
 pip install --user --upgrade numpy
 pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 pip install --user --upgrade uproot # use uproot4
-pip install --user --upgrade configparser
-pip install --user pathlib2
 ```
+
+## the packakge is installed in here on Caltech T2
+/storage/user/nlu/.local/lib/python2.7/site-packages
 
 ## Get input file
 
@@ -53,6 +54,19 @@ combine -M FitDiagnostics HHModel_combined.root --plots --rMin -20 --rMax 20 --s
 ```
 
 ## Run F-test (1st vs 2nd order):
+change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
 ```
 python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
 ```
+
+## produce figure 27 in ANv4
+
+python create_datacard_TTCR.py --inputfile /storage/af/user/nlu/work/HH/CMSSW_9_4_2/src/HHLooper_sysTest/python/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root
+
+cd cards_shapes_TTBarCR/HHModel
+
+source build.sh 
+
+combine -M FitDiagnostics HHModel_combined.root --setParameters r=1 --rMin 0 --rMax 2 --skipBOnlyFit --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBfitonly --ignoreCovWarning
+
+#the output is fitDiagnosticsSBfitonly.root, which will be the input of makePostFitPlot_TTCR.py in the HHLooper directory
