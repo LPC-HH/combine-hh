@@ -51,14 +51,15 @@ python create_datacard.py
 python create_shapecard.py
 ```
 
-## Run alphabet cards:
+## Run alphabet cards (final limit cards):
 ```
-cd cards/HHModel
-source build.sh
-combine -M AsymptoticLimits HHModel_combined.root
-combine -M FitDiagnostics HHModel_combined.root --plots --rMin -20 --rMax 20 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
+./make_cards.sh v8p2yield_AN_sr_sys_0830oldVJetsXS v1
 ```
+Here the first argument should match the input histogram file. 
 
+e.g. here HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830oldVJetsXS.root is used, and it is stored in the combine-hh/ directory
+
+The second argument v1 is a version number. in case we want to try different versions using the same HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830oldVJetsXS.root file with different systematic uncertainties etc
 
 ## Run shape cards:
 ```
