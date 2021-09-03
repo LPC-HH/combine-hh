@@ -14,8 +14,23 @@ pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 pip install --user --upgrade uproot # use uproot4
 ```
 
-## the packakge is installed in here on Caltech T2
-/storage/user/nlu/.local/lib/python2.7/site-packages
+## the packakge will be installed in here on Caltech T2
+/storage/af/user/$USER/.local/lib/python2.7/site-packages/rhalphalib
+
+in function.py: use coef*coef instead of coef for the BernsteinPoly function to avoid negative PDF
+
+```     
+        # Construct parameter tensor
+        import ROOT
+        self._params = np.full(self._shape, None)
+        for ipar, initial in np.ndenumerate(self._init_params):
+            param = IndependentParameter('_'.join([self.name] + ['%s_par%d' % (d, i) for d, i in zip(self._dim_names, ipar)]), initial, lo=limits[0], hi=limits[1])
+            paramsq = DependentParameter('_'.join([self.name] + ['%s_parsq%d' % (d, i) for d, i in zip(self._dim_names, ipar)]), "{0}*{0}", param)
+            self._params[ipar] = paramsq
+
+```
+e.g: /storage/af/user/nlu/.local/lib/python2.7/site-packages/rhalphalib/function.py
+
 
 ## Get input file
 
@@ -59,7 +74,7 @@ change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
 python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
 ```
 
-## make datacards for figure 27 in ANv4
+## produce figure 27 in ANv4
 
 python create_datacard_TTCR.py --inputfile /storage/af/user/nlu/work/HH/CMSSW_9_4_2/src/HHLooper_sysTest/python/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root
 
