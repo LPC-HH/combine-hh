@@ -106,11 +106,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'Data': get_hist(inputfile, 'histJet2Mass'+catn+'_Data', obs=msd),
         }
        
-        #systs = ['FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 
-        systs = ['pileupWeight', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors']#, 'triggerEffSF']
-        #systs_name_in_cards = ['FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 
-        systs_name_in_cards = ['CMS_pileup', 
-'CMS_JES', 'CMS_JMS', 'CMS_JMR', 'ttJetsCorr', 'ttJetsBDTShape', 'ttJetsPNetShape', 'PNetHbbScaleFactors_uncorrelated'] #, 'triggerEffSF_uncorrelated']
+        systs = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'pileupWeight', 'JER', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors']#, 'triggerEffSF']
+        systs_name_in_cards = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'CMS_pileup', 'CMS_JER', 'CMS_JES', 'CMS_JMS', 'CMS_JMR', 'ttJetsCorr', 'ttJetsBDTShape', 'ttJetsPNetShape', 'PNetHbbScaleFactors_uncorrelated'] #, 'triggerEffSF_uncorrelated']
         
         syst_param_array = []
         for i in range(len(systs)):
