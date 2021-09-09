@@ -112,7 +112,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'Data': get_hist(inputfile, 'histJet2Mass%s_Data'%('Blind_'+passBinName if isPass else 'Blind_'+failBinName), obs=msd),
         }
       
-        systs = ['FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'pileupWeight', 'JER', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors']#, 'triggerEffSF']
+        systs = ['FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'pileupWeight', 'JER', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors', 'triggerEffSF']
  
         syst_param_array = []
         for i in range(len(systs)):
