@@ -106,8 +106,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'Data': get_hist(inputfile, 'histJet2Mass'+catn+'_Data', obs=msd),
         }
        
-        systs = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'pileupWeight', 'JER', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors']#, 'triggerEffSF']
-        systs_name_in_cards = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'CMS_pileup', 'CMS_JER', 'CMS_JES', 'CMS_JMS', 'CMS_JMR', 'ttJetsCorr', 'ttJetsBDTShape', 'ttJetsPNetShape', 'PNetHbbScaleFactors_uncorrelated'] #, 'triggerEffSF_uncorrelated']
+        systs = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'pileupWeight', 'JER', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors', 'triggerEffSF'] 
+        #systs = ['pileupWeight', 'JES', 'JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'PNetShape', 'PNetHbbScaleFactors']#, 'triggerEffSF']
+        systs_name_in_cards = ['ttbarBin1Jet2PNetCut', 'FSRPartonShower', 'ISRPartonShower', 'ggHHPDFacc', 'ggHHQCDacc', 'CMS_pileup', 'CMS_JER', 'CMS_JES', 'CMS_JMS', 'CMS_JMR', 'ttJetsCorr', 'ttJetsBDTShape', 'ttJetsPNetShape', 'PNetHbbScaleFactors_uncorrelated', 'triggerEffSF_uncorrelated'] 
+        #systs_name_in_cards = ['CMS_pileup', 'CMS_JES', 'CMS_JMS', 'CMS_JMR', 'ttJetsCorr', 'ttJetsBDTShape', 'ttJetsPNetShape', 'PNetHbbScaleFactors_uncorrelated'] #, 'triggerEffSF_uncorrelated']
         
         syst_param_array = []
         for i in range(len(systs)):
@@ -128,9 +130,11 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             if ("TTJets"==sName and "Bin1" in region ):
                 #print("sName and ttbar yield Bin1 MC stats unc ", sName)
                 if ("passBin1" == region):
-                    sample.setParamEffect(ttbarBin1MCstats, 1.256)
+                    #sample.setParamEffect(ttbarBin1MCstats, 1.256)
+                    sample.setParamEffect(ttbarBin1MCstats, 1.215)
                 elif ("SRBin1" == region):
-                    sample.setParamEffect(ttbarBin1MCstats, 1.240)
+		    #sample.setParamEffect(ttbarBin1MCstats, 1.240)
+                    sample.setParamEffect(ttbarBin1MCstats, 1.187)
 
             if ("VH" in sName) or ("ttH" in sName) : 
                 #print("sName and PNetSF 5%: ",sName)

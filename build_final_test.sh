@@ -16,16 +16,16 @@ echo "bkg-only fit"
 combine -D $dataset -M MultiDimFit --saveWorkspace -m 125 ${wsm}.root  --verbose 9 --cminDefaultMinimizerStrategy 1 --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=1,mask_fail=1,r=0 --freezeParameters r 
 
 echo "expected limit"
-combine -M AsymptoticLimits -m 125 -n ${version} higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --verbose 9 --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --run blind
+combine -M AsymptoticLimits -m 125 -n ${version} higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --run blind
 
 echo "expected limit for BDT Bin 1"
-combine -M AsymptoticLimits -m 125 -n ${version}_Bin1 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=0,mask_SRBin2=1,mask_SRBin3=1,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --verbose 9 --run blind
+combine -M AsymptoticLimits -m 125 -n ${version}_Bin1 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=0,mask_SRBin2=1,mask_SRBin3=1,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --run blind
 
 echo "expected limit for BDT Bin 2"
-combine -M AsymptoticLimits -m 125 -n ${version}_Bin2 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=1,mask_SRBin2=0,mask_SRBin3=1,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --verbose 9 --run blind
+combine -M AsymptoticLimits -m 125 -n ${version}_Bin2 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=1,mask_SRBin2=0,mask_SRBin3=1,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --run blind
 
 echo "expected limit for BDT Bin 3"
-combine -M AsymptoticLimits -m 125 -n ${version}_Bin3 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --verbose 9 --run blind
+combine -M AsymptoticLimits -m 125 -n ${version}_Bin3 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --run blind
 
 echo "FitDiagnostic S=0"
 combine -M FitDiagnostics ${wsm}.root --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=1,mask_fail=1 --rMin 0 --rMax 2 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBplusfail --ignoreCovWarning

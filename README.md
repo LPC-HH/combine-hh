@@ -34,10 +34,13 @@ e.g: /storage/af/user/nlu/.local/lib/python2.7/site-packages/rhalphalib/function
 
 ## Get input file
 
-The an example of the input file to the datacards can be found here: 
+The latest input file can be found here: 
 
 ```
-/storage/af/user/nlu/hh/looper_output/datacard_hist/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830oldVJetsXS.root
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_BDTv24.root (signal region, v24 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_BDTv8p2.root (signal region v8p2 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_ttbarSkim_BDTv24.root  (ttbar CR, v24 BDT)
+/eos/cms/store/group/phys_susy/razor/Run2Analysis/HHBoost/hist_for_card/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root (ttbar CR, v8p2 BDT)
 ```
 
 ## Checkout this repo and create datacards
