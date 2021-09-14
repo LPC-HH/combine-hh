@@ -88,22 +88,28 @@ def set_style(grexp,grobs,gr1sigma,gr2sigma):
 ################################################################################################
 ###########OPTIONS
 parser = OptionParser()
+parser.add_option("--c2vGridConfig",default='/work/nchernya/DiHiggs/CMSSW_7_4_7/src/flashggFinalFit/Plots/FinalResults/c2v_grids/c2v_grid_finish.json',help="grid for c2v scan" )
+parser.add_option("--c2vGridPrediction",default='/work/nchernya/DiHiggs/CMSSW_7_4_7/src/flashggFinalFit/Plots/FinalResults/c2v_grids/vbfhhc2vline_finish.txt',help="theory prediction for c2v scan" )
+parser.add_option("--whatToFloat",default='r',help="what to float" )
 parser.add_option("--indir", help="Input directory ")
 parser.add_option("--outdir", help="Output directory ")
 parser.add_option("--outtag", help="Output tag ")
 parser.add_option("--unblind", action="store_false",help="Observed is present or not ",default=False)
+parser.add_option("--nlo", action="store_true",help="NLO samples (need to normalize to cross section) ",default=False)
 (options,args)=parser.parse_args()
 ###########
 ###CREATE TAGS
 
+print("options: options.whatToFloat=",options.whatToFloat)
+
 datalumi = "137 fb^{-1} (13 TeV)"
 
-xmin=0
-xmax=120
+xmin=1
+xmax=201
 ymin=0
 ymax=6
 inter=1
-num_location = 0.9
+num_location = 0.88
 
 #ylable_text = ["combined","b#bar{b}#gamma#gamma","b#bar{b}4l","ggHH boosted b#bar{b}b#bar{b}"]
 
@@ -112,10 +118,10 @@ ylable_text = ["Combined","Category 1","Category 2", "Category 3"]
 Nch=4 #len(ylable_text)
 print("N: ",Nch)
 
-dirnames=["/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/higgsCombinev1.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/higgsCombine_Bin1.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/higgsCombine_Bin2.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0908/higgsCombine_Bin3.AsymptoticLimits.mH125.123456.root"]
+dirnames=["/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1.AsymptoticLimits.mH125.123456.root",
+          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin1.AsymptoticLimits.mH125.123456.root",
+          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin2.AsymptoticLimits.mH125.123456.root",
+          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin3.AsymptoticLimits.mH125.123456.root"]
 
 pt_channel_names=[]
 for ich in range(Nch):
@@ -129,6 +135,7 @@ c1.SetLeftMargin (0.15)
 #c1.SetGridx()
 #c1.SetGridy()
 
+ROOT.gPad.SetLogx(1)
 mg = ROOT.TMultiGraph()
 
 gr2sigma = ROOT.TGraphAsymmErrors()
@@ -365,7 +372,6 @@ print("check4",Nch+3)
 hframe.Draw("text")
 hframe.GetYaxis().SetRangeUser(0,Nch+100)
 
-
 #hframe.GetYaxis().SetDrawOption("B")
 
 #yn = int(ymax-xmax)
@@ -411,4 +417,5 @@ legend.Draw()
 c1.Update()
 # raw_input()
 
-c1.Print('limit_ch_test_%s.pdf'%(options.outtag), 'pdf')
+c1.Print('limit_ch_test_%s_to_%s.pdf'%(options.outtag,options.whatToFloat), 'pdf')
+#c1.Print('%s/limit_ch_test_%s_to_%s.pdf'%(options.outdir,options.outtag,options.whatToFloat), 'pdf')
