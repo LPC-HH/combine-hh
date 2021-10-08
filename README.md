@@ -118,3 +118,14 @@ cd $CMSSW_BASE/src/
 git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
 scram b
 ```
+
+Get the HH model
+
+```
+https://gitlab.cern.ch/hh/tools/inference/-/blob/master/dhi/models/hh_model.py
+```
+put this file in the folder: 
+
+```
+/CMSSW_10_2_13/src/HiggsAnalysis/CombinedLimit/python/
+```
