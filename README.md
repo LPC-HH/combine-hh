@@ -69,22 +69,14 @@ The latest input file for the datacard can be found here:
 ## Checkout this repo and create datacards:
 ```
 git clone https://github.com/LPC-HH/combine-hh
-cd combine-hh/Coupling/workspace
-./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 > out
+cd combine-hh/
+./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 
 ```
 Here the first argument should match the input histogram file name. 
 
 e.g. here this histogram is used for the preapproval result: /storage/af/user/nlu/Hmm/Combined_v8.1.0/CMSSW_10_2_13/src/HiggsAnalysis/HH4b/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830_fix2017trigSF0913.root
 
 The second argument v1 is a version number. in case we want to try different versions using the same input file with different systematic uncertainties etc
-
-## Run shape cards:
-```
-cd cards_shpaes/HHModel
-source build.sh
-combine -M AsymptoticLimits HHModel_combined.root
-combine -M FitDiagnostics HHModel_combined.root --plots --rMin -20 --rMax 20 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
-```
 
 ## Run F-test (1st vs 2nd order):
 change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
@@ -111,41 +103,11 @@ combine -M FitDiagnostics HHModel_combined.root --setParameters r=1 --rMin 0 --r
 
 #the output is fitDiagnosticsSBfitonly.root, which will be the input of makePostFitPlot_TTCR.py in the HHLooper directory
 
+## Kl and mu scan
 
+Go to Coupling directory 
+ 
 ## Systematic uncertainty ranking and impact
-
-https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/
-
-https://cms-analysis.github.io/CombineHarvester/
-
-```
-export SCRAM_ARCH=slc7_amd64_gcc700
-cmsrel CMSSW_10_2_13
-cd CMSSW_10_2_13/src
-cmsenv
-git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
-cd HiggsAnalysis/CombinedLimit
-
-cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
-git fetch origin
-git checkout v8.2.0
-scramv1 b clean; scramv1 b
-
-cd $CMSSW_BASE/src/
-git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
-scram b
-```
-
-Get the HH model
-
-```
-https://gitlab.cern.ch/hh/tools/inference/-/blob/master/dhi/models/hh_model.py
-```
-put this file in the folder: 
-
-```
-/CMSSW_10_2_13/src/HiggsAnalysis/CombinedLimit/python/
-```
 
 Go to SystImpact directory
 
@@ -157,4 +119,12 @@ Go to Coupling directory
 
 Go to xsUpperLimit directory
 
-Script not done yet.
+Script not done yet
+
+## Run shape cards:
+```
+cd cards_shpaes/HHModel
+source build.sh
+combine -M AsymptoticLimits HHModel_combined.root
+combine -M FitDiagnostics HHModel_combined.root --plots --rMin -20 --rMax 20 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
+
