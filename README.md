@@ -7,7 +7,17 @@ cmsrel CMSSW_10_2_13
 cd CMSSW_10_2_13/src
 cmsenv
 git clone https://github.com/cms-analysis/HiggsAnalysis-CombinedLimit.git HiggsAnalysis/CombinedLimit
-scram b -j 4
+cd HiggsAnalysis/CombinedLimit
+
+cd $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit
+git fetch origin
+git checkout v8.2.0
+scramv1 b clean; scramv1 b
+
+cd $CMSSW_BASE/src/
+git clone https://github.com/cms-analysis/CombineHarvester.git CombineHarvester
+scram b
+
 pip install --user flake8
 pip install --user --upgrade numpy
 pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
@@ -45,7 +55,7 @@ The latest input file for the datacard can be found here:
 ```
 git clone https://github.com/LPC-HH/combine-hh
 cd combine-hh/Coupling/workspace
-./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1
+./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 > out
 ```
 Here the first argument should match the input histogram file name. 
 
