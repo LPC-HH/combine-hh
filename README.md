@@ -23,6 +23,21 @@ pip install --user --upgrade numpy
 pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
 pip install --user --upgrade uproot # use uproot4
 ```
+Get the HH model
+
+```
+https://gitlab.cern.ch/hh/tools/inference/-/blob/master/dhi/models/hh_model.py
+```
+put this file in the folder:
+
+```
+/CMSSW_10_2_13/src/HiggsAnalysis/CombinedLimit/python/
+```
+ref:
+
+https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/
+
+https://cms-analysis.github.io/CombineHarvester/
 
 ## the packakge will be installed in here on Caltech T2
 /storage/af/user/$USER/.local/lib/python2.7/site-packages/rhalphalib
