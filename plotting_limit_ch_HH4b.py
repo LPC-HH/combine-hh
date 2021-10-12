@@ -88,14 +88,9 @@ def set_style(grexp,grobs,gr1sigma,gr2sigma):
 ################################################################################################
 ###########OPTIONS
 parser = OptionParser()
-parser.add_option("--c2vGridConfig",default='/work/nchernya/DiHiggs/CMSSW_7_4_7/src/flashggFinalFit/Plots/FinalResults/c2v_grids/c2v_grid_finish.json',help="grid for c2v scan" )
-parser.add_option("--c2vGridPrediction",default='/work/nchernya/DiHiggs/CMSSW_7_4_7/src/flashggFinalFit/Plots/FinalResults/c2v_grids/vbfhhc2vline_finish.txt',help="theory prediction for c2v scan" )
 parser.add_option("--whatToFloat",default='r',help="what to float" )
-parser.add_option("--indir", help="Input directory ")
-parser.add_option("--outdir", help="Output directory ")
-parser.add_option("--outtag", help="Output tag ")
+parser.add_option("--inputtag", help="tag")
 parser.add_option("--unblind", action="store_false",help="Observed is present or not ",default=False)
-parser.add_option("--nlo", action="store_true",help="NLO samples (need to normalize to cross section) ",default=False)
 (options,args)=parser.parse_args()
 ###########
 ###CREATE TAGS
@@ -111,17 +106,15 @@ ymax=6
 inter=1
 num_location = 0.88
 
-#ylable_text = ["combined","b#bar{b}#gamma#gamma","b#bar{b}4l","ggHH boosted b#bar{b}b#bar{b}"]
-
 ylable_text = ["Combined","Category 1","Category 2", "Category 3"]
 
 Nch=4 #len(ylable_text)
 print("N: ",Nch)
 
-dirnames=["/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin1.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin2.AsymptoticLimits.mH125.123456.root",
-          "/storage/af/user/nlu/work/HH/CMSSW_10_2_13/src/combine-hh-save/cards/v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/combined_cards_v8p2yield_AN_sr_sys_0830_fix2017trigSF0913v1/higgsCombinev1_Bin3.AsymptoticLimits.mH125.123456.root"]
+dirnames=["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
+          "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
+          "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
+          "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"]
 
 pt_channel_names=[]
 for ich in range(Nch):
@@ -323,18 +316,6 @@ pt2.SetTextFont(42)
 pt2.SetFillStyle(0)
 pt2.AddText(datalumi)
 
-pt4 = ROOT.TPaveText(0.519196+0.036,0.7780357+0.015+0.02,0.8008929+0.036,0.8675595+0.015,"brNDC")
-pt4.SetTextAlign(12)
-pt4.SetFillColor(ROOT.kWhite)
-pt4.SetFillStyle(1001)
-pt4.SetTextFont(42)
-pt4.SetTextSize(0.05)
-pt4.SetBorderSize(0)
-pt4.SetTextAlign(32)
-pt4.AddText("b#bar{b}#gamma#gamma + b#bar{b}4l ") 
-
-print("check3")
-
 ROOT.gStyle.SetPaintTextFormat("4.1f")
 
 hframe = ROOT.TH2F('hframe', "",10,xmin, xmax,10,0,10)
@@ -366,22 +347,9 @@ hframe.GetXaxis().SetTitleOffset(1.1)
 hframe.GetYaxis().SetTitle("")
 hframe.GetXaxis().SetTitle("95% CL limit on \sigma_{HH}/\sigma_{SM_{HH}}")
 
-print("check4",Nch+3)
-
 #ROOT.gPad.SetTicky()
 hframe.Draw("text")
 hframe.GetYaxis().SetRangeUser(0,Nch+100)
-
-#hframe.GetYaxis().SetDrawOption("B")
-
-#yn = int(ymax-xmax)
-#hlabel = ROOT.TH2F("h","test",10, xmin, xmax, yn, xmax, ymax)
-#hlabel.SetStats(0)
-#for i in range(yn):
-#    hlabel.GetYaxis().SetBinLabel(i,ylable_text[i-1])
-#hlabel.Draw("text")
-
-print("check5")
 
 gr2sigma.Draw("3same")
 gr1sigma.Draw("3same")
@@ -409,13 +377,7 @@ pt2.Draw()
 c1.Update()
 c1.RedrawAxis()
 legend.Draw()
-#pt4.Draw()
-
-#for i in range(len(pt_channel_names)):
-#    pt_channel_names[i].Draw()
 
 c1.Update()
-# raw_input()
+c1.Print('limit_ch_test_%s_to_%s.pdf'%(options.inputtag,options.whatToFloat), 'pdf')
 
-c1.Print('limit_ch_test_%s_to_%s.pdf'%(options.outtag,options.whatToFloat), 'pdf')
-#c1.Print('%s/limit_ch_test_%s_to_%s.pdf'%(options.outdir,options.outtag,options.whatToFloat), 'pdf')
