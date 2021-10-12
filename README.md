@@ -84,15 +84,9 @@ change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
 python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
 ```
 
-## produce limit plot in the three categories separately and combined
-
-python plotting_limit_ch_HH4b.py
-
-change the output of the limits here:
-https://github.com/LPC-HH/combine-hh/blob/3557875a8ef493935b83ab2c67f6051bb26bd4ca/plotting_limit_ch_HH4b.py#L115-L118
-
 ## produce ttbar CR plot figure 27 in ANv4
 
+```
 python create_datacard_TTCR.py --inputfile /storage/af/user/nlu/work/HH/CMSSW_9_4_2/src/HHLooper_sysTest/python/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root
 
 cd cards_shapes_TTBarCR/HHModel
@@ -100,8 +94,8 @@ cd cards_shapes_TTBarCR/HHModel
 source build.sh 
 
 combine -M FitDiagnostics HHModel_combined.root --setParameters r=1 --rMin 0 --rMax 2 --skipBOnlyFit --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBfitonly --ignoreCovWarning
-
-#the output is fitDiagnosticsSBfitonly.root, which will be the input of makePostFitPlot_TTCR.py in the HHLooper directory
+```
+the output is fitDiagnosticsSBfitonly.root, which will be the input of makePostFitPlot_TTCR.py in the HHLooper directory
 
 ## Kl and mu scan
 
@@ -127,4 +121,4 @@ cd cards_shpaes/HHModel
 source build.sh
 combine -M AsymptoticLimits HHModel_combined.root
 combine -M FitDiagnostics HHModel_combined.root --plots --rMin -20 --rMax 20 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes --saveNLL --ignoreCovWarning
-
+```
