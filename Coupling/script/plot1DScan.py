@@ -5,7 +5,6 @@ from functools import partial
 import CombineHarvester.CombineTools.plotting as plot
 import json
 import argparse
-import os.path
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.gROOT.SetBatch(ROOT.kTRUE)
@@ -15,6 +14,7 @@ ROOT.gStyle.SetNdivisions(510, "XYZ")
 ROOT.gStyle.SetMarkerSize(0.7)
 
 NAMECOUNTER = 0
+
 
 def read(scan, param, files, ycut):
     goodfiles = [f for f in files if plot.TFileIsGood(f)]
@@ -36,10 +36,10 @@ def BuildScan(scan, param, files, color, yvals, ycut):
     graph = read(scan, param, files, ycut)
     bestfit = None
     for i in xrange(graph.GetN()):
-        print(i, " X vs Y ",graph.GetX()[i], graph.GetY()[i])
-        if (graph.GetY()[i] < 1e-5 and graph.GetY()[i] > -1e-5) :
+        print(i, " X vs Y ", graph.GetX()[i], graph.GetY()[i])
+        if (graph.GetY()[i] < 1e-5 and graph.GetY()[i] > -1e-5):
             bestfit = graph.GetX()[i]
-    print("bestfit: ",bestfit)
+    print("bestfit: ", bestfit)
     graph.SetMarkerColor(color)
     spline = ROOT.TSpline3("spline3", graph)
     global NAMECOUNTER
@@ -76,17 +76,18 @@ def BuildScan(scan, param, files, color, yvals, ycut):
         val_2sig = (0., 0., 0.)
         cross_2sig = cross_1sig
     return {
-        "graph"     : graph,
-        "spline"    : spline,
-        "func"      : func,
-        "crossings" : crossings,
-        "val"       : val,
+        "graph": graph,
+        "spline": spline,
+        "func": func,
+        "crossings": crossings,
+        "val": val,
         "val_2sig": val_2sig,
-        "cross_1sig" : cross_1sig,
-        "cross_2sig" : cross_2sig,
-        "other_1sig" : other_1sig,
-        "other_2sig" : other_2sig
+        "cross_1sig": cross_1sig,
+        "cross_2sig": cross_2sig,
+        "other_1sig": other_1sig,
+        "other_2sig": other_2sig
     }
+
 
 parser = argparse.ArgumentParser()
 
@@ -106,7 +107,7 @@ parser.add_argument('--logo-sub', default='Internal')
 args = parser.parse_args()
 
 print '--------------------------------------'
-print  args.output
+print args.output
 print '--------------------------------------'
 
 fixed_name = args.POI
@@ -115,15 +116,15 @@ if args.translate is not None:
         name_translate = json.load(jsonfile)
     if args.POI in name_translate:
         fixed_name = name_translate[args.POI]
-        print("fixed_name: ",fixed_name)
-#fixed_name = "#kappa_{#lambda}"
+        print("fixed_name: ", fixed_name)
+# fixed_name = "#kappa_{#lambda}"
 yvals = [1., 4.]
 
 
 main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, yvals, args.y_cut)
 
-other_scans = [ ]
-other_scans_opts = [ ]
+other_scans = []
+other_scans_opts = []
 if args.others is not None:
     for oargs in args.others:
         splitargs = oargs.split(':')
@@ -170,8 +171,10 @@ for yval in yvals:
     plot.DrawHorizontalLine(pads[0], line, yval)
     if (len(other_scans) == 0):
         for cr in main_scan['crossings'][yval]:
-            if cr['valid_lo']: line.DrawLine(cr['lo'], 0, cr['lo'], yval)
-            if cr['valid_hi']: line.DrawLine(cr['hi'], 0, cr['hi'], yval)
+            if cr['valid_lo']:
+                line.DrawLine(cr['lo'], 0, cr['lo'], yval)
+            if cr['valid_hi']:
+                line.DrawLine(cr['hi'], 0, cr['hi'], yval)
 
 main_scan['func'].Draw('same')
 for other in other_scans:
@@ -179,7 +182,6 @@ for other in other_scans:
         other['func'].SetLineStyle(2)
         other['func'].SetLineWidth(2)
     other['func'].Draw('SAME')
-
 
 
 box = ROOT.TBox(axishist.GetXaxis().GetXmin(), 0.625*args.y_max, axishist.GetXaxis().GetXmax(), args.y_max)
@@ -241,15 +243,15 @@ pt.SetTextAlign(11)
 pt.SetTextFont(42)
 pt.Draw()
 
-plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,  cmsTextSize = 1.)
+plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,  cmsTextSize=1.)
 
 legend_l = 0.69
 if len(other_scans) > 0:
     legend_l = legend_l - len(other_scans) * 0.04
 legend = ROOT.TLegend(0.15, legend_l, 0.45, 0.78, '', 'NBNDC')
 if len(other_scans) >= 3:
-        legend = ROOT.TLegend(0.46, 0.83, 0.95, 0.93, '', 'NBNDC')
-        legend.SetNColumns(2)
+    legend = ROOT.TLegend(0.46, 0.83, 0.95, 0.93, '', 'NBNDC')
+    legend.SetNColumns(2)
 
 legend.AddEntry(main_scan['func'], args.main_label, 'L')
 for i, other in enumerate(other_scans):
@@ -263,4 +265,3 @@ outfile.WriteTObject(save_graph)
 outfile.Close()
 canv.Print(args.POI+'_1Dscan.pdf')
 canv.Print(args.POI+'_1Dscan.png')
-
