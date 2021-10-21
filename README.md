@@ -20,54 +20,30 @@ scram b
 
 pip install --user flake8
 pip install --user --upgrade numpy
-pip install --user https://github.com/nsmith-/rhalphalib/archive/master.zip
+pip install --user https://github.com/jmduarte/rhalphalib/archive/coefsq.zip
 pip install --user --upgrade uproot # use uproot4
 ```
+
 Get the HH model
-
+```bash
+wget https://gitlab.cern.ch/hh/tools/inference/-/raw/master/dhi/models/hh_model.py -O $CMSSW_BASE/src/HiggsAnalysis/CombinedLimit/python/hh_model.py
 ```
-https://gitlab.cern.ch/hh/tools/inference/-/blob/master/dhi/models/hh_model.py
-```
-put this file in the folder:
 
-```
-/CMSSW_10_2_13/src/HiggsAnalysis/CombinedLimit/python/
-```
-ref:
-
-https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/
-
-https://cms-analysis.github.io/CombineHarvester/
-
-## the packakge will be installed in here on Caltech T2
-/storage/af/user/$USER/.local/lib/python2.7/site-packages/rhalphalib
-
-in function.py: use coef*coef instead of coef for the BernsteinPoly function to avoid negative PDF
-
-```     
-        # Construct parameter tensor
-        import ROOT
-        self._params = np.full(self._shape, None)
-        for ipar, initial in np.ndenumerate(self._init_params):
-            param = IndependentParameter('_'.join([self.name] + ['%s_par%d' % (d, i) for d, i in zip(self._dim_names, ipar)]), initial, lo=limits[0], hi=limits[1])
-            paramsq = DependentParameter('_'.join([self.name] + ['%s_parsq%d' % (d, i) for d, i in zip(self._dim_names, ipar)]), "{0}*{0}", param)
-            self._params[ipar] = paramsq
-
-```
-e.g: /storage/af/user/nlu/.local/lib/python2.7/site-packages/rhalphalib/function.py
-
+For reference, consult
+ - https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/
+ - https://cms-analysis.github.io/CombineHarvester/
 
 ## Get input file
 
 The latest input file for the datacard can be found here: 
 
-```
+```bash
 /storage/af/user/nlu/hh/looper_output/datacard_hist/
 
 ```
 
 ## Checkout this repo and create datacards:
-```
+```bash
 git clone https://github.com/LPC-HH/combine-hh
 cd combine-hh/
 ./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 
@@ -80,13 +56,13 @@ The second argument v1 is a version number. in case we want to try different ver
 
 ## Run F-test (1st vs 2nd order):
 change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
-```
+```bash
 python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
 ```
 
 ## produce ttbar CR plot figure 27 in ANv4
 
-```
+```bash
 python create_datacard_TTCR.py --inputfile /storage/af/user/nlu/work/HH/CMSSW_9_4_2/src/HHLooper_sysTest/python/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root
 
 cd cards_shapes_TTBarCR/HHModel
