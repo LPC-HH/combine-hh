@@ -33,11 +33,11 @@ def buildcards(odir, v1n, v2n, options):
     if odir == "":
         odir = os.path.dirname(ifile)
         print "using default output dir:", odir
-    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.binName)
+    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
     if options.testMCTF:
-        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.binName)
+        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
 
-    combineCards = "cd %s/HHModel; combineCards.py pass=pass.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir)
+    combineCards = "cd %s/HHModel; combineCards.py pass=pass%s.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir, options.passBinName)
     wsRoot = "%s/HHModel_combined_n%i.root" % (odir, v1n)
     cpCards = "cp %s/HHModel/HHModel_combined.root %s" % (odir, wsRoot)
 
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     parser.add_option('--dry-run', dest="dryRun", default=False, action='store_true',
                       help="Just print out commands to run")
     parser.add_option('-o', '--odir', dest='odir', default='FTest', help='directory to write plots', metavar='odir')
-    parser.add_option('--passBinName', default='Bin1', choices=['Bin1', 'Bin2', 'Bin3'], dest='binName', help='pass bin name')
+    parser.add_option('--passBinName', default='Bin1', choices=['Bin1', 'Bin2', 'Bin3'], dest='passBinName', help='pass bin name')
 
     (options, args) = parser.parse_args()
 
@@ -136,9 +136,9 @@ if __name__ == "__main__":
 
     if not options.justPlot:
         limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
-                    '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i' + \
-            '-t %i --lumi %f %s -r %f --seed %s --freezeNuisances %s' + \
-            '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
+                    '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i ' + \
+                    '-t %i --lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
+                    '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
         limit_cmd = limit_cmd % (datacardWS1,
                                  datacardWS2,
                                  toysDir,
@@ -159,11 +159,11 @@ if __name__ == "__main__":
         exec_me(limit_cmd, logf, options.dryRun)
     else:
         # use toys from hadd-ed directory
-        toysDir += "/toys/ "
-        limit_cmd = 'python limit.py -M FTest --datacard %s' + \
-            '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i -t %i' + \
-            '--lumi %f %s -r %f --seed %s --freezeNuisances %s' + \
-            '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
+        toysDir += "/toys/"
+        limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
+                    '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i -t %i ' + \
+                    '--lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
+                    '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
         limit_cmd = limit_cmd % (datacardWS1,
                                  datacardWS2,
                                  toysDir,
