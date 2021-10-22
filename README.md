@@ -50,32 +50,32 @@ cd combine-hh/
 ```
 Here the first argument should match the input histogram file name. 
 
-e.g. here this histogram is used for the preapproval result: /storage/af/user/nlu/Hmm/Combined_v8.1.0/CMSSW_10_2_13/src/HiggsAnalysis/HH4b/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830_fix2017trigSF0913.root
+e.g. here this histogram is used for the preapproval result: 
+```bash
+/storage/af/user/nlu/hh/looper_output/datacard_hist/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830_fix2017trigSF0913.root
+```
 
 The second argument v1 is a version number. in case we want to try different versions using the same input file with different systematic uncertainties etc
 
 ## Run F-test (1st vs 2nd order):
-change line 193 in create_datacard.py to the bin you want to test (e.g. Bin1)
+For Bin1,
 ```bash
-python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1
+python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1 --passBinName Bin1
 ```
 
 ## produce ttbar CR plot figure 27 in ANv4
 
 ```bash
 python create_datacard_TTCR.py --inputfile /storage/af/user/nlu/work/HH/CMSSW_9_4_2/src/HHLooper_sysTest/python/HHTo4BPlots_Run2_ttbarSkim_BDTv8p2.root
-
 cd cards_shapes_TTBarCR/HHModel
-
 source build.sh 
-
 combine -M FitDiagnostics HHModel_combined.root --setParameters r=1 --rMin 0 --rMax 2 --skipBOnlyFit --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBfitonly --ignoreCovWarning
 ```
-the output is fitDiagnosticsSBfitonly.root, which will be the input of makePostFitPlot_TTCR.py in the HHLooper directory
+the output is `fitDiagnosticsSBfitonly.root`, which will be the input of `makePostFitPlot_TTCR.py` in the `HHLooper` directory
 
 ## Kl and mu scan
 
-Go to Coupling directory 
+Go to Coupling directory
  
 ## Systematic uncertainty ranking and impact
 

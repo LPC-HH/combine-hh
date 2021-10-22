@@ -33,9 +33,9 @@ def buildcards(odir, v1n, v2n, options):
     if odir == "":
         odir = os.path.dirname(ifile)
         print "using default output dir:", odir
-    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i " % (ifile, odir, options.n, v1n)
+    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.binName)
     if options.testMCTF:
-        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i " % (ifile, odir, options.n, v1n)
+        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.binName)
 
     combineCards = "cd %s/HHModel; combineCards.py pass=pass.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir)
     wsRoot = "%s/HHModel_combined_n%i.root" % (odir, v1n)
@@ -85,6 +85,7 @@ if __name__ == "__main__":
     parser.add_option('--dry-run', dest="dryRun", default=False, action='store_true',
                       help="Just print out commands to run")
     parser.add_option('-o', '--odir', dest='odir', default='FTest', help='directory to write plots', metavar='odir')
+    parser.add_option('--passBinName', default='Bin1', choices=['Bin1', 'Bin2', 'Bin3'], dest='binName', help='pass bin name')
 
     (options, args) = parser.parse_args()
 
