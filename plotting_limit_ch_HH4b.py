@@ -65,8 +65,6 @@ def set_style(grexp, grobs, gr1sigma, gr2sigma):
 
     gr1sigma.SetMarkerStyle(0)
     gr1sigma.SetMarkerColor(3)
-    # gr1sigma.SetFillColor(ROOT.TColor.GetColor(0, 220, 60))
-    # gr1sigma.SetLineColor(ROOT.TColor.GetColor(0, 220, 60))
     gr1sigma.SetFillColor(ROOT.kGreen+1)
     gr1sigma.SetLineColor(ROOT.kGreen+1)
     gr1sigma.SetFillStyle(1001)
@@ -74,8 +72,6 @@ def set_style(grexp, grobs, gr1sigma, gr2sigma):
     # gr2sigma.SetName(tooLopOn[ic])
     gr2sigma.SetMarkerStyle(0)
     gr2sigma.SetMarkerColor(5)
-    # gr2sigma.SetFillColor(ROOT.TColor.GetColor(254, 234, 0))
-    # gr2sigma.SetLineColor(ROOT.TColor.GetColor(254, 234, 0))
     gr2sigma.SetFillColor(ROOT.kOrange)
     gr2sigma.SetLineColor(ROOT.kOrange)
     gr2sigma.SetFillStyle(1001)
@@ -121,8 +117,6 @@ c1.SetFrameLineWidth(3)
 c1.SetBottomMargin(0.15)
 c1.SetRightMargin(0.05)
 c1.SetLeftMargin(0.15)
-# c1.SetGridx()
-# c1.SetGridy()
 
 ROOT.gPad.SetLogx(1)
 mg = ROOT.TMultiGraph()
@@ -166,7 +160,6 @@ for ich in range(Nch):
     else:
         obs = vals[5][1]
 
-    #graph.SetPoint(ich, ich, vals[2][1])
     m2s_t = vals[0][1]
     m1s_t = vals[1][1]
     exp = vals[2][1]
@@ -179,11 +172,10 @@ for ich in range(Nch):
     m2s = exp - m2s_t
     m1s = exp - m1s_t
     xval = ich
-    #print xval,exp
+
     ptsList.append((xval, obs, exp, p2s_t, p1s_t, m1s_t, m2s_t))
     k = k+1
 
-# ptsList.sort()
 print("ptsList: ", ptsList)
 for ipt, pt in enumerate(ptsList):
     xval = pt[0]
@@ -271,11 +263,6 @@ mg.Add(gr1sigma_ch3, "3")
 mg.Add(grexp_ch3, "L")
 mg.Add(grobs_ch3, "L")
 
-#mg.Add(gr2sigma_ch4, "3")
-#mg.Add(gr1sigma_ch4, "3")
-#mg.Add(grexp_ch4, "L")
-#mg.Add(grobs_ch4, "L")
-
 print("check1")
 ###########
 legend = ROOT.TLegend(0, 0, 0, 0)
@@ -295,7 +282,6 @@ legend.AddEntry(grexp, "Median expected", "l")
 legend.AddEntry(gr2sigma, "95% expected", "f")
 
 # text
-# pt = ROOT.TPaveText(0.1663218,0.886316,0.3045977,0.978947,"brNDC")
 pt = ROOT.TPaveText(0.1663218-0.02, 0.886316, 0.3045977-0.02, 0.978947, "brNDC")
 pt.SetBorderSize(0)
 pt.SetTextAlign(12)
@@ -304,8 +290,6 @@ pt.SetTextSize(0.05)
 pt.SetFillColor(0)
 pt.SetFillStyle(0)
 pt.AddText("CMS #font[52]{Internal}")
-#pt.AddText("CMS Internal" )
-# pt.AddText("#font[52]{preliminary}")
 
 pt2 = ROOT.TPaveText(0.79, 0.9066667, 0.8997773, 0.957037, "brNDC")
 pt2.SetBorderSize(0)
@@ -318,20 +302,13 @@ pt2.AddText(datalumi)
 ROOT.gStyle.SetPaintTextFormat("4.1f")
 
 hframe = ROOT.TH2F('hframe', "", 10, xmin, xmax, 10, 0, 10)
-# hframe.SetCanExtend(ROOT.TH1.kAllAxes)
 hframe.SetStats(0)
-#hframe.Fill(0.7*xmax,"","Mediem expected")
 
 for ich in range(Nch):
     hframe.Fill(num_location*xmax, ylable_text[ich], ptsList[ich][2])
 
 hframe.LabelsDeflate("Y")
 hframe.LabelsOption("v")
-# hframe.Draw("text")
-
-#	#ROOT.gPad.SetLogy()
-# hframe.SetMinimum(ymin)
-# hframe.SetMaximum(ymax)
 
 hframe.GetYaxis().SetTitleSize(0)
 hframe.GetXaxis().SetTitleSize(0.055)
@@ -341,12 +318,10 @@ hframe.GetXaxis().SetLabelSize(0.045)
 hframe.GetXaxis().SetLabelOffset(0.012)
 hframe.GetYaxis().SetTitleOffset(1.2)
 hframe.GetXaxis().SetTitleOffset(1.1)
-# hframe.GetYaxis().SetDrawOption("B")
 
 hframe.GetYaxis().SetTitle("")
 hframe.GetXaxis().SetTitle("95% CL limit on \\sigma_{HH}/\\sigma_{SM_{HH}}")
 
-# ROOT.gPad.SetTicky()
 hframe.Draw("text")
 hframe.GetYaxis().SetRangeUser(0, Nch+100)
 
@@ -372,7 +347,6 @@ if options.unblind:
 
 pt.Draw()
 pt2.Draw()
-# redrawBorder()
 c1.Update()
 c1.RedrawAxis()
 legend.Draw()

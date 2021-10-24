@@ -168,7 +168,6 @@ for i in range(fpf_s.getSize()):
                     if fit_name == 'b':
                         nuis_p_i += 1
                         if options.pullDef and nuis_p is not None:
-                            #nx,ned,neu = CP.returnPullAsym(options.pullDef,nuis_x.getVal(),mean_p,nuis_x.getErrorHi(),sigma_pu,abs(nuis_x.getErrorLo()),abs(sigma_pd))
                             gr_fit_b.SetPoint(nuis_p_i-1, nuis_p_i-0.5+0.1, nx)
                             gr_fit_b.SetPointError(nuis_p_i-1, 0, 0, ned, neu)
                         else:
@@ -180,7 +179,6 @@ for i in range(fpf_s.getSize()):
                         gr_fit_b.GetXaxis().SetBinLabel(nuis_p_i, name)
                     if fit_name == 's':
                         if options.pullDef and nuis_p is not None:
-                            #nx,ned,neu = CP.returnPullAsym(options.pullDef,nuis_x.getVal(),mean_p,nuis_x.getErrorHi(),sigma_pu,abs(nuis_x.getErrorLo()),abs(sigma_pd))
                             gr_fit_s.SetPoint(nuis_p_i-1, nuis_p_i-0.5-0.1, nx)
                             gr_fit_s.SetPointError(nuis_p_i-1, 0, 0, ned, neu)
                         else:
@@ -209,7 +207,6 @@ for i in range(fpf_s.getSize()):
                         sigShift = nuis_x.getError()/sigma_p
 
                 else:
-                    #print "No definition for prefit uncertainty %s. Printing absolute shifts"%(nuis_p.GetName())
                     valShift = (nuis_x.getVal() - mean_p)
                     sigShift = nuis_x.getError()
 
@@ -261,7 +258,6 @@ for i in range(fpf_s.getSize()):
 # print the results
 # ----------
 
-#print details
 print setUpString
 print
 
@@ -302,7 +298,6 @@ elif options.format == 'latex':
     else:
         fmtstring = "%-40s &  %15s & %15s & %6s \\\\"
         print "\\begin{tabular}{|l|r|r|r|} \\hline "
-        #what = r"$(x_\text{out} - x_\text{in})/\sigma_{\text{in}}$, $\sigma_{\text{out}}/\sigma_{\text{in}}$"
         what = r"\Delta x/\sigma_{\text{in}}$, $\sigma_{\text{out}}/\sigma_{\text{in}}$"
         print fmtstring % ('',     '$b$-only fit', '$s+b$ fit', '')
         print (fmtstring % ('name', what, what, r'$\rho(\theta, \mu)$')), " \\hline"
@@ -397,8 +392,6 @@ if options.plotfile:
     canvas_nuis = ROOT.TCanvas("nuisances", "nuisances", 900, 600)
     hist_fit_e_s = hist_fit_s.Clone("errors_s")
     hist_fit_e_b = hist_fit_b.Clone("errors_b")
-    #gr_fit_s = getGraph(hist_fit_s,-0.1)
-    #gr_fit_b = getGraph(hist_fit_b, 0.1)
     gr_fit_s.SetLineColor(ROOT.kRed)
     gr_fit_s.SetMarkerColor(ROOT.kRed)
     gr_fit_b.SetLineColor(ROOT.kBlue)

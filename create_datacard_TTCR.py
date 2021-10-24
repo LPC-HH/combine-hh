@@ -43,7 +43,6 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
             sample.autoMCStats()
             # shape systematics
             valuesNominal = templ[0]
-            #systs = ['JMS', 'JMR', 'ttJetsCorr', 'BDTShape', 'pileupWeight', 'JES', 'PNetShape']
             systs = ['JMS', 'JMR', 'pileupWeight', 'JES']
             for syst in systs:
                 valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp' % ('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
@@ -60,8 +59,7 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
 
             ch.addSample(sample)
 
-        # make up a data_obs by summing the MC templates above
-        #yields = sum(tpl[0] for tpl in templates.values())
+        # observed data
         yields = templates['Data'][0]
         data_obs = (yields, msd.binning, msd.name)
         ch.setObservation(data_obs)
