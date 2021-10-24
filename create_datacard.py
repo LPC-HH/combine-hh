@@ -23,7 +23,7 @@ def get_hist(inputfile, name, obs):
     return (hist_values, hist_edges, obs.name, hist_uncs)
 
 
-def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_unblinded=False):
+def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_unblinded=False, include_ac=False):
 
     regionPairs = [('pass'+passBinName, failBinName)]  # pass, fail region pairs
     if add_unblinded:
@@ -71,6 +71,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     # build actual fit model now
     model = rl.Model("HHModel")
     for region in regions:
+        print('INFO: starting region: %s' % region)
         ch = rl.Channel(region)
         model.addChannel(ch)
 
@@ -93,6 +94,17 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'QCD': get_hist(inputfile, 'histJet2Mass'+catn+'_QCD', obs=msd),
             'Data': get_hist(inputfile, 'histJet2Mass'+catn+'_Data', obs=msd),
         }
+
+        if include_ac:
+            templates.update({
+                'ggHH_kl_2p45_kt_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b', obs=msd),
+                'ggHH_kl_5_kt_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b', obs=msd),
+                'qqHH_CV_1_C2V_0_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_0_kl_1_boost4b', obs=msd),
+                'qqHH_CV_1p5_C2V_1_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1p5_C2V_1_kl_1_boost4b', obs=msd),
+                'qqHH_CV_1_C2V_1_kl_2_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b', obs=msd),
+                'qqHH_CV_1_C2V_2_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b', obs=msd),
+                'qqHH_CV_1_C2V_1_kl_0_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b', obs=msd)
+            })
 
         # dictionary of systematics -> name in cards
         systs = {
@@ -117,7 +129,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         for syst in systs:
             syst_param_array.append(rl.NuisanceParameter(systs[syst], 'shape'))
 
-        for sName in ['TTJets', 'ggHH_kl_1_kt_1_boost4b', 'qqHH_CV_1_C2V_1_kl_1_boost4b', 'VH', 'ttH', 'others']:
+        sNames = [proc for proc in templates.keys() if proc not in ['QCD', 'Data']]
+        for sName in sNames:
+            print('INFO: get templates for: %s' % sName)
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
@@ -138,13 +152,14 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(PNetHbbScaleFactorssyst, 1.0816)
 
             # set mc stat uncs
+            print('INFO: setting autoMCStats for %s' % sName)
             sample.autoMCStats()
 
             # shape systematics
             valuesNominal = templ[0]
 
-            isyst = 0
-            for syst in systs:
+            for isyst, syst in enumerate(systs):
+                print('INFO: setting shape effect %s for %s' % (syst, sName))
                 valuesUp = get_hist(inputfile, 'histJet2Mass'+catn+'_%s_%sUp' % (sName, syst), obs=msd)[0]
                 valuesDown = get_hist(inputfile, 'histJet2Mass'+catn+'_%s_%sDown' % (sName, syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
@@ -154,7 +169,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                         effectUp[i] = valuesUp[i]/valuesNominal[i]
                         effectDown[i] = valuesDown[i]/valuesNominal[i]
                 sample.setParamEffect(syst_param_array[isyst], effectUp, effectDown)
-                isyst = isyst + 1
             ch.addSample(sample)
 
         # data observed
@@ -163,6 +177,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         ch.setObservation(data_obs)
 
     for passChName, failChName in regionPairs:
+        print('INFO: setting transfer factor for pass region %s, fail region %s' % (passChName, failChName))
         failCh = model[failChName]
         passCh = model[passChName]
 
@@ -185,6 +200,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
         pickle.dump(model, fout)
 
+    print('INFO: rendering combine model')
     model.renderCombine(os.path.join(str(carddir), 'HHModel'))
 
 

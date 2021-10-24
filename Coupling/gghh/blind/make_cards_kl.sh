@@ -9,15 +9,13 @@ if [ -d "$DIRECTORY" ]; then
 fi
 mkdir $DIRECTORY
 
-inputhist=/storage/af/user/nlu/hh/looper_output/datacard_hist/HHTo4BPlots_Run2_BDT$1.root
+inputhist=${3}/HHTo4BPlots_Run2_BDT${1}.root
 cd $DIRECTORY
-cp ../../create_datacard_test_kl.py .
-cp $inputhist .
 
 #create datacard
-python create_datacard_test_kl.py --inputfile HHTo4BPlots_Run2_BDT$1.root
+echo python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --carddir ./
+python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --carddir ./
 
-cp ../../ana.sh .
 #combine datacards and produce results
-./ana.sh $2
+. ../../ana.sh $2
 cd ../../

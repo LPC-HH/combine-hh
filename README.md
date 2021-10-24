@@ -39,7 +39,6 @@ The latest input file for the datacard can be found here:
 
 ```bash
 /storage/af/user/nlu/hh/looper_output/datacard_hist/
-
 ```
 
 ## Checkout this repo and create datacards:
