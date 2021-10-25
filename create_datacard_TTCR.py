@@ -8,7 +8,7 @@ rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 
 
-def create_datacard(inputfile, carddir, passBinName, failBinName):
+def create_datacard_TTCR(inputfile, carddir, region):
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
@@ -19,60 +19,63 @@ def create_datacard(inputfile, carddir, passBinName, failBinName):
 
     # build actual fit model now
     model = rl.Model("HHModel")
-    for region in ['TTBarCR']:
-        ch = rl.Channel(region)
-        model.addChannel(ch)
+    ch = rl.Channel(region)
+    model.addChannel(ch)
 
-        isPass = region == 'TTBarCR'
-        templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass%s_TTJets' % ('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'others': get_hist(inputfile, 'histJet2Mass%s_others' % ('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass%s_QCD' % ('_'+passBinName if isPass else '_'+failBinName), obs=msd),
-            'Data': get_hist(inputfile, 'histJet2Mass%s_Data' % ('_'+passBinName if isPass else '_'+failBinName), obs=msd),
+    templates = {
+        'TTJets': get_hist(inputfile, 'histJet2Mass_%s_TTJets' % region, obs=msd),
+        'others': get_hist(inputfile, 'histJet2Mass_%s_others' % region, obs=msd),
+        'QCD': get_hist(inputfile, 'histJet2Mass_%s_QCD' % region, obs=msd),
+        'Data': get_hist(inputfile, 'histJet2Mass_%s_Data' % region, obs=msd),
+    }
+    for sName in ['TTJets', 'others', 'QCD']:
+        # get templates
+        templ = templates[sName]
+        stype = rl.Sample.SIGNAL if sName == 'TTJets' else rl.Sample.BACKGROUND
+        sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
+
+        # set nuisance values
+        sample.setParamEffect(lumi, 1.016)
+
+        # set mc stat uncs
+        sample.autoMCStats()
+        # shape systematics
+        valuesNominal = templ[0]
+
+        systs = {
+            'pileupWeight': 'CMS_pileup',
+            'JES': 'CMS_JES',
+            'JMS': 'CMS_JMS',
+            'JMR': 'CMS_JMR',
         }
-        for sName in ['TTJets', 'others', 'QCD']:
-            # get templates
-            templ = templates[sName]
-            stype = rl.Sample.SIGNAL if sName == 'TTJets' else rl.Sample.BACKGROUND
-            sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
-            # set nuisance values
-            sample.setParamEffect(lumi, 1.018)
+        for syst in systs:
+            valuesUp = get_hist(inputfile, 'histJet2Mass_%s_%s_%sUp' % (region, sName, syst), obs=msd)[0]
+            valuesDown = get_hist(inputfile, 'histJet2Mass_%s_%s_%sDown' % (region, sName, syst), obs=msd)[0]
+            effectUp = np.ones_like(valuesNominal)
+            effectDown = np.ones_like(valuesNominal)
+            for i in range(len(valuesNominal)):
+                if valuesNominal[i] > 0.:
+                    effectUp[i] = valuesUp[i]/valuesNominal[i]
+                    effectDown[i] = valuesDown[i]/valuesNominal[i]
 
-            # set mc stat uncs
-            sample.autoMCStats()
-            # shape systematics
-            valuesNominal = templ[0]
-            systs = ['JMS', 'JMR', 'pileupWeight', 'JES']
-            for syst in systs:
-                valuesUp = get_hist(inputfile, 'histJet2Mass%s_%s_%sUp' % ('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
-                valuesDown = get_hist(inputfile, 'histJet2Mass%s_%s_%sDown' % ('_'+passBinName if isPass else '_'+failBinName, sName, syst), obs=msd)[0]
-                effectUp = np.ones_like(valuesNominal)
-                effectDown = np.ones_like(valuesNominal)
-                for i in range(len(valuesNominal)):
-                    if valuesNominal[i] > 0.:
-                        effectUp[i] = valuesUp[i]/valuesNominal[i]
-                        effectDown[i] = valuesDown[i]/valuesNominal[i]
+            syst_param = rl.NuisanceParameter(systs[syst], 'shape')
+            sample.setParamEffect(syst_param, effectUp, effectDown)
 
-                syst_param = rl.NuisanceParameter(syst, 'shape')
-                sample.setParamEffect(syst_param, effectUp, effectDown)
+        ch.addSample(sample)
 
-            ch.addSample(sample)
+    # observed data
+    yields = templates['Data'][0]
+    data_obs = (yields, msd.binning, msd.name)
+    ch.setObservation(data_obs)
 
-        # observed data
-        yields = templates['Data'][0]
-        data_obs = (yields, msd.binning, msd.name)
-        ch.setObservation(data_obs)
-
-    model['TTBarCR']
-
-    print("output path: ", carddir)
+    print("INFO: output path: ", carddir)
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
         pickle.dump(model, fout)
-        print("finish dump")
+        print("INFO: finish dump")
 
     model.renderCombine(os.path.join(str(carddir), 'HHModel'))
-    print("after renderCombine")
+    print("INFO: after renderCombine")
 
 
 if __name__ == '__main__':
@@ -87,4 +90,4 @@ if __name__ == '__main__':
     if not os.path.exists(args.carddir+"_TTBarCR"):
         os.mkdir(args.carddir+"_TTBarCR")
 
-    create_datacard(args.inputfile, args.carddir+"_TTBarCR", "TTBarCR", "fail")
+    create_datacard_TTCR(args.inputfile, args.carddir+"_TTBarCR", "TTBarCR")
