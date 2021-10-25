@@ -45,7 +45,7 @@ The latest input file for the datacard can be found here:
 ```bash
 git clone https://github.com/LPC-HH/combine-hh
 cd combine-hh/
-./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 
+./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 /storage/af/user/nlu/hh/looper_output/datacard_hist/
 ```
 Here the first argument should match the input histogram file name. 
 
@@ -54,7 +54,9 @@ e.g. here this histogram is used for the preapproval result:
 /storage/af/user/nlu/hh/looper_output/datacard_hist/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_0830_fix2017trigSF0913.root
 ```
 
-The second argument v1 is a version number. in case we want to try different versions using the same input file with different systematic uncertainties etc
+The second argument `v1` is a version number in case we want to try different versions using the same input file with different systematic uncertainties etc.
+
+The third argument is the input directory containing the ROOT file with template histograms.
 
 ## Run F-test (1st vs 2nd order):
 For Bin1,
