@@ -5,7 +5,7 @@ echo "BDT version: "$BDTv
 ws=HHModel_combined
 wsm=${ws}_withmasks
 version=$2
-cd combined_cards_${BDTv}${version}
+
 combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt fail=cards_Bin1/HHModel/fail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt passBin1=cards_Bin1/HHModel/passBin1.txt passBin2=cards_Bin2/HHModel/passBin2.txt passBin3=cards_Bin3/HHModel/passBin3.txt > ${ws}.txt
 
 #create channel mask so that we can remove SR when fitting to the data to get QCD estimates
