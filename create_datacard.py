@@ -124,7 +124,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'JES': 'CMS_bbbb_boosted_ggf_scale_j',
             'JMS': 'CMS_bbbb_boosted_ggf_jms',
             'JMR': 'CMS_bbbb_boosted_ggf_jmr',
-            'ttJetsCorr': 'CMS_bbbb_boosted_ttJetsCorr',
+            'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
             'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
             'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
