@@ -27,7 +27,7 @@ combine -M AsymptoticLimits -m 125 -n ${version}_Bin2 higgsCombineTest.MultiDimF
 echo "expected limit for BDT Bin 3"
 combine -M AsymptoticLimits -m 125 -n ${version}_Bin3 higgsCombineTest.MultiDimFit.mH125.root --snapshotName MultiDimFit --saveWorkspace --saveToys --bypassFrequentistFit --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --floatParameters r --toysFrequentist --run blind
 
-python ../../../plotting_limit_ch_HH4b.py --inputtag ${version}
+python ../plotting_limit_ch_HH4b.py --inputtag ${version}
 
 echo "FitDiagnostic S=0"
 combine -M FitDiagnostics ${wsm}.root --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=1,mask_fail=1 --rMin 0 --rMax 2 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBplusfail --ignoreCovWarning

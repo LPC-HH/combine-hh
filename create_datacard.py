@@ -31,10 +31,11 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     regions = [item for t in regionPairs for item in t]  # all regions
 
-    ttbarBin1MCstats = rl.NuisanceParameter('ttbarBin1_yieldMCStats', 'lnN')
-    lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
-    trigSF = rl.NuisanceParameter('triggerEffSF_correlated', 'lnN')
-    PNetHbbScaleFactorssyst = rl.NuisanceParameter('PNetHbbScaleFactors_correlated', 'lnN')
+    ttbarBin1MCstats = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_ttbarBin1_yieldMCStats', 'lnN')
+    lumi = rl.NuisanceParameter('lumi_13TeV_correlated', 'lnN')
+    trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
+    PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
+    brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
 
     msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
@@ -84,52 +85,57 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         else:
             catn = 'Blind_'+failBinName
 
-        templates = {
-            'TTJets': get_hist(inputfile, 'histJet2Mass'+catn+'_TTJets', obs=msd),
-            'ggHH_kl_1_kt_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_ggHH_kl_1_kt_1_boost4b', obs=msd),
-            'qqHH_CV_1_C2V_1_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_1_boost4b', obs=msd),
-            'VH': get_hist(inputfile, 'histJet2Mass'+catn+'_VH', obs=msd),
-            'ttH': get_hist(inputfile, 'histJet2Mass'+catn+'_ttH', obs=msd),
-            'others': get_hist(inputfile, 'histJet2Mass'+catn+'_others', obs=msd),
-            'QCD': get_hist(inputfile, 'histJet2Mass'+catn+'_QCD', obs=msd),
-            'Data': get_hist(inputfile, 'histJet2Mass'+catn+'_Data', obs=msd),
+        # dictionary of name in datacards -> name in ROOT file
+        templateNames = {
+            'ttbar': 'histJet2Mass'+catn+'_TTJets',
+            'ggHH_kl_1_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_1_kt_1_boost4b',
+            'qqHH_CV_1_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_1_boost4b',
+            'VH_hbb': 'histJet2Mass'+catn+'_VH',
+            'ttH_hbb': 'histJet2Mass'+catn+'_ttH',
+            'bbbb_boosted_ggf_others': 'histJet2Mass'+catn+'_others',
+            'bbbb_boosted_ggf_qcd_datadriven': 'histJet2Mass'+catn+'_QCD',
+            'data': 'histJet2Mass'+catn+'_Data',
         }
 
         if include_ac:
-            templates.update({
-                'ggHH_kl_2p45_kt_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b', obs=msd),
-                'ggHH_kl_5_kt_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b', obs=msd),
-                'qqHH_CV_1_C2V_0_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_0_kl_1_boost4b', obs=msd),
-                'qqHH_CV_1p5_C2V_1_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1p5_C2V_1_kl_1_boost4b', obs=msd),
-                'qqHH_CV_1_C2V_1_kl_2_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b', obs=msd),
-                'qqHH_CV_1_C2V_2_kl_1_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b', obs=msd),
-                'qqHH_CV_1_C2V_1_kl_0_boost4b': get_hist(inputfile, 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b', obs=msd)
+            templateNames.update({
+                'ggHH_kl_2p45_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b',
+                'ggHH_kl_5_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b',
+                'qqHH_CV_1_C2V_0_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_0_kl_1_boost4b',
+                'qqHH_CV_1p5_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1p5_C2V_1_kl_1_boost4b',
+                'qqHH_CV_1_C2V_1_kl_2_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b',
+                'qqHH_CV_1_C2V_2_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b',
+                'qqHH_CV_1_C2V_1_kl_0_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b',
             })
+
+        templates = {}
+        for temp in templateNames:
+            templates[temp] = get_hist(inputfile, templateNames[temp], obs=msd)
 
         # dictionary of systematics -> name in cards
         systs = {
-            'ttbarBin1Jet2PNetCut': 'ttbarBin1Jet2PNetCut',
-            'FSRPartonShower': 'FSRPartonShower',
-            'ISRPartonShower': 'ISRPartonShower',
-            'ggHHPDFacc': 'ggHHPDFacc',
-            'ggHHQCDacc': 'ggHHQCDacc',
+            'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
+            'FSRPartonShower': 'ps_fsr',
+            'ISRPartonShower': 'ps_isr',
+            'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
+            'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
             'pileupWeight': 'CMS_pileup',
-            'JER': 'CMS_JER',
-            'JES': 'CMS_JES',
-            'JMS': 'CMS_JMS',
-            'JMR': 'CMS_JMR',
-            'ttJetsCorr': 'ttJetsCorr',
-            'BDTShape': 'ttJetsBDTShape',
-            'PNetShape': 'ttJetsPNetShape',
-            'PNetHbbScaleFactors': 'PNetHbbScaleFactors_uncorrelated',
-            'triggerEffSF': 'triggerEffSF_uncorrelated'
+            'JER': 'CMS_res_j',
+            'JES': 'CMS_bbbb_boosted_ggf_scale_j',
+            'JMS': 'CMS_bbbb_boosted_ggf_jms',
+            'JMR': 'CMS_bbbb_boosted_ggf_jmr',
+            'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
+            'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
+            'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
+            'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
+            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated'
         }
 
         syst_param_array = []
         for syst in systs:
             syst_param_array.append(rl.NuisanceParameter(systs[syst], 'shape'))
 
-        sNames = [proc for proc in templates.keys() if proc not in ['QCD', 'Data']]
+        sNames = [proc for proc in templates.keys() if proc not in ['bbbb_boosted_ggf_qcd_datadriven', 'data']]
         for sName in sNames:
             print('INFO: get templates for: %s' % sName)
             # get templates
@@ -140,7 +146,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.setParamEffect(lumi, 1.016)
             sample.setParamEffect(trigSF, 1.04)
 
-            if sName == "TTJets" and "Bin1" in region:
+            if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
                     sample.setParamEffect(ttbarBin1MCstats, 1.215)
                 elif region == "SRBin1":
@@ -151,6 +157,11 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             elif "HH" in sName:
                 sample.setParamEffect(PNetHbbScaleFactorssyst, 1.0816)
 
+            if "hbbhbb" in sName:
+                sample.setParamEffect(brHbb, 1.0248, 0.9748)
+            elif "hbb" in sName:
+                sample.setParamEffect(brHbb, 1.0124, 0.9874)
+
             # set mc stat uncs
             print('INFO: setting autoMCStats for %s' % sName)
             sample.autoMCStats()
@@ -160,8 +171,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
             for isyst, syst in enumerate(systs):
                 print('INFO: setting shape effect %s for %s' % (syst, sName))
-                valuesUp = get_hist(inputfile, 'histJet2Mass'+catn+'_%s_%sUp' % (sName, syst), obs=msd)[0]
-                valuesDown = get_hist(inputfile, 'histJet2Mass'+catn+'_%s_%sDown' % (sName, syst), obs=msd)[0]
+                valuesUp = get_hist(inputfile, '%s_%sUp' % (templateNames[sName], syst), obs=msd)[0]
+                valuesDown = get_hist(inputfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
                 for i in range(len(valuesNominal)):
@@ -172,7 +183,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             ch.addSample(sample)
 
         # data observed
-        yields = templates['Data'][0]
+        yields = templates['data'][0]
         data_obs = (yields, msd.binning, msd.name)
         ch.setObservation(data_obs)
 
