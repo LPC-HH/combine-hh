@@ -17,5 +17,5 @@ echo python ../../../../../create_datacard_test.py --inputfile $inputhist --incl
 python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --carddir ./
 
 #combine datacards and produce results
-. ../../ana.sh $2
+. ../../ana.sh $2 $3 $4
 cd ../../

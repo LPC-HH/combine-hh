@@ -41,6 +41,8 @@ The latest input file for the datacard can be found here:
 /storage/af/user/nlu/hh/looper_output/datacard_hist/
 ```
 
+and latest VBF card: https://gitlab.cern.ch/hh/results/datacards_run2/-/blob/master/bbbb_boosted_vbf/v2/datacard.txt
+
 ## Checkout this repo and create datacards:
 ```bash
 git clone https://github.com/LPC-HH/combine-hh

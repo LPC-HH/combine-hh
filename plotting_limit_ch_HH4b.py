@@ -353,3 +353,4 @@ legend.Draw()
 
 c1.Update()
 c1.Print('limit_ch_test_%s_to_%s.pdf' % (options.inputtag, options.whatToFloat), 'pdf')
+c1.Print('limit_ch_test_%s_to_%s.png' % (options.inputtag, options.whatToFloat), 'png')
