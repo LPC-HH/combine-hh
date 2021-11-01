@@ -36,6 +36,14 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
     PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
     brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
+    pdfqqbar = rl.NuisanceParameter('pdf_Higgs_qqbar', 'lnN')
+    pdfttH = rl.NuisanceParameter('pdf_Higgs_ttH', 'lnN')
+    pdfggHH = rl.NuisanceParameter('pdf_Higgs_ggHH', 'lnN')
+    pdfqqHH = rl.NuisanceParameter('pdf_Higgs_qqHH', 'lnN')
+    qcdScaleVH = rl.NuisanceParameter('QCDscale_VH', 'lnN')
+    qcdScalettH = rl.NuisanceParameter('QCDscale_ttH', 'lnN')
+    qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqH', 'lnN')
+    alphaS = rl.NuisanceParameter('alpha_s', 'lnN')
 
     msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
@@ -161,6 +169,20 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(brHbb, 1.0248, 0.9748)
             elif "hbb" in sName:
                 sample.setParamEffect(brHbb, 1.0124, 0.9874)
+
+            if "ttH" in sName:
+                sample.setParamEffect(pdfttH, 1.030)
+                sample.setParamEffect(qcdScalettH, 1.058, 0.908)
+                sample.setParamEffect(alphaS, 1.020)
+            elif "VH" in sName:
+                sample.setParamEffect(pdfqqbar, 1.0154)
+                sample.setParamEffect(qcdScaleVH, 1.0179, 0.9840)
+                sample.setParamEffect(alphaS, 1.009)
+            elif "ggHH" in sName:
+                sample.setParamEffect(pdfggHH, 1.030)
+            elif "qqHH" in sName:
+                sample.setParamEffect(pdfqqHH, 1.021)
+                sample.setParamEffect(qcdScaleqqHH, 1.0003, 0.9996)
 
             # set mc stat uncs
             print('INFO: setting autoMCStats for %s' % sName)
