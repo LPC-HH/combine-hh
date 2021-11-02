@@ -27,7 +27,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     regionPairs = [('SR'+passBinName, 'fit'+failBinName)]  # pass, fail region pairs
     if add_blinded:
-        regionPairs += [('pass'+passBinName, failBinName)] # add sideband region pairs
+        regionPairs += [('pass'+passBinName, failBinName)]  # add sideband region pairs
 
     regions = [item for t in regionPairs for item in t]  # all regions
 

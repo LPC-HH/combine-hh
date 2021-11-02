@@ -105,15 +105,19 @@ Nch = 4  # len(ylable_text)
 print("N: ", Nch)
 
 if os.path.exists("higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root"):
-    dirnames = ["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
-            "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
-            "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
-            "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"]
+    dirnames = [
+	"higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
+	"higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
+	"higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
+	"higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"
+	]
 else:
-    dirnames = ["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.root",
-            "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.root",
-            "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.root",
-            "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.root"] 
+    dirnames = [
+	"higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.root",
+        "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.root",
+        "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.root",
+        "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.root"
+	] 
     
 pt_channel_names = []
 for ich in range(Nch):
