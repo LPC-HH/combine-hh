@@ -356,7 +356,7 @@ if options.unblind:
     grobs.Draw("Lsame")
     grobs_ch2.Draw("Lsame")
     grobs_ch3.Draw("Lsame")
-    grobs_ch4.Draw("Lsame") 
+    grobs_ch4.Draw("Lsame")
 pt.Draw()
 pt2.Draw()
 c1.Update()
