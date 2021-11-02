@@ -106,19 +106,19 @@ print("N: ", Nch)
 
 if os.path.exists("higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root"):
     dirnames = [
-	"higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
-	"higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
-	"higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
-	"higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"
-	]
+        "higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
+        "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
+        "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
+        "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"
+    ]
 else:
     dirnames = [
-	"higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.root",
+        "higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.root",
         "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.root",
         "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.root",
         "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.root"
-	] 
-    
+    ]
+
 pt_channel_names = []
 for ich in range(Nch):
     pt_channel_names.append(ych_label(ylable_text[ich], 0.2+ich*0.1))
@@ -357,7 +357,7 @@ if options.unblind:
     grobs_ch2.Draw("Lsame")
     grobs_ch3.Draw("Lsame")
     grobs_ch4.Draw("Lsame")
-    
+ 
 pt.Draw()
 pt2.Draw()
 c1.Update()
