@@ -1,4 +1,5 @@
 # ref: https://github.com/chernyavskaya/flashggFinalFit/blob/fullRunII_unblindedGGF/Plots/FinalResults/plot_c2v_scan.py
+import os.path
 from optparse import OptionParser
 # from ROOT import *
 import ROOT
@@ -82,7 +83,7 @@ def set_style(grexp, grobs, gr1sigma, gr2sigma):
 parser = OptionParser()
 parser.add_option("--whatToFloat", default='r', help="what to float")
 parser.add_option("--inputtag", help="tag")
-parser.add_option("--unblind", action="store_false", help="Observed is present or not ", default=False)
+parser.add_option("--unblind", default=False, help="Observed is present or not ")
 (options, args) = parser.parse_args()
 ###########
 # CREATE TAGS
@@ -103,11 +104,17 @@ ylable_text = ["Combined", "Category 1", "Category 2", "Category 3"]
 Nch = 4  # len(ylable_text)
 print("N: ", Nch)
 
-dirnames = ["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
+if os.path.exists("higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root"):
+    dirnames = ["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
             "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
             "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.123456.root",
             "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.123456.root"]
-
+else:
+    dirnames = ["higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.root",
+            "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.root",
+            "higgsCombine"+options.inputtag+"_Bin2.AsymptoticLimits.mH125.root",
+            "higgsCombine"+options.inputtag+"_Bin3.AsymptoticLimits.mH125.root"] 
+    
 pt_channel_names = []
 for ich in range(Nch):
     pt_channel_names.append(ych_label(ylable_text[ich], 0.2+ich*0.1))
@@ -344,7 +351,9 @@ grexp_ch4.Draw("Lsame")
 if options.unblind:
     grobs.Draw("Lsame")
     grobs_ch2.Draw("Lsame")
-
+    grobs_ch3.Draw("Lsame")
+    grobs_ch4.Draw("Lsame")
+    
 pt.Draw()
 pt2.Draw()
 c1.Update()
