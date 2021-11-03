@@ -30,28 +30,28 @@ fi
 #combine -M MultiDimFit ${ws}.root --redefineSignalPOIs kl -m 125 -n kl_bestfit_${version} --freezeParameters r,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 echo "expected kl 1D scan"
-combine -M MultiDimFit -t -1 --algo grid --point 45 ${ws}.root --redefineSignalPOIs kl -m 125 -n kl_scan_${version} --setParameterRanges kl=-18.5,26.5 --freezeParameters r,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 45 ${ws}.root --redefineSignalPOIs kl -m 125 -n kl_scan_${version} --setParameterRanges kl=-18.5,26.5 --freezeParameters r,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 python ../../../../script/plot1DScan.py higgsCombinekl_scan_${version}.MultiDimFit.mH125.root --POI kl --main-label expected --main-color 4 --translate ../../../../script/trans.json
 mv kl_1Dscan.pdf kl_1Dscan_${version}.pdf
 mv kl_1Dscan.png kl_1Dscan_${version}.png
 
 echo "expected CV 1D scan"
-combine -M MultiDimFit -t -1 --algo grid --point 45 ${ws}.root --redefineSignalPOIs CV -m 125 -n CV_scan_${version} --setParameterRanges CV=-2,2 --freezeParameters r,r_gghh,r_qqhh,kt,C2V,kl --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 45 ${ws}.root --redefineSignalPOIs CV -m 125 -n CV_scan_${version} --setParameterRanges CV=-2,2 --freezeParameters r,r_gghh,r_qqhh,kt,C2V,kl --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 python ../../../../script/plot1DScan.py higgsCombineCV_scan_${version}.MultiDimFit.mH125.root --POI CV --main-label expected --main-color 4 --translate ../../../../script/trans.json
 mv CV_1Dscan.pdf CV_1Dscan_${version}.pdf
 mv CV_1Dscan.png CV_1Dscan_${version}.png
 
 echo "expected C2V 1D scan"
-combine -M MultiDimFit -t -1 --algo grid --point 45 ${ws}.root --redefineSignalPOIs C2V -m 125 -n C2V_scan_${version} --setParameterRanges C2V=-1,3 --freezeParameters r,r_gghh,r_qqhh,kt,CV,kl --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 45 ${ws}.root --redefineSignalPOIs C2V -m 125 -n C2V_scan_${version} --setParameterRanges C2V=-1,3 --freezeParameters r,r_gghh,r_qqhh,kt,CV,kl --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 python ../../../../script/plot1DScan.py higgsCombineC2V_scan_${version}.MultiDimFit.mH125.root --POI C2V --main-label expected --main-color 4 --translate ../../../../script/trans.json
 mv C2V_1Dscan.pdf C2V_1Dscan_${version}.pdf
 mv C2V_1Dscan.png C2V_1Dscan_${version}.png
 
 #echo "fit mu"
-#combine -M MultiDimFit -t -1 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_testfit_${version} --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1
+#combine -M MultiDimFit ${ws}.root --redefineSignalPOIs r -m 125 -n mu_testfit_${version} --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1
 
 echo "expected mu 1D scan"
 combine -M MultiDimFit --algo grid --point 13 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_scan_${version} --setParameterRanges r=-4.5,8.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
