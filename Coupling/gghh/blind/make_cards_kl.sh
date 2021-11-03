@@ -13,16 +13,16 @@ inputhist=${3}/HHTo4BPlots_Run2_BDT${1}.root
 cd $DIRECTORY
 
 #create datacard
-echo python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $5 --carddir ./
-python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $5 --carddir ./
+echo python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
+python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
 
 #combine datacards and produce results
 if [ $5 == True ]
 then
   echo "blinded fit"
-  . ../../ana.sh $2 $3 $4
+  . ../../ana.sh $2 $3
 else
   echo "blinded fit"
-  . ../../ana_unblind.sh $2 $3 $4
+  . ../../ana_unblind.sh $2 $3
 fi
 cd ../../
