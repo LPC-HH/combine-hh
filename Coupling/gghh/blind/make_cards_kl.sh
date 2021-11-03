@@ -4,17 +4,17 @@ if [ ! -d "$outdir" ]; then
 fi
 
 DIRECTORY=${outdir}/${1}${2}_kl
-#if [ -d "$DIRECTORY" ]; then
-#  rm -r $DIRECTORY
-#fi
-#mkdir $DIRECTORY
+if [ -d "$DIRECTORY" ]; then
+  rm -rf $DIRECTORY
+fi
+mkdir $DIRECTORY
 
 inputhist=${3}/HHTo4BPlots_Run2_BDT${1}.root
 cd $DIRECTORY
 
 #create datacard
 echo python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $5 --carddir ./
-#python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $5 --carddir ./
+python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $5 --carddir ./
 
 #combine datacards and produce results
 if [ $5 == True ]
