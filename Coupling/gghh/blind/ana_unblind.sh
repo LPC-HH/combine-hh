@@ -7,7 +7,7 @@ ws=HHModel_combined_${version}
 combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}.txt
 
 #echo "build the ws"
-text2workspace.py ${ws}.txt -P HiggsAnalysis.CombinedLimit.hh_model:model_default --channel-masks --mass=125
+text2workspace.py ${ws}.txt -P HiggsAnalysis.CombinedLimit.hh_model:model_default --mass=125
 
 #echo "prepare datacard for HH combination"
 # https://cms-b2g.docs.cern.ch/combine/StatTests/

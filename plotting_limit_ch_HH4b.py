@@ -104,7 +104,7 @@ ylable_text = ["Combined", "Category 1", "Category 2", "Category 3"]
 Nch = 4  # len(ylable_text)
 print("N: ", Nch)
 
-if os.path.exists("higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root"):
+if not options.unblind:
     dirnames = [
         "higgsCombine"+options.inputtag+".AsymptoticLimits.mH125.123456.root",
         "higgsCombine"+options.inputtag+"_Bin1.AsymptoticLimits.mH125.123456.root",
