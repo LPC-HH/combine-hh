@@ -47,7 +47,7 @@ and latest VBF card: https://gitlab.cern.ch/hh/results/datacards_run2/-/blob/mas
 ```bash
 git clone https://github.com/LPC-HH/combine-hh
 cd combine-hh/
-./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 /storage/af/user/nlu/hh/looper_output/datacard_hist/
+./make_cards.sh v8p2yield_AN_sr_sys_0830_fix2017trigSF0913 v1 /storage/af/user/nlu/hh/looper_output/datacard_hist/ True
 ```
 Here the first argument should match the input histogram file name. 
 
@@ -60,6 +60,12 @@ The second argument `v1` is a version number in case we want to try different ve
 
 The third argument is the input directory containing the ROOT file with template histograms.
 
+The fourth argument is blinded (True) or not (False)
+
+Command to run unblinded result:
+```
+./make_cards.sh v8p2yield_AN_sr_sys_1028 v2 /storage/af/user/nlu/hh/looper_output/datacard_hist/ False
+```
 ## Run F-test (1st vs 2nd order):
 For Bin1,
 ```bash
