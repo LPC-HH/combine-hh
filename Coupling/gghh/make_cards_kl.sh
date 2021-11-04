@@ -13,8 +13,8 @@ inputhist=${3}/HHTo4BPlots_Run2_BDT${1}.root
 cd $DIRECTORY
 
 #create datacard
-echo python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
-python ../../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
+echo python ../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
+python ../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
 
 #combine datacards and produce results
 if [ $5 == True ]

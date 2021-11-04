@@ -1,10 +1,8 @@
 # ref: https://github.com/chernyavskaya/flashggFinalFit/blob/fullRunII_unblindedGGF/Plots/FinalResults/plot_c2v_scan.py
-import os.path
 from optparse import OptionParser
 # from ROOT import *
 import ROOT
 ROOT.gROOT.SetBatch(True)
-#####
 
 
 def redrawBorder():
