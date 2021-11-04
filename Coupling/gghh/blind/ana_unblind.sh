@@ -4,7 +4,7 @@ version=$1
 inputdir=$2
 ws=HHModel_combined_${version}
 
-combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt fail=cards_Bin1/HHModel/fail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt passBin1=cards_Bin1/HHModel/passBin1.txt passBin2=cards_Bin2/HHModel/passBin2.txt passBin3=cards_Bin3/HHModel/passBin3.txt > ${ws}.txt
+combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}.txt
 
 #echo "build the ws"
 text2workspace.py ${ws}.txt -P HiggsAnalysis.CombinedLimit.hh_model:model_default --channel-masks --mass=125
