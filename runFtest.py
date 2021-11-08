@@ -33,9 +33,9 @@ def buildcards(odir, v1n, v2n, options):
     if odir == "":
         odir = os.path.dirname(ifile)
         print "using default output dir:", odir
-    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
+    create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s --blinded %s" % (ifile, odir, options.n, v1n, options.passBinName, options.blinded)
     if options.testMCTF:
-        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
+        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded %s" % (ifile, odir, options.n, v1n, options.passBinName,options.blinded)
 
     combineCards = "cd %s/HHModel; combineCards.py pass=pass%s.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir, options.passBinName)
     wsRoot = "%s/HHModel_combined_n%i.root" % (odir, v1n)
@@ -86,7 +86,7 @@ if __name__ == "__main__":
                       help="Just print out commands to run")
     parser.add_option('-o', '--odir', dest='odir', default='FTest', help='directory to write plots', metavar='odir')
     parser.add_option('--passBinName', default='Bin1', choices=['Bin1', 'Bin2', 'Bin3'], dest='passBinName', help='pass bin name')
-
+    parser.add_option('--blinded', default=False,dest='blinded', help='run with data on SR')
     (options, args) = parser.parse_args()
 
     logf = open(options.ifile.replace(".root", "_report.txt"), "w")
@@ -135,50 +135,92 @@ if __name__ == "__main__":
         dataString = '--data'
 
     if not options.justPlot:
-        limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
-                    '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i ' + \
-                    '-t %i --lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
-                    '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
-        limit_cmd = limit_cmd % (datacardWS1,
-                                 datacardWS2,
-                                 toysDir,
-                                 options.n,
-                                 p1,
-                                 p2,
-                                 options.toys,
-                                 options.lumi,
-                                 dataString,
-                                 options.r,
-                                 options.seed,
-                                 options.freezeNuisances,
-                                 options.setParameters,
-                                 options.V1N1,
-                                 options.V2N1,
-                                 options.V1N2,
-                                 options.V2N2)
-        exec_me(limit_cmd, logf, options.dryRun)
+        if options.blinded:
+            limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
+                        '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i ' + \
+                        '-t %i --lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
+                        '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s --blinded %s'
+            limit_cmd = limit_cmd % (datacardWS1,
+                                     datacardWS2,
+                                     toysDir,
+                                     options.n,
+                                     p1,
+                                     p2,
+                                     options.toys,
+                                     options.lumi,
+                                     dataString,
+                                     options.r,
+                                     options.seed,
+                                     options.freezeNuisances,
+                                     options.setParameters,
+                                     options.V1N1,
+                                     options.V2N1,
+                                     options.V1N2,
+                                     options.V2N2,
+                                     options.blinded)
+            exec_me(limit_cmd, logf, options.dryRun)
+        else:
+            limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
+                        '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i ' + \
+                        '--lumi %f %s ' + \
+                        '--V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s --blinded %s'
+            limit_cmd = limit_cmd % (datacardWS1,
+                                     datacardWS2,
+                                     toysDir,
+                                     options.n,
+                                     p1,
+                                     p2,
+                                     options.lumi,
+                                     dataString,
+                                     options.V1N1,
+                                     options.V2N1,
+                                     options.V1N2,
+                                     options.V2N2,
+                                     options.blinded)
+            exec_me(limit_cmd, logf, options.dryRun)
     else:
         # use toys from hadd-ed directory
         toysDir += "/toys/"
-        limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
-                    '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i -t %i ' + \
-                    '--lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
-                    '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s'
-        limit_cmd = limit_cmd % (datacardWS1,
-                                 datacardWS2,
-                                 toysDir,
-                                 options.n,
-                                 p1,
-                                 p2,
-                                 options.toys,
-                                 options.lumi,
-                                 dataString,
-                                 options.r,
-                                 options.seed,
-                                 options.freezeNuisances,
-                                 options.setParameters,
-                                 options.V1N1,
-                                 options.V2N1,
-                                 options.V1N2,
-                                 options.V2N2)
-        exec_me(limit_cmd+" --just-plot ", logf, options.dryRun)
+        if options.blinded:
+            limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
+                        '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i -t %i ' + \
+                        '--lumi %f %s -r %f --seed %s --freezeNuisances %s ' + \
+                        '--setParameters %s --V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s--blinded %s'
+            limit_cmd = limit_cmd % (datacardWS1,
+                                     datacardWS2,
+                                     toysDir,
+                                     options.n,
+                                     p1,
+                                     p2,
+                                     options.toys,
+                                     options.lumi,
+                                     dataString,
+                                     options.r,
+                                     options.seed,
+                                     options.freezeNuisances,
+                                     options.setParameters,
+                                     options.V1N1,
+                                     options.V2N1,
+                                     options.V1N2,
+                                     options.V2N2,
+                                     options.blinded)
+            exec_me(limit_cmd+" --just-plot ", logf, options.dryRun)
+        else:
+            limit_cmd = 'python limit.py -M FTest --datacard %s ' + \
+                        '--datacard-alt %s -o %s -n %i --p1 %i --p2 %i ' + \
+                        '--lumi %f %s ' + \
+                        '--V1N1 %s --V2N1 %s --V1N2 %s --V2N2 %s --blinded %s'
+            limit_cmd = limit_cmd % (datacardWS1,
+                                     datacardWS2,
+                                     toysDir,
+                                     options.n,
+                                     p1,
+                                     p2,
+                                     options.lumi,
+                                     dataString,
+                                     options.V1N1,
+                                     options.V2N1,
+                                     options.V1N2,
+                                     options.V2N2,
+                                     options.blinded)
+            exec_me(limit_cmd, logf, options.dryRun)

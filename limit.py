@@ -249,84 +249,96 @@ def ftest(base, alt, ntoys, iLabel, options):
     if not options.justPlot:
         baseName = base.split('/')[-1].replace('.root', '')
         altName = alt.split('/')[-1].replace('.root', '')
-        exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s'
-                % (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
-        exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
-        exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s'
-                % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
-        exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
-        exec_me('rm %s/toys*.root' % (options.odir), options.dryRun)
-        if ntoys <= 100:
-            exec_me('combine -M GenerateOnly %s --rMax %s --rMin %s --toysFrequentist -t %i  --saveToys -n %s --freezeParameters %s -s %s --setParameters %s'
-                    % (base, options.rMax, options.rMin, ntoys, baseName, options.freezeNuisances, options.seed, options.setParameters), options.dryRun)
-            exec_me('cp higgsCombine%s.GenerateOnly.mH120.%s.root %s/' % (baseName, options.seed, options.odir), options.dryRun)
-            cmd = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i' \
-                  + ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
-            cmd = cmd % (base, options.rMax, options.rMin, ntoys, options.odir, baseName, options.seed, baseName, options.freezeNuisances, options.seed, options.setParameters)
-            exec_me(cmd, options.dryRun)
-            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys1_%s.root' % (baseName, options.seed, options.odir, options.seed), options.dryRun)
-            cmd = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i ' \
-                  + '--toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
-            cmd = cmd % (alt, options.rMax, options.rMin, ntoys, options.odir, baseName, options.seed, altName, options.freezeNuisances, options.seed, options.setParameters)
-            exec_me(cmd, options.dryRun)
-            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys2_%s.root' % (altName, options.seed, options.odir, options.seed), options.dryRun)
-        else:
-            # if too many toys are requested, run them in parallel, 100 toys each
-            nTimes = int((ntoys+1.0)/100)
-            cmd_list = []
-            for iT in range(nTimes):
-                cmd_1 = 'combine -M GenerateOnly %s --rMax %s --rMin %s --toysFrequentist -t %i  --saveToys -n %s --freezeParameters %s -s %s --setParameters %s' \
-                        % (base, options.rMax, options.rMin, 100, baseName, options.freezeNuisances, options.seed+10+iT, options.setParameters)
-                cmd_2 = 'cp higgsCombine%s.GenerateOnly.mH120.%s.root %s/' % (baseName, options.seed+10+iT, options.odir)
-                cmd_3 = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i'
-                cmd_3 += ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
-                cmd_3 = cmd_3 % (base, options.rMax, options.rMin, 100, options.odir, baseName, options.seed+iT+10, baseName, options.freezeNuisances, options.seed+iT+10, options.setParameters)
-                cmd_4 = 'cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys1_%s.root' % (baseName, options.seed+iT+10, options.odir, options.seed+iT+10)
-                cmd_5 = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i'
-                cmd_5 += ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
-                cmd_5 = cmd_5 % (alt, options.rMax, options.rMin, 100, options.odir, baseName, options.seed+iT+10, altName, options.freezeNuisances, options.seed+iT+10, options.setParameters)
-                cmd_6 = 'cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys2_%s.root' % (altName, options.seed+iT+10, options.odir, options.seed+iT+10)
-                cmd_this = cmd_1 + ";  " + cmd_2 + ";  " + cmd_3 + ";  " + cmd_4 + ";  " + cmd_5 + ";  " + cmd_6
-                print(cmd_this)
-                cmd_list.append(cmd_this)
+        if int(options.blinded):
+            exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s'
+                    % (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s'
+                    % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
+            exec_me('rm %s/toys*.root' % (options.odir), options.dryRun)
+            if ntoys <= 100:
+                exec_me('combine -M GenerateOnly %s --rMax %s --rMin %s --toysFrequentist -t %i  --saveToys -n %s --freezeParameters %s -s %s --setParameters %s'
+                        % (base, options.rMax, options.rMin, ntoys, baseName, options.freezeNuisances, options.seed, options.setParameters), options.dryRun)
+                exec_me('cp higgsCombine%s.GenerateOnly.mH120.%s.root %s/' % (baseName, options.seed, options.odir), options.dryRun)
+                cmd = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i' \
+                      + ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
+                cmd = cmd % (base, options.rMax, options.rMin, ntoys, options.odir, baseName, options.seed, baseName, options.freezeNuisances, options.seed, options.setParameters)
+                exec_me(cmd, options.dryRun)
+                exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys1_%s.root' % (baseName, options.seed, options.odir, options.seed), options.dryRun)
+                cmd = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i ' \
+                      + '--toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
+                cmd = cmd % (alt, options.rMax, options.rMin, ntoys, options.odir, baseName, options.seed, altName, options.freezeNuisances, options.seed, options.setParameters)
+                exec_me(cmd, options.dryRun)
+                exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys2_%s.root' % (altName, options.seed, options.odir, options.seed), options.dryRun)
+            else:
+                # if too many toys are requested, run them in parallel, 100 toys each
+                nTimes = int((ntoys+1.0)/100)
+                cmd_list = []
+                for iT in range(nTimes):
+                    cmd_1 = 'combine -M GenerateOnly %s --rMax %s --rMin %s --toysFrequentist -t %i  --saveToys -n %s --freezeParameters %s -s %s --setParameters %s' \
+                            % (base, options.rMax, options.rMin, 100, baseName, options.freezeNuisances, options.seed+10+iT, options.setParameters)
+                    cmd_2 = 'cp higgsCombine%s.GenerateOnly.mH120.%s.root %s/' % (baseName, options.seed+10+iT, options.odir)
+                    cmd_3 = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i'
+                    cmd_3 += ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
+                    cmd_3 = cmd_3 % (base, options.rMax, options.rMin, 100, options.odir, baseName, options.seed+iT+10, baseName, options.freezeNuisances, options.seed+iT+10, options.setParameters)
+                    cmd_4 = 'cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys1_%s.root' % (baseName, options.seed+iT+10, options.odir, options.seed+iT+10)
+                    cmd_5 = 'combine -M GoodnessOfFit %s --rMax %s --rMin %s -t %i'
+                    cmd_5 += ' --toysFile %s/higgsCombine%s.GenerateOnly.mH120.%s.root --algorithm saturated -n %s --freezeParameters %s -s %s --setParameters %s'
+                    cmd_5 = cmd_5 % (alt, options.rMax, options.rMin, 100, options.odir, baseName, options.seed+iT+10, altName, options.freezeNuisances, options.seed+iT+10, options.setParameters)
+                    cmd_6 = 'cp higgsCombine%s.GoodnessOfFit.mH120.%s.root %s/toys2_%s.root' % (altName, options.seed+iT+10, options.odir, options.seed+iT+10)
+                    cmd_this = cmd_1 + ";  " + cmd_2 + ";  " + cmd_3 + ";  " + cmd_4 + ";  " + cmd_5 + ";  " + cmd_6
+                    print(cmd_this)
+                    cmd_list.append(cmd_this)
 
-            if not options.dryRun:
-                print("now running the above commands in parallel in background...")
-                procs_list = [subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,  shell=True) for cmd in cmd_list]
-                for proc in procs_list:
-                    proc.communicate()
-                    proc.wait()
-                exec_me('sleep 1; wait', options.dryRun)
-                exec_me('hadd -k -f %s/toys1_%s.root %s/toys1_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
-                exec_me('hadd -k -f %s/toys2_%s.root %s/toys2_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
+                if not options.dryRun:
+                    print("now running the above commands in parallel in background...")
+                    procs_list = [subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,  shell=True) for cmd in cmd_list]
+                    for proc in procs_list:
+                        proc.communicate()
+                        proc.wait()
+                        exec_me('sleep 1; wait', options.dryRun)
+                        exec_me('hadd -k -f %s/toys1_%s.root %s/toys1_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
+                        exec_me('hadd -k -f %s/toys2_%s.root %s/toys2_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
+            
+        else:
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s'% (base, baseName), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s'
+                    % (alt, altName), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
+
 
     if options.dryRun:
         sys.exit()
     nllBase = fStat("%s/base1.root" % options.odir, "%s/base2.root" % options.odir, options.p1, options.p2, options.n)
-    if not options.justPlot:
-        print("Using these toys input %s/toys1_%s.root and %s/toys2_%s.root" % (options.odir, options.seed, options.odir, options.seed))
-        nllToys = fStat("%s/toys1_%s.root" % (options.odir, options.seed), "%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
-    else:
-        print("Using these toys input %s/toys1_%s.root and %s/toys2_%s.root" % (options.odir, options.seed, options.odir, options.seed))
-        nllToys = fStat("%s/toys1_%s.root" % (options.odir, options.seed), "%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
+    if int(options.blinded):
+        if not options.justPlot:
+            print("Using these toys input %s/toys1_%s.root and %s/toys2_%s.root" % (options.odir, options.seed, options.odir, options.seed))
+            nllToys = fStat("%s/toys1_%s.root" % (options.odir, options.seed), "%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
+        else:
+            print("Using these toys input %s/toys1_%s.root and %s/toys2_%s.root" % (options.odir, options.seed, options.odir, options.seed))
+            nllToys = fStat("%s/toys1_%s.root" % (options.odir, options.seed), "%s/toys2_%s.root" % (options.odir, options.seed), options.p1, options.p2, options.n)
 
-    lPass = 0
-    for val in nllToys:
-        if nllBase[0] > val:
-            lPass += 1
-    pval = 1
-    if len(nllToys) > 0:
-        pval = float(lPass)/float(len(nllToys))
-        print("FTest p-value", pval)
-    shortLabel = iLabel.replace("_card_rhalphabet_all", "").replace("_floatZ", "")
-    plotftest(nllToys, nllBase[0], pval, shortLabel, options)
-    options.algo = "saturated"
-    options.method = "GoodnessOfFit"
-    iLabel = 'goodness_%s_%s' % (options.algo, base.split('/')[-1].replace('.root', ''))
-    goodness(base, 1000, iLabel, options)
-    iLabel = 'goodness_%s_%s' % (options.algo, alt.split('/')[-1].replace('.root', ''))
-    goodness(alt, 1000, iLabel, options)
-    return float(lPass)/float(len(nllToys))
+    if int(options.blinded):
+        lPass = 0
+        for val in nllToys:
+            if nllBase[0] > val:
+                lPass += 1
+        pval = 1
+        if len(nllToys) > 0:
+            pval = float(lPass)/float(len(nllToys))
+            print("FTest p-value", pval)
+            shortLabel = iLabel.replace("_card_rhalphabet_all", "").replace("_floatZ", "")
+        plotftest(nllToys, nllBase[0], pval, shortLabel, options)
+        options.algo = "saturated"
+        options.method = "GoodnessOfFit"
+        iLabel = 'goodness_%s_%s' % (options.algo, base.split('/')[-1].replace('.root', ''))
+        goodness(base, 1000, iLabel, options)
+        iLabel = 'goodness_%s_%s' % (options.algo, alt.split('/')[-1].replace('.root', ''))
+        goodness(alt, 1000, iLabel, options)
+        return float(lPass)/float(len(nllToys))
+    return nllBase
 
 
 def goodness(base, ntoys, iLabel, options):
@@ -512,7 +524,7 @@ if __name__ == "__main__":
     parser.add_option('--just-plot', dest="justPlot", default=False, action='store_true', help="Just remake the plot")
     parser.add_option('--toysFrequentist', action='store_true', default=False, dest='toysFreq', metavar='toysFreq', help='generate frequentist toys')
     parser.add_option('--toysNoSystematics', action='store_true', default=False, dest='toysNoSyst', metavar='toysNoSyst', help='generate toys with nominal systematics')
-
+    parser.add_option('--blinded', default=False,dest='blinded', help='run with data on SR')
     (options, args) = parser.parse_args()
 
     import tdrstyle
