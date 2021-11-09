@@ -305,9 +305,9 @@ def ftest(base, alt, ntoys, iLabel, options):
                 for proc in procs_list:
                     proc.communicate()
                     proc.wait()
-                    exec_me('sleep 1; wait', options.dryRun)
-                    exec_me('hadd -k -f %s/toys1_%s.root %s/toys1_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
-                    exec_me('hadd -k -f %s/toys2_%s.root %s/toys2_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
+                exec_me('sleep 1; wait', options.dryRun)
+                exec_me('hadd -k -f %s/toys1_%s.root %s/toys1_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
+                exec_me('hadd -k -f %s/toys2_%s.root %s/toys2_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
             
 
     if options.dryRun:
