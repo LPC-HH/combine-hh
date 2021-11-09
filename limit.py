@@ -16,9 +16,13 @@ def exec_me(command, dryRun=False):
 
 def end():
     if __name__ == '__main__':
+        try:
+            input = raw_input
+        except NameError:
+            pass
         rep = ''
         while rep not in ['q', 'Q', 'a', ' ']:
-            rep = raw_input('enter "q" to quit: ')
+            rep = input('enter "q" to quit: ')
             if 1 < len(rep):
                 rep = rep[0]
 

@@ -1,10 +1,11 @@
+from __future__ import print_function
 import ROOT as r
 import os
 from optparse import OptionParser
 
 
 def exec_me(command, outf, dryRun=False):
-    print command
+    print(command)
     outf.write("%s\n" % command)
     if not dryRun:
         os.system(command)
@@ -32,7 +33,7 @@ def buildcards(odir, v1n, v2n, options):
     ifile.split("/")[-1]
     if odir == "":
         odir = os.path.dirname(ifile)
-        print "using default output dir:", odir
+        print("using default output dir:", odir)
     create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s --blinded %s" % (ifile, odir, options.n, v1n, options.passBinName, options.blinded)
     if options.testMCTF:
         create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded %s" % (
@@ -94,9 +95,9 @@ if __name__ == "__main__":
     logf.write("=======runFtest.py==========\n")
     logf.write("===ifile = %s ==========\n" % options.ifile)
     logf.write("===odir  = %s ==========\n" % options.odir)
-    print "=======runFtest.py=========="
-    print "===ifile = %s ==========" % options.ifile
-    print "===odir  = %s ==========" % options.odir
+    print("=======runFtest.py==========")
+    print("===ifile = %s ==========" % options.ifile)
+    print("===odir  = %s ==========" % options.odir)
 
     card_dir_base = '%s/cards' % (options.odir)
     if options.pseudo:

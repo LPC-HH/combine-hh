@@ -1,4 +1,5 @@
 # ref: https://github.com/chernyavskaya/flashggFinalFit/blob/fullRunII_unblindedGGF/Plots/FinalResults/plot_c2v_scan.py
+from __future__ import print_function
 from optparse import OptionParser
 # from ROOT import *
 import ROOT
@@ -23,7 +24,7 @@ def getVals(fname):
     if fIn:
         tIn = fIn.Get('limit')
         if tIn.GetEntries() < 5:
-            print "*** WARNING: cannot parse file", fname, "because nentries != 5"
+            print("*** WARNING: cannot parse file", fname, "because nentries != 5")
             raise RuntimeError('cannot parse file')
         for i in range(0, tIn.GetEntries()):
             tIn.GetEntry(i)

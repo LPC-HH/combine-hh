@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import ROOT
 import re
 from sys import argv, exit
@@ -48,7 +49,7 @@ if options.pullDef != "" and options.pullDef not in CP.allowed_methods():
     exit("Method %s not allowed, choose one of [%s]" % (options.pullDef, ",".join(CP.allowed_methods())))
 
 if options.pullDef and options.absolute_values:
-    print "Pulls are always defined as absolute, will modify --absolute_values to False for you"
+    print("Pulls are always defined as absolute, will modify --absolute_values to False for you")
     options.absolute_values = False
 
 if options.pullDef:
@@ -258,8 +259,8 @@ for i in range(fpf_s.getSize()):
 # print the results
 # ----------
 
-print setUpString
-print
+print(setUpString)
+print()
 
 fmtstring = "%-40s     %15s    %15s  %10s"
 highlight = "*%s*"
@@ -267,64 +268,64 @@ morelight = "!%s!"
 pmsub, sigsub = None, None
 if options.format == 'text':
     if options.skipFitS:
-        print " option '--skipFitS' set true. s+b Fit is just a copy of the b-only fit"
+        print(" option '--skipFitS' set true. s+b Fit is just a copy of the b-only fit")
     if options.skipFitB:
-        print " option '--skipFitB' set true. b-only Fit is just a copy of the s+b fit"
+        print(" option '--skipFitB' set true. b-only Fit is just a copy of the s+b fit")
     if options.pullDef:
         fmtstring = "%-40s       %30s    %30s  %10s"
-        print fmtstring % ('name',  'b-only fit pull', 's+b fit pull', 'rho')
+        print(fmtstring % ('name',  'b-only fit pull', 's+b fit pull', 'rho'))
     elif options.absolute_values:
         fmtstring = "%-40s     %15s    %30s    %30s  %10s"
-        print fmtstring % ('name', 'pre fit', 'b-only fit', 's+b fit', 'rho')
+        print(fmtstring % ('name', 'pre fit', 'b-only fit', 's+b fit', 'rho'))
     else:
-        print fmtstring % ('name', 'b-only fit', 's+b fit', 'rho')
+        print(fmtstring % ('name', 'b-only fit', 's+b fit', 'rho'))
 elif options.format == 'latex':
     pmsub = (r"(\S+) \+/- (\S+)", r"$\1 \\pm \2$")
     sigsub = ("sig", r"$\\sigma$")
     highlight = "\\textbf{%s}"
     morelight = "{{\\color{red}\\textbf{%s}}}"
     if options.skipFitS:
-        print " option '--skipFitS' set true. $s+b$ Fit is just a copy of the $b$-only fit"
+        print(" option '--skipFitS' set true. $s+b$ Fit is just a copy of the $b$-only fit")
     if options.skipFitB:
-        print " option '--skipFitB' set true. $b$-only Fit is just a copy of the $s+b$ fit"
+        print(" option '--skipFitB' set true. $b$-only Fit is just a copy of the $s+b$ fit")
     if options.pullDef:
         fmtstring = "%-40s & %30s & %30s & %6s \\\\"
-        print "\\begin{tabular}{|l|r|r|r|} \\hline "
-        print(fmtstring % ('name', '$b$-only fit pull', '$s+b$ fit pull', r'$\rho(\theta, \mu)$')), " \\hline"
+        print("\\begin{tabular}{|l|r|r|r|} \\hline ")
+        print((fmtstring % ('name', '$b$-only fit pull', '$s+b$ fit pull', r'$\rho(\theta, \mu)$')), " \\hline")
     elif options.absolute_values:
         fmtstring = "%-40s &  %15s & %30s & %30s & %6s \\\\"
-        print "\\begin{tabular}{|l|r|r|r|r|} \\hline "
-        print(fmtstring % ('name', 'pre fit', '$b$-only fit', '$s+b$ fit', r'$\rho(\theta, \mu)$')), " \\hline"
+        print("\\begin{tabular}{|l|r|r|r|r|} \\hline ")
+        print((fmtstring % ('name', 'pre fit', '$b$-only fit', '$s+b$ fit', r'$\rho(\theta, \mu)$')), " \\hline")
     else:
         fmtstring = "%-40s &  %15s & %15s & %6s \\\\"
-        print "\\begin{tabular}{|l|r|r|r|} \\hline "
+        print("\\begin{tabular}{|l|r|r|r|} \\hline ")
         what = r"\Delta x/\sigma_{\text{in}}$, $\sigma_{\text{out}}/\sigma_{\text{in}}$"
-        print fmtstring % ('',     '$b$-only fit', '$s+b$ fit', '')
-        print(fmtstring % ('name', what, what, r'$\rho(\theta, \mu)$')), " \\hline"
+        print(fmtstring % ('',     '$b$-only fit', '$s+b$ fit', ''))
+        print((fmtstring % ('name', what, what, r'$\rho(\theta, \mu)$')), " \\hline")
 elif options.format == 'twiki':
     pmsub = (r"(\S+) \+/- (\S+)", r"\1 &plusmn; \2")
     sigsub = ("sig", r"&sigma;")
     highlight = "<b>%s</b>"
     morelight = "<b style='color:red;'>%s</b>"
     if options.skipFitS:
-        print " option '--skipFitS' set true. $s+b$ Fit is just a copy of the $b$-only fit"
+        print(" option '--skipFitS' set true. $s+b$ Fit is just a copy of the $b$-only fit")
     if options.skipFitB:
-        print " option '--skipFitB' set true. $b$-only Fit is just a copy of the $s+b$ fit"
+        print(" option '--skipFitB' set true. $b$-only Fit is just a copy of the $s+b$ fit")
     if options.pullDef:
         fmtstring = "| <verbatim>%-40s</verbatim>  | %-30s  | %-30s   | %-15s  |"
-        print "| *name* | *b-only fit pull* | *s+b fit pull* | "
+        print("| *name* | *b-only fit pull* | *s+b fit pull* | ")
     elif options.absolute_values:
         fmtstring = "| <verbatim>%-40s</verbatim>  | %-15s  | %-30s  | %-30s   | %-15s  |"
-        print "| *name* | *pre fit* | *b-only fit* | *s+b fit* | "
+        print("| *name* | *pre fit* | *b-only fit* | *s+b fit* | ")
     else:
         fmtstring = "| <verbatim>%-40s</verbatim>  | %-15s  | %-15s | %-15s  |"
-        print "| *name* | *b-only fit* | *s+b fit* | *corr.* |"
+        print("| *name* | *b-only fit* | *s+b fit* | *corr.* |")
 elif options.format == 'html':
     pmsub = (r"(\S+) \+/- (\S+)", r"\1 &plusmn; \2")
     sigsub = ("sig", r"&sigma;")
     highlight = "<b>%s</b>"
     morelight = "<strong>%s</strong>"
-    print """
+    print("""
 <html><head><title>Comparison of nuisances</title>
 <style type="text/css">
     td, th { border-bottom: 1px solid black; padding: 1px 1em; }
@@ -333,16 +334,16 @@ elif options.format == 'html':
 </style>
 </head><body style="font-family: 'Verdana', sans-serif; font-size: 10pt;"><h1>Comparison of nuisances</h1>
 <table>
-"""
+""")
     if options.pullDef:
-        print "<tr><th>nuisance</th><th>background fit pull </th><th>signal fit pull</th><th>correlation</th></tr>"
+        print("<tr><th>nuisance</th><th>background fit pull </th><th>signal fit pull</th><th>correlation</th></tr>")
         fmtstring = "<tr><td><tt>%-40s</tt> </td><td> %-30s </td><td> %-30s </td><td> %-15s </td></tr>"
     elif options.absolute_values:
-        print "<tr><th>nuisance</th><th>pre fit</th><th>background fit </th><th>signal fit</th><th>correlation</th></tr>"
+        print("<tr><th>nuisance</th><th>pre fit</th><th>background fit </th><th>signal fit</th><th>correlation</th></tr>")
         fmtstring = "<tr><td><tt>%-40s</tt> </td><td> %-15s </td><td> %-30s </td><td> %-30s </td><td> %-15s </td></tr>"
     else:
         what = "&Delta;x/&sigma;<sub>in</sub>, &sigma;<sub>out</sub>/&sigma;<sub>in</sub>"
-        print "<tr><th>nuisance</th><th>background fit<br/>%s </th><th>signal fit<br/>%s</th><th>&rho;(&mu;, &theta;)</tr>" % (what, what)
+        print("<tr><th>nuisance</th><th>background fit<br/>%s </th><th>signal fit<br/>%s</th><th>&rho;(&mu;, &theta;)</tr>" % (what, what))
         fmtstring = "<tr><td><tt>%-40s</tt> </td><td> %-15s </td><td> %-15s </td><td> %-15s </td></tr>"
 
 names = sorted(table.keys())
@@ -360,14 +361,14 @@ for n in names:
     if options.format == "latex":
         n = n.replace(r"_", r"\_")
     if options.absolute_values:
-        print fmtstring % (n, v[0], v[1], v[2], v[3])
+        print(fmtstring % (n, v[0], v[1], v[2], v[3]))
     else:
-        print fmtstring % (n, v[0], v[1], v[2])
+        print(fmtstring % (n, v[0], v[1], v[2]))
 
 if options.format == "latex":
-    print " \\hline\n\\end{tabular}"
+    print(" \\hline\n\\end{tabular}")
 elif options.format == "html":
-    print "</table></body></html>"
+    print("</table></body></html>")
 
 
 if options.plotfile:
