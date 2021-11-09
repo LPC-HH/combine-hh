@@ -251,9 +251,9 @@ def ftest(base, alt, ntoys, iLabel, options):
         altName = alt.split('/')[-1].replace('.root', '')
 
         if not int(options.blinded):
-            exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s'% (base, baseName), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s' % (base, baseName), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
-            exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s'% (alt, altName), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s' % (alt, altName), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
 
         else:
@@ -308,7 +308,6 @@ def ftest(base, alt, ntoys, iLabel, options):
                 exec_me('sleep 1; wait', options.dryRun)
                 exec_me('hadd -k -f %s/toys1_%s.root %s/toys1_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
                 exec_me('hadd -k -f %s/toys2_%s.root %s/toys2_*.root' % (options.odir, options.seed, options.odir), options.dryRun)
-            
 
     if options.dryRun:
         sys.exit()
@@ -337,7 +336,7 @@ def ftest(base, alt, ntoys, iLabel, options):
     iLabel = 'goodness_%s_%s' % (options.algo, alt.split('/')[-1].replace('.root', ''))
     goodness(alt, 1000, iLabel, options)
     return float(lPass)/float(len(nllToys))
-    
+
 
 def goodness(base, ntoys, iLabel, options):
     exec_me('rm higgsCombine%s.GoodnessOfFit.mH120*root' % (base.split('/')[-1].replace('.root', '')), options.dryRun)
@@ -528,7 +527,7 @@ if __name__ == "__main__":
     parser.add_option('--just-plot', dest="justPlot", default=False, action='store_true', help="Just remake the plot")
     parser.add_option('--toysFrequentist', action='store_true', default=False, dest='toysFreq', metavar='toysFreq', help='generate frequentist toys')
     parser.add_option('--toysNoSystematics', action='store_true', default=False, dest='toysNoSyst', metavar='toysNoSyst', help='generate toys with nominal systematics')
-    parser.add_option('--blinded', default=False,dest='blinded', help='run with data on SR')
+    parser.add_option('--blinded', default=False, dest='blinded', help='run with data on SR')
     (options, args) = parser.parse_args()
 
     import tdrstyle

@@ -252,4 +252,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
-    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail",args.blinded)
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail", args.blinded)

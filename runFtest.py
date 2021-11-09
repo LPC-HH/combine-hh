@@ -35,7 +35,8 @@ def buildcards(odir, v1n, v2n, options):
         print "using default output dir:", odir
     create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s --blinded %s" % (ifile, odir, options.n, v1n, options.passBinName, options.blinded)
     if options.testMCTF:
-        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded %s" % (ifile, odir, options.n, v1n, options.passBinName,options.blinded)
+        create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded %s" % (
+            ifile, odir, options.n, v1n, options.passBinName, options.blinded)
 
     combineCards = "cd %s/HHModel; combineCards.py pass=pass%s.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir, options.passBinName)
     wsRoot = "%s/HHModel_combined_n%i.root" % (odir, v1n)
@@ -86,7 +87,7 @@ if __name__ == "__main__":
                       help="Just print out commands to run")
     parser.add_option('-o', '--odir', dest='odir', default='FTest', help='directory to write plots', metavar='odir')
     parser.add_option('--passBinName', default='Bin1', choices=['Bin1', 'Bin2', 'Bin3'], dest='passBinName', help='pass bin name')
-    parser.add_option('--blinded', default=False,dest='blinded', help='run with data on SR')
+    parser.add_option('--blinded', default=False, dest='blinded', help='run with data on SR')
     (options, args) = parser.parse_args()
 
     logf = open(options.ifile.replace(".root", "_report.txt"), "w")
