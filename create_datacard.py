@@ -26,7 +26,7 @@ def get_hist(inputfile, name, obs):
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
 
     regionPairs = [('SR'+passBinName, 'fit'+failBinName)]  # pass, fail region pairs
-    if add_blinded:
+    if int(add_blinded):
         regionPairs += [('pass'+passBinName, failBinName)]  # add sideband region pairs
 
     regions = [item for t in regionPairs for item in t]  # all regions
