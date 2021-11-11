@@ -45,10 +45,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqH', 'lnN')
     alphaS = rl.NuisanceParameter('alpha_s', 'lnN')
 
-    msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
+    msdbins = np.linspace(60, nbins*10.0+60.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
     msdpts = msdbins[:-1] + 0.5 * np.diff(msdbins)
-    msdscaled = (msdpts - 50.)/(10.0*nbins)
+    msdscaled = (msdpts - 60.)/(10.0*nbins)
 
     # Build qcd MC pass+fail model and fit to polynomial
     qcdmodel = rl.Model('qcdmodel')
@@ -136,7 +136,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
             'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
-            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated'
+            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
+            'trigCorrHH2016':'CMS_bbbb_boosted_ggf_trigCorrHH2016',
+            'trigCorrHH2017':'CMS_bbbb_boosted_ggf_trigCorrHH2017',
+            'trigCorrHH2018':'CMS_bbbb_boosted_ggf_trigCorrHH2018'
         }
 
         syst_param_array = []
@@ -244,7 +247,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--inputfile', default='HHTo4BPlots_Run2_BDTv8p2_0311_syst_Trigv0.root', type=str, dest='inputfile', help='input ROOT file')
     parser.add_argument('--carddir', default='cards', type=str, dest='carddir', help='output card directory')
-    parser.add_argument('--nbins', default=17, type=int, dest='nbins', help='number of bins')
+    parser.add_argument('--nbins', default=16, type=int, dest='nbins', help='number of bins')
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help='order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help='order of polynomial for TF from Data')
     parser.add_argument('--passBinName', default='Bin1', type=str, choices=['Bin1', 'Bin2', 'Bin3'], help='pass bin name')
