@@ -75,7 +75,7 @@ if __name__ == "__main__":
     parser.add_option('-t', '--toys', action='store', type='int', dest='toys', default=200, help='number of toys')
     parser.add_option('-s', '--seed', action='store', type='int', dest='seed', default=1, help='random seed')
     parser.add_option('-r', '--r', dest='r', default=1, type='float', help='default value of r')
-    parser.add_option('-n', '--n', action='store', type='int', dest='n', default=16, help='number of bins')
+    parser.add_option('-n', '--n', action='store', type='int', dest='n', default=17, help='number of bins')
     parser.add_option('--just-plot', action='store_true', dest='justPlot', default=False, help='just plot')
     parser.add_option('--test-mc-tf', action='store_true', dest='testMCTF', default=False, help='do FTest on MC TF (default is on data TF)')
     parser.add_option('--pseudo', action='store_true', dest='pseudo', default=False, help='run on asimov dataset')
