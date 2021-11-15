@@ -254,7 +254,7 @@ if __name__ == '__main__':
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help='order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help='order of polynomial for TF from Data')
     parser.add_argument('--passBinName', default='Bin1', type=str, choices=['Bin1', 'Bin2', 'Bin3'], help='pass bin name')
-    parser.add_argument('--blinded', default=False, type=str, help='run on data in SR')
+    parser.add_argument('--blinded', action='store_true', help='run on data in SR')
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
