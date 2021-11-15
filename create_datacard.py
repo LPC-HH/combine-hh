@@ -33,7 +33,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     ttbarBin1MCstats = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_ttbarBin1_yieldMCStats', 'lnN')
     lumi = rl.NuisanceParameter('lumi_13TeV_correlated', 'lnN')
-    #trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
+    # trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
     PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
     brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
     pdfqqbar = rl.NuisanceParameter('pdf_Higgs_qqbar', 'lnN')
@@ -140,9 +140,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
             'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
             'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
-            'trigCorrHH2016':'CMS_bbbb_boosted_ggf_trigCorrHH2016',
-            'trigCorrHH2017':'CMS_bbbb_boosted_ggf_trigCorrHH2017',
-            'trigCorrHH2018':'CMS_bbbb_boosted_ggf_trigCorrHH2018'
+            'trigCorrHH2016': 'CMS_bbbb_boosted_ggf_trigCorrHH2016',
+            'trigCorrHH2017': 'CMS_bbbb_boosted_ggf_trigCorrHH2017',
+            'trigCorrHH2018': 'CMS_bbbb_boosted_ggf_trigCorrHH2018'
         }
 
         syst_param_array = []
@@ -158,7 +158,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
             sample.setParamEffect(lumi, 1.016)
-            #sample.setParamEffect(trigSF, 1.04)
+            # sample.setParamEffect(trigSF, 1.04)
 
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
