@@ -17,12 +17,12 @@ echo python ../../../../create_datacard_test.py --inputfile $inputhist --include
 python ../../../../create_datacard_test.py --inputfile $inputhist --include-ac --add-blinded $4 --carddir ./
 
 #combine datacards and produce results
-if [ $5 == True ]
+if [ $4 == True ]
 then
   echo "blinded fit"
   . ../../ana.sh $2 $3
 else
-  echo "blinded fit"
+  echo "unblinded fit"
   . ../../ana_unblind.sh $2 $3
 fi
 cd ../../
