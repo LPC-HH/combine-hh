@@ -42,7 +42,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     pdfqqHH = rl.NuisanceParameter('pdf_Higgs_qqHH', 'lnN')
     qcdScaleVH = rl.NuisanceParameter('QCDscale_VH', 'lnN')
     qcdScalettH = rl.NuisanceParameter('QCDscale_ttH', 'lnN')
-    qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqH', 'lnN')
+    qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqHH', 'lnN')
     alphaS = rl.NuisanceParameter('alpha_s', 'lnN')
 
     msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
@@ -70,12 +70,12 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdeffpass = qcdpass / qcdfitfail
 
     # transfer factor
-    tf_dataResidual = rl.BernsteinPoly("tf_dataResidual_"+passBinName, (nDataTF,), ['msd'], limits=(-20, 20))
+    tf_dataResidual = rl.BernsteinPoly("CMS_bbbb_boosted_ggf_tf_dataResidual_"+passBinName, (nDataTF,), ['msd'], limits=(-20, 20))
     tf_dataResidual_params = tf_dataResidual(msdscaled)
     tf_params_pass = qcdeffpass * tf_dataResidual_params
 
     # qcd params
-    qcdparams = np.array([rl.IndependentParameter('qcdparam_msdbin%d' % i, 0) for i in range(msd.nbins)])
+    qcdparams = np.array([rl.IndependentParameter('CMS_bbbb_boosted_ggf_qcdparam_msdbin%d' % i, 0) for i in range(msd.nbins)])
 
     # build actual fit model now
     model = rl.Model("HHModel")
@@ -230,10 +230,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         scaledparams = initial_qcd * (1 + sigmascale/np.maximum(1., np.sqrt(initial_qcd)))**qcdparams
 
         # add samples
-        fail_qcd = rl.ParametericSample(failChName+'_qcd', rl.Sample.BACKGROUND, msd, scaledparams)
+        fail_qcd = rl.ParametericSample(failChName+'_bbbb_boosted_ggf_qcd_datadriven', rl.Sample.BACKGROUND, msd, scaledparams)
         failCh.addSample(fail_qcd)
 
-        pass_qcd = rl.TransferFactorSample(passChName+'_qcd', rl.Sample.BACKGROUND, tf_params_pass, fail_qcd)
+        pass_qcd = rl.TransferFactorSample(passChName+'_bbbb_boosted_ggf_qcd_datadriven', rl.Sample.BACKGROUND, tf_params_pass, fail_qcd)
         passCh.addSample(pass_qcd)
 
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
