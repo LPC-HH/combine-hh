@@ -26,14 +26,14 @@ def get_hist(inputfile, name, obs):
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
 
     regionPairs = [('SR'+passBinName, 'fit'+failBinName)]  # pass, fail region pairs
-    if add_blinded:
+    if int(add_blinded):
         regionPairs += [('pass'+passBinName, failBinName)]  # add sideband region pairs
 
     regions = [item for t in regionPairs for item in t]  # all regions
 
     ttbarBin1MCstats = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_ttbarBin1_yieldMCStats', 'lnN')
     lumi = rl.NuisanceParameter('lumi_13TeV_correlated', 'lnN')
-    trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
+    # trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
     PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
     brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
     pdfqqbar = rl.NuisanceParameter('pdf_Higgs_qqbar', 'lnN')
@@ -125,8 +125,11 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
             'FSRPartonShower': 'ps_fsr',
             'ISRPartonShower': 'ps_isr',
+            'FSRPartonShower_Vjets': 'ps_fsr_others',
+            'ISRPartonShower_Vjets': 'ps_isr_others',
             'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
             'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
+            'othersQCD': 'CMS_bbbb_boosted_ggf_othersQCD',
             'pileupWeight': 'CMS_pileup',
             'JER': 'CMS_res_j',
             'JES': 'CMS_bbbb_boosted_ggf_scale_j',
@@ -136,7 +139,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
             'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
-            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated'
+            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
+            'trigCorrHH2016': 'CMS_bbbb_boosted_ggf_trigCorrHH2016',
+            'trigCorrHH2017': 'CMS_bbbb_boosted_ggf_trigCorrHH2017',
+            'trigCorrHH2018': 'CMS_bbbb_boosted_ggf_trigCorrHH2018'
         }
 
         syst_param_array = []
@@ -152,7 +158,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
             sample.setParamEffect(lumi, 1.016)
-            sample.setParamEffect(trigSF, 1.04)
+            # sample.setParamEffect(trigSF, 1.04)
 
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
@@ -248,8 +254,8 @@ if __name__ == '__main__':
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help='order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help='order of polynomial for TF from Data')
     parser.add_argument('--passBinName', default='Bin1', type=str, choices=['Bin1', 'Bin2', 'Bin3'], help='pass bin name')
-
+    parser.add_argument('--blinded', default=False, type=str, help='run on data in SR')
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
-    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail")
+    create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail", args.blinded)

@@ -290,17 +290,17 @@ elif options.format == 'latex':
     if options.pullDef:
         fmtstring = "%-40s & %30s & %30s & %6s \\\\"
         print "\\begin{tabular}{|l|r|r|r|} \\hline "
-        print (fmtstring % ('name', '$b$-only fit pull', '$s+b$ fit pull', r'$\rho(\theta, \mu)$')), " \\hline"
+        print(fmtstring % ('name', '$b$-only fit pull', '$s+b$ fit pull', r'$\rho(\theta, \mu)$')), " \\hline"
     elif options.absolute_values:
         fmtstring = "%-40s &  %15s & %30s & %30s & %6s \\\\"
         print "\\begin{tabular}{|l|r|r|r|r|} \\hline "
-        print (fmtstring % ('name', 'pre fit', '$b$-only fit', '$s+b$ fit', r'$\rho(\theta, \mu)$')), " \\hline"
+        print(fmtstring % ('name', 'pre fit', '$b$-only fit', '$s+b$ fit', r'$\rho(\theta, \mu)$')), " \\hline"
     else:
         fmtstring = "%-40s &  %15s & %15s & %6s \\\\"
         print "\\begin{tabular}{|l|r|r|r|} \\hline "
         what = r"\Delta x/\sigma_{\text{in}}$, $\sigma_{\text{out}}/\sigma_{\text{in}}$"
         print fmtstring % ('',     '$b$-only fit', '$s+b$ fit', '')
-        print (fmtstring % ('name', what, what, r'$\rho(\theta, \mu)$')), " \\hline"
+        print(fmtstring % ('name', what, what, r'$\rho(\theta, \mu)$')), " \\hline"
 elif options.format == 'twiki':
     pmsub = (r"(\S+) \+/- (\S+)", r"\1 &plusmn; \2")
     sigsub = ("sig", r"&sigma;")

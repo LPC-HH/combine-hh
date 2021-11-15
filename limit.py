@@ -171,7 +171,7 @@ def plotftest(iToys, iCentral, prob, iLabel, options):
     tLeg.SetFillStyle(0)
     tLeg.SetTextFont(42)
     tLeg.AddEntry(lH, "toy data (N_{toys}=%i)" % len(iToys), "lep")
-    tLeg.AddEntry(lLine, "observed = %.1f" % iCentral, "l")
+    tLeg.AddEntry(lLine, "observed = %.3f" % iCentral, "l")
     tLeg.AddEntry(lH_cut, "p-value = %.2f" % (1-prob), "f")
     if options.method == 'FTest':
         tLeg.AddEntry(fdist, "F-dist, ndf = (%.0f, %.0f) " % (fdist.GetParameter(1), fdist.GetParameter(2)), "l")
@@ -249,12 +249,21 @@ def ftest(base, alt, ntoys, iLabel, options):
     if not options.justPlot:
         baseName = base.split('/')[-1].replace('.root', '')
         altName = alt.split('/')[-1].replace('.root', '')
-        exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s'
-                % (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
-        exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
-        exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s'
-                % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
-        exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
+
+        if not int(options.blinded):
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s' % (base, baseName), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s' % (alt, altName), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
+
+        else:
+            exec_me('combine -M GoodnessOfFit %s  --rMax %s --rMin %s --algorithm saturated -n %s --freezeParameters %s --setParameters %s'
+                    % (base, options.rMax, options.rMin, baseName, options.freezeNuisances, options.setParameters), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
+            exec_me('combine -M GoodnessOfFit %s --rMax %s --rMin %s --algorithm saturated  -n %s --freezeParameters %s --setParameters %s'
+                    % (alt, options.rMax, options.rMin, altName, options.freezeNuisances, options.setParameters), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base2.root' % (altName, options.odir), options.dryRun)
+
         exec_me('rm %s/toys*.root' % (options.odir), options.dryRun)
         if ntoys <= 100:
             exec_me('combine -M GenerateOnly %s --rMax %s --rMin %s --toysFrequentist -t %i  --saveToys -n %s --freezeParameters %s -s %s --setParameters %s'
@@ -332,10 +341,16 @@ def ftest(base, alt, ntoys, iLabel, options):
 def goodness(base, ntoys, iLabel, options):
     exec_me('rm higgsCombine%s.GoodnessOfFit.mH120*root' % (base.split('/')[-1].replace('.root', '')), options.dryRun)
     if not options.justPlot:
-        exec_me('combine -M GoodnessOfFit %s  --setParameterRange r=-20,20  --setParameters %s --algorithm %s -n %s --freezeParameters %s --redefineSignalPOIs r'
-                % (base, options.setParameters, options.algo, base.split('/')[-1].replace('.root', ''), options.freezeNuisances), options.dryRun)
-        exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/goodbase_%s.root'
-                % (base.split('/')[-1].replace('.root', ''), options.odir, options.seed), options.dryRun)
+        if int(options.blinded):
+            exec_me('combine -M GoodnessOfFit %s  --setParameterRange r=-20,20  --setParameters %s --algorithm %s -n %s --freezeParameters %s --redefineSignalPOIs r'
+                    % (base, options.setParameters, options.algo, base.split('/')[-1].replace('.root', ''), options.freezeNuisances), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/goodbase_%s.root'
+                    % (base.split('/')[-1].replace('.root', ''), options.odir, options.seed), options.dryRun)
+        else:
+            exec_me('combine -M GoodnessOfFit %s --algorithm %s -n %s'
+                    % (base, options.algo, base.split('/')[-1].replace('.root', '')), options.dryRun)
+            exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/goodbase_%s.root'
+                    % (base.split('/')[-1].replace('.root', ''), options.odir, options.seed), options.dryRun)
         # ToysFreq recommended for saturated, https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/commonstatsmethods/#goodness-of-fit-tests
         # Default toys for other algos
         if options.algo == 'saturated':
@@ -512,7 +527,7 @@ if __name__ == "__main__":
     parser.add_option('--just-plot', dest="justPlot", default=False, action='store_true', help="Just remake the plot")
     parser.add_option('--toysFrequentist', action='store_true', default=False, dest='toysFreq', metavar='toysFreq', help='generate frequentist toys')
     parser.add_option('--toysNoSystematics', action='store_true', default=False, dest='toysNoSyst', metavar='toysNoSyst', help='generate toys with nominal systematics')
-
+    parser.add_option('--blinded', default=False, dest='blinded', help='run with data on SR')
     (options, args) = parser.parse_args()
 
     import tdrstyle
