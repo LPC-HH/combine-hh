@@ -3,7 +3,12 @@ if [ ! -d "$DIRECTORY" ]; then
   mkdir $DIRECTORY
 fi
 
-python create_datacard_test.py --carddir $DIRECTORY --inputfile $3/HHTo4BPlots_Run2_BDT$1.root --add-blinded $4
+if [ $4 == True ]
+then
+    python create_datacard_test.py --carddir $DIRECTORY --inputfile $3/HHTo4BPlots_Run2_BDT$1.root --add-blinded $4
+else
+    python create_datacard_test.py --carddir $DIRECTORY --inputfile $3/HHTo4BPlots_Run2_BDT$1.root
+fi
 cd $DIRECTORY
 
 if [ $4 == True ]
