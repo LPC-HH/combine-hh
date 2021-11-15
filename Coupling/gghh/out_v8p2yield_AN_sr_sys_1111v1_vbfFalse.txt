@@ -1,0 +1,2027 @@
+INFO: creating card for Bin1
+INFO: starting region: SRBin1
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: starting region: fitfail
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting transfer factor for pass region SRBin1, fail region fitfail
+INFO: rendering combine model
+INFO: creating card for Bin2
+INFO: starting region: SRBin2
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: starting region: fitfail
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting transfer factor for pass region SRBin2, fail region fitfail
+INFO: rendering combine model
+INFO: creating card for Bin3
+INFO: starting region: SRBin3
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: starting region: fitfail
+INFO: get templates for: ggHH_kl_1_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_1_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_1_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_0_hbbhbb
+INFO: get templates for: ttH_hbb
+INFO: setting autoMCStats for ttH_hbb
+INFO: setting shape effect FSRPartonShower for ttH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttH_hbb
+INFO: setting shape effect othersQCD for ttH_hbb
+INFO: setting shape effect ggHHPDFacc for ttH_hbb
+INFO: setting shape effect ggHHQCDacc for ttH_hbb
+INFO: setting shape effect JMR for ttH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect trigCorrHH2018 for ttH_hbb
+INFO: setting shape effect BDTShape for ttH_hbb
+INFO: setting shape effect JES for ttH_hbb
+INFO: setting shape effect JER for ttH_hbb
+INFO: setting shape effect trigCorrHH2017 for ttH_hbb
+INFO: setting shape effect ttJetsCorr for ttH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for ttH_hbb
+INFO: setting shape effect pileupWeight for ttH_hbb
+INFO: setting shape effect PNetShape for ttH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for ttH_hbb
+INFO: setting shape effect ISRPartonShower for ttH_hbb
+INFO: setting shape effect trigCorrHH2016 for ttH_hbb
+INFO: setting shape effect triggerEffSF for ttH_hbb
+INFO: setting shape effect JMS for ttH_hbb
+INFO: get templates for: ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_2p45_kt_1_hbbhbb
+INFO: get templates for: bbbb_boosted_ggf_others
+INFO: setting autoMCStats for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect ttbarBin1Jet2PNetCut for bbbb_boosted_ggf_others
+INFO: setting shape effect othersQCD for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHPDFacc for bbbb_boosted_ggf_others
+INFO: setting shape effect ggHHQCDacc for bbbb_boosted_ggf_others
+INFO: setting shape effect JMR for bbbb_boosted_ggf_others
+INFO: setting shape effect FSRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2018 for bbbb_boosted_ggf_others
+INFO: setting shape effect BDTShape for bbbb_boosted_ggf_others
+INFO: setting shape effect JES for bbbb_boosted_ggf_others
+INFO: setting shape effect JER for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2017 for bbbb_boosted_ggf_others
+INFO: setting shape effect ttJetsCorr for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetHbbScaleFactors for bbbb_boosted_ggf_others
+INFO: setting shape effect pileupWeight for bbbb_boosted_ggf_others
+INFO: setting shape effect PNetShape for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower_Vjets for bbbb_boosted_ggf_others
+INFO: setting shape effect ISRPartonShower for bbbb_boosted_ggf_others
+INFO: setting shape effect trigCorrHH2016 for bbbb_boosted_ggf_others
+INFO: setting shape effect triggerEffSF for bbbb_boosted_ggf_others
+INFO: setting shape effect JMS for bbbb_boosted_ggf_others
+INFO: get templates for: VH_hbb
+INFO: setting autoMCStats for VH_hbb
+INFO: setting shape effect FSRPartonShower for VH_hbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for VH_hbb
+INFO: setting shape effect othersQCD for VH_hbb
+INFO: setting shape effect ggHHPDFacc for VH_hbb
+INFO: setting shape effect ggHHQCDacc for VH_hbb
+INFO: setting shape effect JMR for VH_hbb
+INFO: setting shape effect FSRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect trigCorrHH2018 for VH_hbb
+INFO: setting shape effect BDTShape for VH_hbb
+INFO: setting shape effect JES for VH_hbb
+INFO: setting shape effect JER for VH_hbb
+INFO: setting shape effect trigCorrHH2017 for VH_hbb
+INFO: setting shape effect ttJetsCorr for VH_hbb
+INFO: setting shape effect PNetHbbScaleFactors for VH_hbb
+INFO: setting shape effect pileupWeight for VH_hbb
+INFO: setting shape effect PNetShape for VH_hbb
+INFO: setting shape effect ISRPartonShower_Vjets for VH_hbb
+INFO: setting shape effect ISRPartonShower for VH_hbb
+INFO: setting shape effect trigCorrHH2016 for VH_hbb
+INFO: setting shape effect triggerEffSF for VH_hbb
+INFO: setting shape effect JMS for VH_hbb
+INFO: get templates for: qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_2_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_0_kl_1_hbbhbb
+INFO: get templates for: ttbar
+INFO: setting autoMCStats for ttbar
+INFO: setting shape effect FSRPartonShower for ttbar
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ttbar
+INFO: setting shape effect othersQCD for ttbar
+INFO: setting shape effect ggHHPDFacc for ttbar
+INFO: setting shape effect ggHHQCDacc for ttbar
+INFO: setting shape effect JMR for ttbar
+INFO: setting shape effect FSRPartonShower_Vjets for ttbar
+INFO: setting shape effect trigCorrHH2018 for ttbar
+INFO: setting shape effect BDTShape for ttbar
+INFO: setting shape effect JES for ttbar
+INFO: setting shape effect JER for ttbar
+INFO: setting shape effect trigCorrHH2017 for ttbar
+INFO: setting shape effect ttJetsCorr for ttbar
+INFO: setting shape effect PNetHbbScaleFactors for ttbar
+INFO: setting shape effect pileupWeight for ttbar
+INFO: setting shape effect PNetShape for ttbar
+INFO: setting shape effect ISRPartonShower_Vjets for ttbar
+INFO: setting shape effect ISRPartonShower for ttbar
+INFO: setting shape effect trigCorrHH2016 for ttbar
+INFO: setting shape effect triggerEffSF for ttbar
+INFO: setting shape effect JMS for ttbar
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_2_hbbhbb
+INFO: get templates for: ggHH_kl_5_kt_1_hbbhbb
+INFO: setting autoMCStats for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect othersQCD for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMR for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect BDTShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JES for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JER for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect pileupWeight for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect PNetShape for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect triggerEffSF for ggHH_kl_5_kt_1_hbbhbb
+INFO: setting shape effect JMS for ggHH_kl_5_kt_1_hbbhbb
+INFO: get templates for: qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1_C2V_1_kl_1_hbbhbb
+INFO: get templates for: qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting autoMCStats for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttbarBin1Jet2PNetCut for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect othersQCD for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHPDFacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ggHHQCDacc for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMR for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect FSRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2018 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect BDTShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JES for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JER for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2017 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ttJetsCorr for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetHbbScaleFactors for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect pileupWeight for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect PNetShape for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower_Vjets for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect ISRPartonShower for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect trigCorrHH2016 for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect triggerEffSF for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting shape effect JMS for qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+INFO: setting transfer factor for pass region SRBin3, fail region fitfail
+INFO: rendering combine model
+unblinded fit
+using POIs r,r_gghh,r_qqhh,kl,kt,CV,C2V
+
+matching ggf processes:
+  ggHH_kl_1_kt_1    -> ggHH_kl_1_kt_1_hbbhbb
+  ggHH_kl_2p45_kt_1 -> ggHH_kl_2p45_kt_1_hbbhbb
+  ggHH_kl_5_kt_1    -> ggHH_kl_5_kt_1_hbbhbb
+
+matching vbf processes:
+  qqHH_CV_1_C2V_1_kl_1   -> qqHH_CV_1_C2V_1_kl_1_hbbhbb
+  qqHH_CV_1_C2V_1_kl_0   -> qqHH_CV_1_C2V_1_kl_0_hbbhbb
+  qqHH_CV_1_C2V_1_kl_2   -> qqHH_CV_1_C2V_1_kl_2_hbbhbb
+  qqHH_CV_1_C2V_0_kl_1   -> qqHH_CV_1_C2V_0_kl_1_hbbhbb
+  qqHH_CV_1_C2V_2_kl_1   -> qqHH_CV_1_C2V_2_kl_1_hbbhbb
+  qqHH_CV_1p5_C2V_1_kl_1 -> qqHH_CV_1p5_C2V_1_kl_1_hbbhbb
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+Warning! -- You haven't picked default values for the Parameters of Interest (either with --expectSignal or --setParameters) for generating toys. Combine will use the 'B-only' ModelConfig to generate, which may lead to undesired behaviour if not using the default Physics Model
+   kl :    +0.514
+Done in 0.11 min (cpu), 0.11 min (real)
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+Set Range of Parameter kl To : (-18.5,26.5)
+Warning! -- You haven't picked default values for the Parameters of Interest (either with --expectSignal or --setParameters) for generating toys. Combine will use the 'B-only' ModelConfig to generate, which may lead to undesired behaviour if not using the default Physics Model
+Done in 6.87 min (cpu), 6.88 min (real)
+Info in <TCanvas::Print>: pdf file kl_1Dscan.pdf has been created
+Info in <TCanvas::Print>: png file kl_1Dscan.png has been created
+--------------------------------------
+scan
+--------------------------------------
+('fixed_name: ', u'#kappa_{#lambda}')
+(0, ' X vs Y ', -11.0, 6.601524353027344)
+(1, ' X vs Y ', -10.0, 5.476324558258057)
+(2, ' X vs Y ', -9.0, 4.444007396697998)
+(3, ' X vs Y ', -8.0, 3.499993324279785)
+(4, ' X vs Y ', -7.0, 2.665178060531616)
+(5, ' X vs Y ', -6.0, 1.9450867176055908)
+(6, ' X vs Y ', -5.0, 1.3401074409484863)
+(7, ' X vs Y ', -4.0, 0.8540223240852356)
+(8, ' X vs Y ', -3.0, 0.48533496260643005)
+(9, ' X vs Y ', -2.0, 0.2293114960193634)
+(10, ' X vs Y ', -1.0, 0.0747460201382637)
+(11, ' X vs Y ', 0.0, 0.007547258865088224)
+(12, ' X vs Y ', 0.5161187052726746, 0.0)
+(13, ' X vs Y ', 1.0, 0.0055302465334534645)
+(14, ' X vs Y ', 2.0, 0.034497227519750595)
+(15, ' X vs Y ', 3.0, 0.0486498586833477)
+(16, ' X vs Y ', 4.0, 0.08340495824813843)
+(17, ' X vs Y ', 5.0, 0.11980293691158295)
+(18, ' X vs Y ', 6.0, 0.1520303189754486)
+(19, ' X vs Y ', 7.0, 0.1887587308883667)
+(20, ' X vs Y ', 8.0, 0.2466869205236435)
+(21, ' X vs Y ', 9.0, 0.3454160988330841)
+(22, ' X vs Y ', 10.0, 0.5057942867279053)
+(23, ' X vs Y ', 11.0, 0.7452379465103149)
+(24, ' X vs Y ', 12.0, 1.0788599252700806)
+(25, ' X vs Y ', 13.0, 1.5175390243530273)
+(26, ' X vs Y ', 14.0, 2.0679447650909424)
+(27, ' X vs Y ', 15.0, 2.732506275177002)
+(28, ' X vs Y ', 16.0, 3.509446382522583)
+(29, ' X vs Y ', 17.0, 4.3943023681640625)
+(30, ' X vs Y ', 18.0, 5.380191326141357)
+(31, ' X vs Y ', 19.0, 6.458780288696289)
+('bestfit: ', 0.5161187052726746)
+[{'lo': -4.327210014637277, 'hi': 11.788932518522007, 'valid_hi': True, 'valid_lo': True}]
+[{'lo': -8.542442730752589, 'hi': 16.568892646342324, 'valid_hi': True, 'valid_lo': True}]
+('args.others', None)
+expected CV 1D scan
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+Set Range of Parameter CV To : (-2,2)
+Warning! -- You haven't picked default values for the Parameters of Interest (either with --expectSignal or --setParameters) for generating toys. Combine will use the 'B-only' ModelConfig to generate, which may lead to undesired behaviour if not using the default Physics Model
+Done in 4.20 min (cpu), 4.21 min (real)
+Info in <TCanvas::Print>: pdf file CV_1Dscan.pdf has been created
+Info in <TCanvas::Print>: png file CV_1Dscan.png has been created
+--------------------------------------
+scan
+--------------------------------------
+('fixed_name: ', u'#kappa_{V}')
+(0, ' X vs Y ', -1.3333333730697632, 4.295180320739746)
+(1, ' X vs Y ', -1.244444489479065, 1.054575800895691)
+(2, ' X vs Y ', -1.1555556058883667, 0.13667142391204834)
+(3, ' X vs Y ', -1.0666667222976685, 0.4336467981338501)
+(4, ' X vs Y ', -0.9777777791023254, 0.6943514943122864)
+(5, ' X vs Y ', -0.8888888955116272, 0.48915228247642517)
+(6, ' X vs Y ', -0.800000011920929, 0.07646863162517548)
+(7, ' X vs Y ', -0.7111111283302307, -0.12613900005817413)
+(8, ' X vs Y ', -0.6222222447395325, 0.16901201009750366)
+(9, ' X vs Y ', -0.5333333611488342, 0.9060013294219971)
+(10, ' X vs Y ', -0.4444444477558136, 1.9233033657073975)
+(11, ' X vs Y ', -0.35555556416511536, 3.0347070693969727)
+(12, ' X vs Y ', -0.2666666805744171, 4.076447486877441)
+(13, ' X vs Y ', -0.17777778208255768, 4.926449298858643)
+(14, ' X vs Y ', 0.0, 5.741350173950195)
+(15, ' X vs Y ', 0.08888889104127884, 5.635937690734863)
+(16, ' X vs Y ', 0.17777778208255768, 5.191417217254639)
+(17, ' X vs Y ', 0.2666666805744171, 4.447434902191162)
+(18, ' X vs Y ', 0.35555556416511536, 3.47755765914917)
+(19, ' X vs Y ', 0.4444444477558136, 2.3913698196411133)
+(20, ' X vs Y ', 0.5333333611488342, 1.3405102491378784)
+(21, ' X vs Y ', 0.6222222447395325, 0.5071107745170593)
+(22, ' X vs Y ', 0.7111111283302307, 0.06414704024791718)
+(23, ' X vs Y ', 0.800000011920929, 0.11514394730329514)
+(24, ' X vs Y ', 0.8888888955116272, 0.472503125667572)
+(25, ' X vs Y ', 0.9777777791023254, 0.741958737373352)
+(26, ' X vs Y ', 1.0666667222976685, 0.5370720624923706)
+(27, ' X vs Y ', 1.1555556058883667, 0.051170215010643005)
+(28, ' X vs Y ', 1.1847610473632812, 0.0)
+(29, ' X vs Y ', 1.244444489479065, 0.3509926497936249)
+(30, ' X vs Y ', 1.3333333730697632, 2.6896109580993652)
+('bestfit: ', 1.1847610473632812)
+[{'lo': -1.2418573762389877, 'hi': -0.524263362504001, 'valid_hi': True, 'valid_lo': True}, {'lo': 0.5659536169193199, 'hi': 1.2811458679151968, 'valid_hi': True, 'valid_lo': True}]
+[{'lo': -1.3276750339653687, 'hi': -0.2736638771478744, 'valid_hi': True, 'valid_lo': True}, {'lo': 0.30971312122856115, 'hi': 1.3333333730697632, 'valid_hi': False, 'valid_lo': True}]
+('args.others', None)
+expected C2V 1D scan
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+Set Range of Parameter C2V To : (-1,3)
+Warning! -- You haven't picked default values for the Parameters of Interest (either with --expectSignal or --setParameters) for generating toys. Combine will use the 'B-only' ModelConfig to generate, which may lead to undesired behaviour if not using the default Physics Model
+Done in 3.65 min (cpu), 3.66 min (real)
+Info in <TCanvas::Print>: pdf file C2V_1Dscan.pdf has been created
+Info in <TCanvas::Print>: png file C2V_1Dscan.png has been created
+--------------------------------------
+scan
+--------------------------------------
+('fixed_name: ', u'#kappa_{2V}')
+(0, ' X vs Y ', 0.02222222276031971, 5.702341556549072)
+(1, ' X vs Y ', 0.1111111119389534, 3.975510597229004)
+(2, ' X vs Y ', 0.20000000298023224, 2.5488924980163574)
+(3, ' X vs Y ', 0.2888889014720917, 1.4402741193771362)
+(4, ' X vs Y ', 0.3777777850627899, 0.6569710373878479)
+(5, ' X vs Y ', 0.46666666865348816, 0.18860425055027008)
+(6, ' X vs Y ', 0.5555555820465088, 8.369312854483724e-05)
+(7, ' X vs Y ', 0.5777482390403748, 0.0)
+(8, ' X vs Y ', 0.644444465637207, 0.04308853670954704)
+(9, ' X vs Y ', 0.7333333492279053, 0.2390078455209732)
+(10, ' X vs Y ', 0.8222222328186035, 0.4625440537929535)
+(11, ' X vs Y ', 0.9111111164093018, 0.6575137972831726)
+(12, ' X vs Y ', 1.0, 0.7524099349975586)
+(13, ' X vs Y ', 1.0888888835906982, 0.7192818522453308)
+(14, ' X vs Y ', 1.1777777671813965, 0.5693265199661255)
+(15, ' X vs Y ', 1.2666666507720947, 0.3607294261455536)
+(16, ' X vs Y ', 1.355555534362793, 0.14647501707077026)
+(17, ' X vs Y ', 1.4444444179534912, 0.026156825944781303)
+(18, ' X vs Y ', 1.5333333015441895, 0.11087747663259506)
+(19, ' X vs Y ', 1.6222221851348877, 0.4501652717590332)
+(20, ' X vs Y ', 1.711111068725586, 1.090828537940979)
+(21, ' X vs Y ', 1.7999999523162842, 2.05092716217041)
+(22, ' X vs Y ', 1.8888888359069824, 3.3307769298553467)
+(23, ' X vs Y ', 1.9777777194976807, 4.916110992431641)
+(24, ' X vs Y ', 2.066666603088379, 6.7858428955078125)
+('bestfit: ', 0.5777482390403748)
+[{'lo': 0.3342141500933567, 'hi': 1.700768652796333, 'valid_hi': True, 'valid_lo': True}]
+[{'lo': 0.10973548136336554, 'hi': 1.9284602301754679, 'valid_hi': True, 'valid_lo': True}]
+('args.others', None)
+fit mu
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+SimNLL created with 4 channels, 0 generic constraints, 889 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+
+ --- MultiDimFit ---
+best fit parameter values: 
+   r :    +2.797
+Done in 0.07 min (cpu), 0.07 min (real)
+expected mu 1D scan
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is MultiDimFit
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+Done in 3.37 min (cpu), 3.38 min (real)
+Info in <TCanvas::Print>: pdf file r_1Dscan.pdf has been created
+Info in <TCanvas::Print>: png file r_1Dscan.png has been created
+--------------------------------------
+scan
+--------------------------------------
+('fixed_name: ', u'#mu')
+(0, ' X vs Y ', -2.0, 5.00812292098999)
+(1, ' X vs Y ', -1.0, 3.1522271633148193)
+(2, ' X vs Y ', 0.0, 1.6218957901000977)
+(3, ' X vs Y ', 1.0, 0.6105849146842957)
+(4, ' X vs Y ', 2.0, 0.11091270297765732)
+(5, ' X vs Y ', 2.792692184448242, 0.0)
+(6, ' X vs Y ', 3.0, 0.0015526717761531472)
+(7, ' X vs Y ', 4.0, 0.20084048807621002)
+(8, ' X vs Y ', 5.0, 0.5817858576774597)
+(9, ' X vs Y ', 6.0, 1.0900249481201172)
+(10, ' X vs Y ', 7.0, 1.6677417755126953)
+(11, ' X vs Y ', 8.0, 2.3144302368164062)
+('bestfit: ', 2.792692184448242)
+[{'lo': 0.5482052829395299, 'hi': 5.834694326537387, 'valid_hi': True, 'valid_lo': True}]
+[{'lo': -1.4707482502925122, 'hi': 8.0, 'valid_hi': False, 'valid_lo': True}]
+('args.others', None)
+limit on SM HH xs
+ <<< Combine >>> 
+>>> random number generator seed is 123456
+Configured fallback algorithm , type Minuit2, algo Migrad, strategy 1, tolerance 0.1
+>>> method used is AsymptoticLimits
+ModelConfig 'ModelConfig' defines more than one parameter of interest. This is not supported in some statistical methods.
+SimNLL created with 4 channels, 0 generic constraints, 889 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 889 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 4 channels, 0 generic constraints, 889 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+Done in 15.92 min (cpu), 15.94 min (real)

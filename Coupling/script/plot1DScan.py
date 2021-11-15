@@ -125,8 +125,10 @@ main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, yvals
 
 other_scans = []
 other_scans_opts = []
+print("args.others",args.others)
 if args.others is not None:
     for oargs in args.others:
+        print("oargs",oargs)
         splitargs = oargs.split(':')
         other_scans_opts.append(splitargs)
         other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), yvals, args.y_cut))
@@ -196,12 +198,12 @@ val_2sig = main_scan['val_2sig']
 textfit = '%s = %.1f{}^{#plus %.1f}_{#minus %.1f}' % (fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
 
 
-pt = ROOT.TPaveText(0.59, 0.82 - len(other_scans)*0.08, 0.95, 0.91, 'NDCNB')
+pt = ROOT.TPaveText(0.59, 0.80 - len(other_scans)*0.05, 0.95, 0.80, 'NDCNB')
 pt.AddText(textfit)
 
 if args.breakdown is None:
     for i, other in enumerate(other_scans):
-        textfit = '#color[%s]{%s = %.3f{}^{#plus %.3f}_{#minus %.3f}}' % (other_scans_opts[i][2], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
+        textfit = '#color[%s]{%s = %.1f{}^{#plus %.1f}_{#minus %.1f}}' % (other_scans_opts[i][2], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
         pt.AddText(textfit)
 
 
