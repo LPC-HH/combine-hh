@@ -22,9 +22,11 @@ def read(scan, param, files, ycut):
     graph = plot.TGraphFromTree(limit, param, '2*deltaNLL', 'quantileExpected > -1.5')
     graph.SetName(scan)
     graph.Sort()
+    graph.Print()
     plot.RemoveGraphXDuplicates(graph)
+    graph.Print()
     plot.RemoveGraphYAbove(graph, ycut)
-    # graph.Print()
+    graph.Print()
     return graph
 
 
@@ -117,7 +119,6 @@ if args.translate is not None:
     if args.POI in name_translate:
         fixed_name = name_translate[args.POI]
         print("fixed_name: ", fixed_name)
-# fixed_name = "#kappa_{#lambda}"
 yvals = [1., 4.]
 
 
@@ -177,6 +178,10 @@ for yval in yvals:
                 line.DrawLine(cr['lo'], 0, cr['lo'], yval)
             if cr['valid_hi']:
                 line.DrawLine(cr['hi'], 0, cr['hi'], yval)
+
+plot.DrawVerticalLine(pads[0], line, 0)
+line.SetLineColor(17)
+plot.DrawVerticalLine(pads[0], line, 1)
 
 main_scan['func'].Draw('same')
 for other in other_scans:
