@@ -22,11 +22,9 @@ def read(scan, param, files, ycut):
     graph = plot.TGraphFromTree(limit, param, '2*deltaNLL', 'quantileExpected > -1.5')
     graph.SetName(scan)
     graph.Sort()
-    graph.Print()
     plot.RemoveGraphXDuplicates(graph)
-    graph.Print()
     plot.RemoveGraphYAbove(graph, ycut)
-    graph.Print()
+    #graph.Print()
     return graph
 
 
