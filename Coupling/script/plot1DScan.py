@@ -24,7 +24,7 @@ def read(scan, param, files, ycut):
     graph.Sort()
     plot.RemoveGraphXDuplicates(graph)
     plot.RemoveGraphYAbove(graph, ycut)
-    #graph.Print()
+    # graph.Print()
     return graph
 
 
@@ -124,10 +124,8 @@ main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, yvals
 
 other_scans = []
 other_scans_opts = []
-print("args.others",args.others)
 if args.others is not None:
     for oargs in args.others:
-        print("oargs",oargs)
         splitargs = oargs.split(':')
         other_scans_opts.append(splitargs)
         other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), yvals, args.y_cut))
