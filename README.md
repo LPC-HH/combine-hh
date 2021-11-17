@@ -64,7 +64,7 @@ The fourth argument is blinded (True) or not (False)
 
 Command to run unblinded result:
 ```
-./make_cards.sh v8p2yield_AN_sr_sys_1028 v2 /storage/af/user/nlu/hh/looper_output/datacard_hist/ False
+./make_cards.sh v8p2yield_AN_sr_sys_1111 v1 /storage/af/user/idutta/HH/CMSSW_9_4_2/src/V2/HHLooper/hists/result1111/ False
 ```
 ## Run F-test (1st vs 2nd order):
 For Bin1,
