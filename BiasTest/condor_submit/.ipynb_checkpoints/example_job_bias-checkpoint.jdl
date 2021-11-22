@@ -1,0 +1,41 @@
+Universe = vanilla
+
+Executable = example_job_bias.sh
+
+Arguments = RVALUE NAME SEED WS
+
+#The logs directory must exist
+Log = logs/bias_jobNUM.$(Cluster).log
+Output = logs/bias_jobNUM.out.$(Cluster).$(Process)
+Error = logs/bias_jobNUM.err.$(Cluster).$(Process)
+
+#This is necessary to choose either rhel7 (slc7) or rhel6 (slc6) as needed
++RunAsOwner = True
++InteractiveUser = true
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel7"
++SingularityBindCVMFS = True
++JobQueue="Short"
+run_as_owner = True
+
+#Provide information on proxy in order to access storage
+x509userproxy = $ENV(X509_USER_PROXY)
+
+#Don't request more than needed, otherwise your job will wait longer in queue
+RequestDisk = 1
+RequestMemory = 2000
+RequestCpus = 1
+
+#nice_user = True
+
+#transfer this file back to the login node
+#use this for small files, like plots or txt files to an existing output directory on login-1
+#Big outputs should be transferred within the job to /mnt/hadoop using `gfal-copy`
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+#transfer_input_files = files_NUM.txt
+
+#transfer_output_files = output_NUM.txt
+#transfer_output_remaps = "output_NUM.txt=outputs/output_NUM.txt.$(Cluster).$(Process)"
+
+#This number can be used to queue more than one job
+#Queue 1
