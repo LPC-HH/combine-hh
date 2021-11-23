@@ -33,7 +33,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     ttbarBin1MCstats = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_ttbarBin1_yieldMCStats', 'lnN')
     lumi = rl.NuisanceParameter('lumi_13TeV_correlated', 'lnN')
-    # trigSF = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_triggerEffSF_correlated', 'lnN')
     PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
     brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
     pdfqqbar = rl.NuisanceParameter('pdf_Higgs_qqbar', 'lnN')
@@ -44,6 +43,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdScalettH = rl.NuisanceParameter('QCDscale_ttH', 'lnN')
     qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqHH', 'lnN')
     alphaS = rl.NuisanceParameter('alpha_s', 'lnN')
+    if not include_ac:
+        thu_hh = rl.NuisanceParameter('THU_HH', 'lnN')
 
     msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
@@ -158,7 +159,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
             sample.setParamEffect(lumi, 1.016)
-            # sample.setParamEffect(trigSF, 1.04)
+            
+            if not include_ac:
+                if sName == "ggHH_kl_1_kt_1_hbbhbb":   
+                    sample.setParamEffect(thu_hh, 1.0556, 0.7822)
 
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
