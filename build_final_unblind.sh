@@ -32,5 +32,8 @@ python ../plotting_limit_ch_HH4b.py --inputtag ${version} --unblind True
 echo "FitDiagnostic S=0"
 combine -M FitDiagnostics ${ws}.root --rMin 0 --rMax 4 --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBplusfail --ignoreCovWarning
 
+cp ${ws}.root morphedWorkspace.root
+python ../Coupling/script/importPars.py morphedWorkspace.root fitDiagnosticsSBplusfail.root
+
 echo "observed significance"
 combine -M Significance --signif -m 125 -n ${version} ${ws}.root 
