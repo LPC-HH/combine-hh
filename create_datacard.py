@@ -176,7 +176,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 elif "fail" in region:
                     sample.setParamEffect(fsrothers, 0.92, 1.05)
                     sample.setParamEffect(isrothers, 0.94, 1.05)
-            
+
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
                     sample.setParamEffect(ttbarBin1MCstats, 1.215)
