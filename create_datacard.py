@@ -158,7 +158,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
-            sample.setParamEffect(lumi, 1.016)            
+            sample.setParamEffect(lumi, 1.016)
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
                     sample.setParamEffect(thu_hh, 1.0556, 0.7822)
