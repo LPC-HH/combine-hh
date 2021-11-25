@@ -80,7 +80,6 @@ if __name__ == "__main__":
     parser.add_option('--test-mc-tf', action='store_true', dest='testMCTF', default=False, help='do FTest on MC TF (default is on data TF)')
     parser.add_option('--pseudo', action='store_true', dest='pseudo', default=False, help='run on asimov dataset')
     parser.add_option('-y', '--year', type='choice', dest='year', default='2016', choices=['2016', '2017', '2018', 'all'], help='switch to use different year ', metavar='year')
-    parser.add_option('--blind', action='store_true', dest='blind', default=False, help='run on blinded dataset', metavar='blind')
     parser.add_option('--MiNLO', action='store_true', dest='MiNLO', default=False, help='MiNLO unc.', metavar='MiNLO')
     parser.add_option('--qcdTF', action='store_true', dest='qcdTF', default=False, help='switch to make qcdTF cards', metavar='qcdTF')
     parser.add_option('--exp', action='store_true', dest='exp', default=False, help='use exp(bernstein poly) transfer function', metavar='exp')

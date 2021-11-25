@@ -26,7 +26,7 @@ def get_hist(inputfile, name, obs):
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
 
     regionPairs = [('SR'+passBinName, 'fit'+failBinName)]  # pass, fail region pairs
-    if int(add_blinded):
+    if add_blinded:
         regionPairs += [('pass'+passBinName, failBinName)]  # add sideband region pairs
 
     regions = [item for t in regionPairs for item in t]  # all regions
@@ -43,8 +43,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdScalettH = rl.NuisanceParameter('QCDscale_ttH', 'lnN')
     qcdScaleqqHH = rl.NuisanceParameter('QCDscale_qqHH', 'lnN')
     alphaS = rl.NuisanceParameter('alpha_s', 'lnN')
+    fsrothers = rl.NuisanceParameter('ps_fsr_others', 'lnN')
+    isrothers = rl.NuisanceParameter('ps_isr_others', 'lnN')
     if not include_ac:
-        thu_hh = rl.NuisanceParameter('THU_HH', 'lnN')
+        thu_hh = rl.NuisanceParameter('THU_SMHH', 'lnN')
 
     msdbins = np.linspace(50, nbins*10.0+50.0, nbins+1)
     msd = rl.Observable('msd', msdbins)
@@ -126,8 +128,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
             'FSRPartonShower': 'ps_fsr',
             'ISRPartonShower': 'ps_isr',
-            'FSRPartonShower_Vjets': 'ps_fsr_others',
-            'ISRPartonShower_Vjets': 'ps_isr_others',
             'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
             'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
             'othersQCD': 'CMS_bbbb_boosted_ggf_othersQCD',
@@ -163,7 +163,20 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":   
                     sample.setParamEffect(thu_hh, 1.0556, 0.7822)
-
+            if sName == "bbbb_boosted_ggf_others":
+                if "Bin1" in region:
+                    sample.setParamEffect(fsrothers, 0.82, 1.06)
+                    sample.setParamEffect(isrothers, 0.94, 1.05)
+                elif "Bin2" in region:
+                    sample.setParamEffect(fsrothers, 0.90, 1.02)
+                    sample.setParamEffect(isrothers, 0.93, 1.07)
+                elif "Bin3" in region:
+                    sample.setParamEffect(fsrothers, 0.91, 1.02)
+                    sample.setParamEffect(isrothers, 0.93, 1.06)
+                elif "fail" in region:
+                    sample.setParamEffect(fsrothers, 0.92, 1.05)
+                    sample.setParamEffect(isrothers, 0.94, 1.05)
+            
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
                     sample.setParamEffect(ttbarBin1MCstats, 1.215)
@@ -258,8 +271,9 @@ if __name__ == '__main__':
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help='order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help='order of polynomial for TF from Data')
     parser.add_argument('--passBinName', default='Bin1', type=str, choices=['Bin1', 'Bin2', 'Bin3'], help='pass bin name')
-    parser.add_argument('--blinded', action='store_true', help='run on data in SR')
+    parser.add_argument('--blinded', default=False, dest='blinded', help='run on data on SR')
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
+    print(args.blinded)
     create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail", args.blinded)
