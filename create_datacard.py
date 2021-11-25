@@ -161,8 +161,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.setParamEffect(lumi, 1.016)
             
             if not include_ac:
-                if sName == "ggHH_kl_1_kt_1_hbbhbb"
+                if sName == "ggHH_kl_1_kt_1_hbbhbb":
                     sample.setParamEffect(thu_hh, 1.0556, 0.7822)
+                    
             if sName == "bbbb_boosted_ggf_others"
                 if "Bin1" in region:
                     sample.setParamEffect(fsrothers, 0.82, 1.06)
