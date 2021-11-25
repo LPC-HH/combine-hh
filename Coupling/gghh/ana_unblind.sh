@@ -4,9 +4,10 @@ version=$1
 inputdir=$2
 ws=HHModel_combined_${version}
 
+echo "combine cards"
 combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}.txt
 
-#echo "build the ws"
+echo "build the ws"
 text2workspace.py ${ws}.txt -P HiggsAnalysis.CombinedLimit.hh_model:model_default --mass=125 --channel-masks
 
 #echo "prepare datacard for HH combination"
@@ -43,9 +44,9 @@ combine -M MultiDimFit ${ws}.root --redefineSignalPOIs r -m 125 -n mu_testfit_${
 
 echo "expected mu 1D scan"
 combine -M MultiDimFit --algo grid --point 17 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_scan_${version} --setParameterRanges r=-4.5,12.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
-combine -M MultiDimFit --algo grid --point 17 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin1_scan_${version} --setParameters mask_SRBin2=1,mask_SRBin3=1 --setParameterRanges r=-4.5,12.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
-combine -M MultiDimFit --algo grid --point 34 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin2_scan_${version} --setParameters mask_SRBin1=1,mask_SRBin3=1 --setParameterRanges r=-4.5,29.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
-combine -M MultiDimFit --algo grid --point 23 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin3_scan_${version} --setParameters mask_SRBin1=1,mask_SRBin2=1 --setParameterRanges r=-16,30 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 17 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin1_scan_${version} --setParameters mask_SRBin1=0,mask_SRBin2=1,mask_SRBin3=1 --setParameterRanges r=-4.5,12.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 34 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin2_scan_${version} --setParameters mask_SRBin1=1,mask_SRBin2=0,mask_SRBin3=1 --setParameterRanges r=-4.5,29.5 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M MultiDimFit --algo grid --point 23 ${ws}.root --redefineSignalPOIs r -m 125 -n mu_Bin3_scan_${version} --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=0 --setParameterRanges r=-16,30 --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 python ../../../script/plot1DScan.py higgsCombinemu_scan_${version}.MultiDimFit.mH125.root --POI r --main-label expected --main-color 4 --translate ../../../script/trans.json
 mv r_1Dscan.pdf r_1Dscan_${version}.pdf
@@ -55,5 +56,14 @@ python ../../../script/plot1DScan.py higgsCombinemu_scan_${version}.MultiDimFit.
 mv r_1Dscan.pdf r_1Dscan_categories_${version}.pdf
 mv r_1Dscan.png r_1Dscan_categories_${version}.png
 
+echo "FitDiagnostic S+B fit and b-only fit"
+combine -M FitDiagnostics ${ws}.root --rMin 0 --rMax 10 --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --saveNormalizations --saveShapes --saveWithUncertainties --saveOverallShapes -n SBplusfail --ignoreCovWarning
+
+echo "observed significance"
+combine -M Significance --signif -m 125 -n ${version} ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r 
+
 echo "limit on SM HH xs"
 combine -M AsymptoticLimits -m 125 -n Limit_${version} ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M AsymptoticLimits -m 125 -n Limit_Bin1_${version} --setParameters mask_SRBin1=0,mask_SRBin2=1,mask_SRBin3=1 ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M AsymptoticLimits -m 125 -n Limit_Bin2_${version} --setParameters mask_SRBin1=1,mask_SRBin2=0,mask_SRBin3=1 ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
+combine -M AsymptoticLimits -m 125 -n Limit_Bin3_${version} --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=0 ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1

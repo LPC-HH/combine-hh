@@ -3,3 +3,4 @@
 
 reference:  
 https://cms-b2g.docs.cern.ch/combine/StatTests/
+https://cms-analysis.github.io/HiggsAnalysis-CombinedLimit/part3/runningthetool/#generate-only

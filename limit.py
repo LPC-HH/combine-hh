@@ -250,7 +250,7 @@ def ftest(base, alt, ntoys, iLabel, options):
         baseName = base.split('/')[-1].replace('.root', '')
         altName = alt.split('/')[-1].replace('.root', '')
 
-        if not int(options.blinded):
+        if not options.blinded:
             exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s' % (base, baseName), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
             exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s' % (alt, altName), options.dryRun)
@@ -341,7 +341,7 @@ def ftest(base, alt, ntoys, iLabel, options):
 def goodness(base, ntoys, iLabel, options):
     exec_me('rm higgsCombine%s.GoodnessOfFit.mH120*root' % (base.split('/')[-1].replace('.root', '')), options.dryRun)
     if not options.justPlot:
-        if int(options.blinded):
+        if options.blinded:
             exec_me('combine -M GoodnessOfFit %s  --setParameterRange r=-20,20  --setParameters %s --algorithm %s -n %s --freezeParameters %s --redefineSignalPOIs r'
                     % (base, options.setParameters, options.algo, base.split('/')[-1].replace('.root', ''), options.freezeNuisances), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/goodbase_%s.root'
