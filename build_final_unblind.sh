@@ -5,10 +5,10 @@ echo "BDT version: "$BDTv
 ws=HHModel_combined
 version=$2
 
-#combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}.txt
-#combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt > ${ws}_Bin1.txt
-#combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt > ${ws}_Bin2.txt
-#combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}_Bin3.txt
+combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}.txt
+combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin1=cards_Bin1/HHModel/SRBin1.txt > ${ws}_Bin1.txt
+combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin2=cards_Bin2/HHModel/SRBin2.txt > ${ws}_Bin2.txt
+combineCards.py fitfail=cards_Bin1/HHModel/fitfail.txt SRBin3=cards_Bin3/HHModel/SRBin3.txt > ${ws}_Bin3.txt
 
 echo "signal_norm_xsbr  group  =  THU_SMHH  pdf_Higgs_ggHH  pdf_Higgs_qqHH  QCDscale_qqHH  BR_hbb" >> ${ws}.txt
 echo "signal_norm_xsbr  group  =  THU_SMHH  pdf_Higgs_ggHH  pdf_Higgs_qqHH  QCDscale_qqHH  BR_hbb" >> ${ws}_Bin1.txt
