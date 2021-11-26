@@ -8,11 +8,11 @@ ws=HHModel_combined_1123v1.root
 ininame=1123v1
 
 subdir=submit_${ininame}
-#if [ -d "$subdir" ]; then
-#  rm -r $subdir
-#fi
-#mkdir $subdir
-#mkdir logs
+if [ -d "$subdir" ]; then
+  rm -r $subdir
+fi
+mkdir $subdir
+mkdir logs
 
 cd $subdir
 
@@ -25,7 +25,7 @@ cp ../make_submit_jdl_impact.sh .
 
 #this is initial fit, only need to do it once
 #unblinded case
-#combineTool.py -M Impacts -m 125 -n ${ininame} -d ${ws} --doInitialFit --robustFit 1 --setParameters r=1 --setParameterRanges r=-15,15 --cminDefaultMinimizerStrategy=1 --saveWorkspace
+combineTool.py -M Impacts -m 125 -n ${ininame} -d ${ws} --doInitialFit --robustFit 1 --setParameters r=1 --setParameterRanges r=-15,15 --cminDefaultMinimizerStrategy=1 --saveWorkspace
 #blinded case
 #combineTool.py -M Impacts -t -1 --snapshotName MultiDimFit --bypassFrequentistFit --toysFrequentist -m 125 -n ${ininame} -d ${ws} --doInitialFit --robustFit 1 --setParameters mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1,r=1 --setParameterRanges r=-10,10 --cminDefaultMinimizerStrategy=1 --saveWorkspace
 
