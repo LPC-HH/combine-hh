@@ -106,9 +106,10 @@ parser.add_argument('--logo', default='CMS')
 parser.add_argument('--logo-sub', default='Internal')
 args = parser.parse_args()
 
-print '--------------------------------------'
-print args.output
-print '--------------------------------------'
+f = open('output.txt', 'w')
+f.write('--------------------------------------')
+f.write(args.output)
+f.write('--------------------------------------')
 
 fixed_name = args.POI
 if args.translate is not None:
@@ -116,9 +117,8 @@ if args.translate is not None:
         name_translate = json.load(jsonfile)
     if args.POI in name_translate:
         fixed_name = name_translate[args.POI]
-        print("fixed_name: ", fixed_name)
+        print "fixed_name: ", fixed_name
 yvals = [1., 4.]
-
 
 main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, yvals, args.y_cut)
 
@@ -129,7 +129,6 @@ if args.others is not None:
         splitargs = oargs.split(':')
         other_scans_opts.append(splitargs)
         other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), yvals, args.y_cut))
-
 
 canv = ROOT.TCanvas(args.output, args.output)
 pads = plot.OnePad()
@@ -197,16 +196,17 @@ val_nom = main_scan['val']
 val_2sig = main_scan['val_2sig']
 
 textfit = '%s = %.1f{}^{#plus %.1f}_{#minus %.1f}' % (fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
+f.write('\n')
+f.write(textfit)
 
-
-pt = ROOT.TPaveText(0.59, 0.80 - len(other_scans)*0.05, 0.95, 0.80, 'NDCNB')
+pt = ROOT.TPaveText(0.59, 0.72 - len(other_scans)*0.08, 0.95, 0.80, 'NDCNB')
 pt.AddText(textfit)
+pt.SetTextSize(0.035)
 
 if args.breakdown is None:
     for i, other in enumerate(other_scans):
         textfit = '#color[%s]{%s = %.1f{}^{#plus %.1f}_{#minus %.1f}}' % (other_scans_opts[i][2], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
         pt.AddText(textfit)
-
 
 if args.breakdown is not None:
     pt.SetX1(0.50)
@@ -226,12 +226,12 @@ if args.breakdown is not None:
     for i, br in enumerate(breakdown):
         if i < (len(breakdown) - 1):
             if (abs(v_hi[i+1]) > abs(v_hi[i])):
-                print 'ERROR SUBTRACTION IS NEGATIVE FOR %s HI' % br
+                f.write('ERROR SUBTRACTION IS NEGATIVE FOR %s HI' % br)
                 hi = 0.
             else:
                 hi = math.sqrt(v_hi[i]*v_hi[i] - v_hi[i+1]*v_hi[i+1])
             if (abs(v_lo[i+1]) > abs(v_lo[i])):
-                print 'ERROR SUBTRACTION IS NEGATIVE FOR %s LO' % br
+                f.write('ERROR SUBTRACTION IS NEGATIVE FOR %s LO' % br)
                 lo = 0.
             else:
                 lo = math.sqrt(v_lo[i]*v_lo[i] - v_lo[i+1]*v_lo[i+1])
@@ -241,10 +241,9 @@ if args.breakdown is not None:
         textfit += '{}^{#plus %.3f}_{#minus %.3f}(%s)' % (hi, abs(lo), br)
     pt.AddText(textfit)
 
-
 pt.SetTextAlign(11)
 pt.SetTextFont(42)
-pt.Draw()
+pt.Draw('SAME')
 
 plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,  cmsTextSize=1.)
 
