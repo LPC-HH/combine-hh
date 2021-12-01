@@ -201,7 +201,7 @@ f.write(textfit)
 
 pt = ROOT.TPaveText(0.59, 0.72 - len(other_scans)*0.08, 0.95, 0.80, 'NDCNB')
 pt.AddText(textfit)
-pt.SetTextSize(0.035)
+pt.SetTextSize(0.038)
 
 if args.breakdown is None:
     for i, other in enumerate(other_scans):
