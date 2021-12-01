@@ -36,15 +36,13 @@ def buildcards(odir, v1n, v2n, options):
 
     if int(options.blinded):
         if options.testMCTF:
-            create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded" % (
-            ifile, odir, options.n, v1n, options.passBinName)
+            create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s --blinded" % (ifile, odir, options.n, v1n, options.passBinName)
         else:
             create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s --blinded" % (ifile, odir, options.n, v1n, options.passBinName)
         combineCards = "cd %s/HHModel; combineCards.py pass=pass%s.txt fail=fail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir, options.passBinName)
     else:
         if options.testMCTF:
-            create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (
-            ifile, odir, options.n, v1n, options.passBinName)
+            create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nMCTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
         else:
             create_cards = "python create_datacard.py --inputfile=%s --carddir=%s --nbins=%i --nDataTF=%i --passBinName=%s" % (ifile, odir, options.n, v1n, options.passBinName)
         combineCards = "cd %s/HHModel; combineCards.py pass=SR%s.txt fail=fitfail.txt > HHModel_combined.txt; text2workspace.py HHModel_combined.txt ;cd -" % (odir, options.passBinName)
