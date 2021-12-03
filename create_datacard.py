@@ -161,7 +161,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.setParamEffect(lumi, 1.016)
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
-                    sample.setParamEffect(thu_hh, 1.0556, 0.7822)
+                    sample.setParamEffect(thu_hh, 0.7822, 1.0556)
 
             if sName == "bbbb_boosted_ggf_others":
                 if "Bin1" in region:
@@ -271,7 +271,7 @@ if __name__ == '__main__':
     parser.add_argument('--nMCTF', default=0, type=int, dest='nMCTF', help='order of polynomial for TF from MC')
     parser.add_argument('--nDataTF', default=2, type=int, dest='nDataTF', help='order of polynomial for TF from Data')
     parser.add_argument('--passBinName', default='Bin1', type=str, choices=['Bin1', 'Bin2', 'Bin3'], help='pass bin name')
-    parser.add_argument('--blinded', default=False, dest='blinded', help='run on data on SR')
+    parser.add_argument('--blinded', action='store_true', help='run on data on SR')
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
