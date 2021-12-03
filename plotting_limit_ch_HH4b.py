@@ -331,7 +331,7 @@ hframe.GetYaxis().SetTitleOffset(1.2)
 hframe.GetXaxis().SetTitleOffset(1.1)
 
 hframe.GetYaxis().SetTitle("")
-hframe.GetXaxis().SetTitle(r"$\sigma_{HH}/\sigma_{SM_{HH}}$")
+hframe.GetXaxis().SetTitle(r"\sigma_{HH}/\sigma_{SM_{HH}}")
 
 hframe.Draw("text")
 hframe.GetYaxis().SetRangeUser(0, Nch+100)
