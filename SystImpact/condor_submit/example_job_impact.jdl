@@ -9,8 +9,6 @@ Log = logs/impact_jobNAME.$(Cluster).log
 Output = logs/impact_jobNAME.out.$(Cluster).$(Process)
 Error = logs/impact_jobNAME.err.$(Cluster).$(Process)
 
-#Requirements=(TARGET.OpSysAndVer=="CentOS7" && regexp("blade-.*", TARGET.Machine))
-
 #This is necessary to choose either rhel7 (slc7) or rhel6 (slc6) as needed
 +RunAsOwner = True
 +InteractiveUser = true

@@ -250,7 +250,7 @@ def ftest(base, alt, ntoys, iLabel, options):
         baseName = base.split('/')[-1].replace('.root', '')
         altName = alt.split('/')[-1].replace('.root', '')
 
-        if not int(options.blinded):
+        if not options.blinded:
             exec_me('combine -M GoodnessOfFit %s --algorithm saturated -n %s' % (base, baseName), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/base1.root' % (baseName, options.odir), options.dryRun)
             exec_me('combine -M GoodnessOfFit %s --algorithm saturated  -n %s' % (alt, altName), options.dryRun)
@@ -332,16 +332,16 @@ def ftest(base, alt, ntoys, iLabel, options):
     options.algo = "saturated"
     options.method = "GoodnessOfFit"
     iLabel = 'goodness_%s_%s' % (options.algo, base.split('/')[-1].replace('.root', ''))
-    goodness(base, 1000, iLabel, options)
+    goodness(base, ntoys, iLabel, options)
     iLabel = 'goodness_%s_%s' % (options.algo, alt.split('/')[-1].replace('.root', ''))
-    goodness(alt, 1000, iLabel, options)
+    goodness(alt, ntoys, iLabel, options)
     return float(lPass)/float(len(nllToys))
 
 
 def goodness(base, ntoys, iLabel, options):
     exec_me('rm higgsCombine%s.GoodnessOfFit.mH120*root' % (base.split('/')[-1].replace('.root', '')), options.dryRun)
     if not options.justPlot:
-        if int(options.blinded):
+        if options.blinded:
             exec_me('combine -M GoodnessOfFit %s  --setParameterRange r=-20,20  --setParameters %s --algorithm %s -n %s --freezeParameters %s --redefineSignalPOIs r'
                     % (base, options.setParameters, options.algo, base.split('/')[-1].replace('.root', ''), options.freezeNuisances), options.dryRun)
             exec_me('cp higgsCombine%s.GoodnessOfFit.mH120.root %s/goodbase_%s.root'
@@ -498,7 +498,7 @@ if __name__ == "__main__":
     parser.add_option('-n', '--n', action='store', type='int', dest='n', default=5*20, help='number of bins')
     parser.add_option('--p1', action='store', type='int', dest='p1', default=9, help='number of parameters for default datacard (p1 > p2)')
     parser.add_option('--p2', action='store', type='int', dest='p2', default=12, help='number of parameters for alternative datacard (p2 > p1)')
-    parser.add_option('-t', '--toys', action='store', type='int', dest='toys', default=200, help='number of toys')
+    parser.add_option('-t', '--toys', action='store', type='int', dest='toys', default=1000, help='number of toys')
     parser.add_option('-s', '--seed', action='store', type='int', dest='seed', default=1, help='random seed')
     parser.add_option('--sig', action='store', type='int', dest='sig', default=1, help='sig')
     parser.add_option('-d', '--datacard', action='store', type='string', dest='datacard', default='card_rhalphabet.txt', help='datacard name')

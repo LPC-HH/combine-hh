@@ -65,11 +65,12 @@ The fourth argument is blinded (True) or not (False)
 Command to run unblinded result:
 ```
 ./make_cards.sh v8p2yield_AN_sr_sys_1111 v1 /storage/af/user/idutta/HH/CMSSW_9_4_2/src/V2/HHLooper/hists/result1111/ False
+./make_cards.sh v8p2yield_AN_sr_sys_1123 v1 /storage/af/user/nlu/hh/looper_output/datacard_hist False
 ```
 ## Run F-test (1st vs 2nd order):
 For Bin1,
 ```bash
-python runFtest.py --v1n1=1 --v1n2=2 --toys=1000 -s 1 --passBinName Bin1
+python runFtest.py --v1n1=0 --v1n2=1 -t 1000 -s 1 --passBinName Bin1 -i /storage/af/user/nlu/hh/looper_output/datacard_hist/HHTo4BPlots_Run2_BDTv8p2yield_AN_sr_sys_1123.root --blinded 0
 ```
 
 ## produce ttbar CR plot figure 27 in ANv4

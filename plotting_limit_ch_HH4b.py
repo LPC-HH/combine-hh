@@ -88,7 +88,7 @@ parser.add_option("--unblind", default=False, help="Observed is present or not "
 
 print("options: options.whatToFloat=", options.whatToFloat)
 
-datalumi = "137 fb^{-1} (13 TeV)"
+datalumi = "138 fb^{-1} (13 TeV)"
 
 xmin = 1
 xmax = 201
@@ -284,7 +284,7 @@ legend.SetY2(0.88)
 legend.SetFillColor(ROOT.kWhite)
 legend.SetBorderSize(0)
 # legend
-legend.SetHeader('95% CL upper limits')
+legend.SetHeader('95% CL upper limit')
 legend.AddEntry(grobs, "Observed", "l")
 legend.AddEntry(gr1sigma, "68% expected", "f")
 legend.AddEntry(grexp, "Median expected", "l")
@@ -308,14 +308,16 @@ pt2.SetTextFont(42)
 pt2.SetFillStyle(0)
 pt2.AddText(datalumi)
 
-ROOT.gStyle.SetPaintTextFormat("4.1f")
+ROOT.gStyle.SetPaintTextFormat("4.0f")
 
 hframe = ROOT.TH2F('hframe', "", 10, xmin, xmax, 10, 0, 10)
 hframe.SetStats(0)
 
 for ich in range(Nch):
-    hframe.Fill(num_location*xmax, ylable_text[ich], ptsList[ich][2])
-
+    if options.unblind:
+        hframe.Fill(num_location*xmax, ylable_text[ich], ptsList[ich][1])
+    else:
+        hframe.Fill(num_location*xmax, ylable_text[ich], ptsList[ich][2])
 hframe.LabelsDeflate("Y")
 hframe.LabelsOption("v")
 
@@ -329,7 +331,7 @@ hframe.GetYaxis().SetTitleOffset(1.2)
 hframe.GetXaxis().SetTitleOffset(1.1)
 
 hframe.GetYaxis().SetTitle("")
-hframe.GetXaxis().SetTitle("95% CL limit on \\sigma_{HH}/\\sigma_{SM_{HH}}")
+hframe.GetXaxis().SetTitle(r"\sigma_{HH}/\sigma_{SM_{HH}}")
 
 hframe.Draw("text")
 hframe.GetYaxis().SetRangeUser(0, Nch+100)
