@@ -44,6 +44,6 @@ echo "test ws" $ws "with seed" $seed "for toy generation r=" $rv
 
 combine -M GenerateOnly -d ../../../workspace/${ws} --toysFrequentist --bypassFrequentistFit --expectSignal $rv -t 1 --saveToys -s $seed -m 125 -n $jobname
 
-combine -M FitDiagnostics -d ../../../workspace/${ws} --toysFile higgsCombine${jobname}.GenerateOnly.mH125.${seed}.root --rMin -10 --rMax 50 -n $jobname --toysFrequentist -t 1 --ignoreCovWarning
+combine -M FitDiagnostics -d ../../../workspace/${ws} --toysFile higgsCombine${jobname}.GenerateOnly.mH125.${seed}.root --rMin -100 --rMax 100 -n $jobname --toysFrequentist -t 1 --ignoreCovWarning --robustFit=1 --setRobustFitStrategy 1
 
 #combine -M FitDiagnostics -d ../../../workspace/${ws} --toysFile higgsCombine${jobname}.GenerateOnly.mH125.${seed}.root --rMin -10 --rMax 50 -n $jobname --toysFrequentist -t 1 --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --ignoreCovWarning --cminDefaultMinimizerStrategy 1
