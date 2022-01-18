@@ -117,6 +117,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 'qqHH_CV_1_C2V_1_kl_2_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b',
                 'qqHH_CV_1_C2V_2_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b',
                 'qqHH_CV_1_C2V_1_kl_0_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b',
+                'qqHH_CV_0p5_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_0p5_C2V_1_kl_1_boost4b'
             })
 
         templates = {}
