@@ -32,7 +32,7 @@ def Eval(obj, x, params):
     return obj.Eval(x[0])
 
 
-def BuildScan(scan, param, files, color, yvals, ycut):
+def BuildScan(scan, param, files, color, linestyle, yvals, ycut):
     graph = read(scan, param, files, ycut)
     bestfit = None
     for i in xrange(graph.GetN()):
@@ -47,6 +47,7 @@ def BuildScan(scan, param, files, color, yvals, ycut):
     NAMECOUNTER += 1
     func.SetLineColor(color)
     func.SetLineWidth(3)
+    func.SetLineStyle(linestyle)
     assert(bestfit is not None)
     crossings = {}
     cross_1sig = None
@@ -104,6 +105,7 @@ parser.add_argument('--others', nargs='*', help='add secondary scans processed a
 parser.add_argument('--breakdown', help='do quadratic error subtraction using --others')
 parser.add_argument('--logo', default='CMS')
 parser.add_argument('--logo-sub', default='Internal')
+parser.add_argument('--digit', default='1')
 args = parser.parse_args()
 
 f = open('output.txt', 'w')
@@ -120,15 +122,16 @@ if args.translate is not None:
         print "fixed_name: ", fixed_name
 yvals = [1., 4.]
 
-main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, yvals, args.y_cut)
+main_scan = BuildScan(args.output, args.POI, [args.main], args.main_color, 1, yvals, args.y_cut)
 
 other_scans = []
 other_scans_opts = []
 if args.others is not None:
     for oargs in args.others:
+        print("scan ",oargs)
         splitargs = oargs.split(':')
         other_scans_opts.append(splitargs)
-        other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), yvals, args.y_cut))
+        other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), int(splitargs[3]), yvals, args.y_cut))
 
 canv = ROOT.TCanvas(args.output, args.output)
 pads = plot.OnePad()
@@ -195,26 +198,36 @@ crossings = main_scan['crossings']
 val_nom = main_scan['val']
 val_2sig = main_scan['val_2sig']
 
-textfit = '%s = %.1f{}^{#plus %.1f}_{#minus %.1f}' % (fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
+textfit = '%s %s = %.1f{}^{#plus %.1f}_{#minus %.1f}' % (args.main_label, fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
+if args.digit == '2':
+   textfit = '%s %s = %.2f{}^{#plus %.2f}_{#minus %.2f}' % (args.main_label, fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
+
 f.write('\n')
 f.write(textfit)
 
-pt = ROOT.TPaveText(0.59, 0.72 - len(other_scans)*0.08, 0.95, 0.80, 'NDCNB')
+pt = ROOT.TPaveText(0.28, 0.8 - len(other_scans)*0.03, 0.54, 0.80, 'NDCNB')
 pt.AddText(textfit)
-pt.SetTextSize(0.038)
+pt.SetTextSize(0.025)
+
+pt2 = ROOT.TPaveText(0.53, 0.8 - len(other_scans)*0.03, 0.85, 0.80, 'NDCNB')
+pt2.SetTextSize(0.025)
 
 if args.breakdown is None:
     for i, other in enumerate(other_scans):
-        textfit = '#color[%s]{%s = %.1f{}^{#plus %.1f}_{#minus %.1f}}' % (other_scans_opts[i][2], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
-        pt.AddText(textfit)
+        textfit = '#color[%s]{%s %s = %.1f{}^{#plus %.1f}_{#minus %.1f}}' % (other_scans_opts[i][2], other_scans_opts[i][1], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
+        if i<3:
+            pt.AddText(textfit)
+        else:
+            pt2.AddText(textfit)
 
 if args.breakdown is not None:
     pt.SetX1(0.50)
     if len(other_scans) >= 3:
         pt.SetX1(0.19)
-        pt.SetX2(0.88)
-        pt.SetY1(0.66)
+        pt.SetX2(0.74)
+        pt.SetY1(0.75)
         pt.SetY2(0.82)
+
     breakdown = args.breakdown.split(',')
     v_hi = [val_nom[1]]
     v_lo = [val_nom[2]]
@@ -245,6 +258,10 @@ pt.SetTextAlign(11)
 pt.SetTextFont(42)
 pt.Draw('SAME')
 
+pt2.SetTextAlign(11)
+pt2.SetTextFont(42)
+pt2.Draw('SAME')
+
 plot.DrawCMSLogo(pads[0], args.logo, args.logo_sub, 11, 0.045, 0.035, 1.2,  cmsTextSize=1.)
 
 legend_l = 0.69
@@ -262,8 +279,8 @@ legend.Draw()
 
 save_graph = main_scan['graph'].Clone()
 save_graph.GetXaxis().SetTitle('%s = %.3f %+.3f/%+.3f' % (fixed_name, val_nom[0], val_nom[2], val_nom[1]))
-outfile = ROOT.TFile(args.output+'.root', 'RECREATE')
+outfile = ROOT.TFile(args.POI+args.output+'.root', 'RECREATE')
 outfile.WriteTObject(save_graph)
 outfile.Close()
-canv.Print(args.POI+'_1Dscan.pdf')
-canv.Print(args.POI+'_1Dscan.png')
+canv.Print(args.POI+args.output+'.pdf')
+canv.Print(args.POI+args.output+'.png')
