@@ -128,7 +128,7 @@ other_scans = []
 other_scans_opts = []
 if args.others is not None:
     for oargs in args.others:
-        print("scan ",oargs)
+        print("scan ", oargs)
         splitargs = oargs.split(':')
         other_scans_opts.append(splitargs)
         other_scans.append(BuildScan(args.output, args.POI, [splitargs[0]], int(splitargs[2]), int(splitargs[3]), yvals, args.y_cut))
@@ -200,7 +200,7 @@ val_2sig = main_scan['val_2sig']
 
 textfit = '%s %s = %.1f{}^{#plus %.1f}_{#minus %.1f}' % (args.main_label, fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
 if args.digit == '2':
-   textfit = '%s %s = %.2f{}^{#plus %.2f}_{#minus %.2f}' % (args.main_label, fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
+    textfit = '%s %s = %.2f{}^{#plus %.2f}_{#minus %.2f}' % (args.main_label, fixed_name, val_nom[0], val_nom[1], abs(val_nom[2]))
 
 f.write('\n')
 f.write(textfit)
@@ -215,7 +215,7 @@ pt2.SetTextSize(0.025)
 if args.breakdown is None:
     for i, other in enumerate(other_scans):
         textfit = '#color[%s]{%s %s = %.1f{}^{#plus %.1f}_{#minus %.1f}}' % (other_scans_opts[i][2], other_scans_opts[i][1], fixed_name, other['val'][0], other['val'][1], abs(other['val'][2]))
-        if i<3:
+        if i < 3:
             pt.AddText(textfit)
         else:
             pt2.AddText(textfit)
