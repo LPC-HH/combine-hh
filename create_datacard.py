@@ -4,8 +4,10 @@ import rhalphalib as rl
 import numpy as np
 import pickle
 import uproot
+import logging
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
+logging.basicConfig(level=logging.DEBUG)
 
 
 def get_hist(inputfile, name, obs):
@@ -87,7 +89,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     # build actual fit model now
     model = rl.Model("HHModel")
     for region in regions:
-        print('INFO: starting region: %s' % region)
+        logging.info('starting region: %s' % region)
         ch = rl.Channel(region)
         model.addChannel(ch)
 
@@ -167,10 +169,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'JMS2016': 'CMS_bbbb_boosted_jms_2016',
             'JMS2017': 'CMS_bbbb_boosted_jms_2017',
             'JMS2018': 'CMS_bbbb_boosted_jms_2018',
-            #'JMR': 'CMS_bbbb_boosted_jmr',
-             'JMR2016': 'CMS_bbbb_boosted_ggf_jmr_2016',
-             'JMR2017': 'CMS_bbbb_boosted_ggf_jmr_2017',
-             'JMR2018': 'CMS_bbbb_boosted_ggf_jmr_2018',
+            'JMR2016': 'CMS_bbbb_boosted_ggf_jmr_2016',
+            'JMR2017': 'CMS_bbbb_boosted_ggf_jmr_2017',
+            'JMR2018': 'CMS_bbbb_boosted_ggf_jmr_2018',
             'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
             'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
@@ -187,33 +188,37 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
         sNames = [proc for proc in templates.keys() if proc not in ['bbbb_boosted_ggf_qcd_datadriven', 'data']]
         for sName in sNames:
-            print('INFO: get templates for: %s' % sName)
+            logging.info('get templates for: %s' % sName)
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
-            sample.setParamEffect(lumi_13TeV_2016, 1.0026)  # 36330.0/137650.0*0.01+1
-            sample.setParamEffect(lumi_13TeV_2017, 1.0060)  # 41480.0/137650.0*0.02+1
-            sample.setParamEffect(lumi_13TeV_2018, 1.0065)  # 59830.0/137650.0*0.015+1
-            sample.setParamEffect(lumi_13TeV_correlated, 1.0130)  # 59830.0/137650.0*0.020+41480.0/137650.0*0.009+0.006*36330.0/137650.0+1
-            sample.setParamEffect(lumi_13TeV_1718, 1.0118)  # 59830.0/137650.0*0.016+41480.0/137650.0*0.016+1
+            lumi_16 = 36.33
+            lumi_17 = 41.48
+            lumi_18 = 59.83
+            lumi_run2 = lumi_16 + lumi_17 + lumi_18
+            sample.setParamEffect(lumi_13TeV_2016, 1.01 * lumi_16 / lumi_run2)
+            sample.setParamEffect(lumi_13TeV_2017, 1.02 * lumi_17 / lumi_run2)
+            sample.setParamEffect(lumi_13TeV_2018, 1.015 * lumi_18 / lumi_run2)
+            sample.setParamEffect(lumi_13TeV_correlated, (1.02 * lumi_18 + 1.009 * lumi_17 + 1.006 * lumi_16) / lumi_run2)
+            sample.setParamEffect(lumi_13TeV_1718, (1.006 * lumi_17 + 1.002 * lumi_18) / lumi_run2)
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
-                    sample.setParamEffect(thu_hh, 0.7822, 1.0556)
+                    sample.setParamEffect(thu_hh, 1.0556, 0.7822)
 
             if sName == "bbbb_boosted_ggf_others":
                 if "Bin1" in region:
-                    sample.setParamEffect(fsrothers, 0.82, 1.06)
-                    sample.setParamEffect(isrothers, 0.94, 1.05)
+                    sample.setParamEffect(fsrothers, 1.06, 0.82)
+                    sample.setParamEffect(isrothers, 1.05, 0.94)
                 elif "Bin2" in region:
-                    sample.setParamEffect(fsrothers, 0.90, 1.02)
-                    sample.setParamEffect(isrothers, 0.93, 1.07)
+                    sample.setParamEffect(fsrothers, 1.02, 0.90)
+                    sample.setParamEffect(isrothers, 1.07, 0.93)
                 elif "Bin3" in region:
-                    sample.setParamEffect(fsrothers, 0.91, 1.02)
-                    sample.setParamEffect(isrothers, 0.93, 1.06)
+                    sample.setParamEffect(fsrothers, 1.02, 0.91)
+                    sample.setParamEffect(isrothers, 1.06, 0.93)
                 elif "fail" in region:
-                    sample.setParamEffect(fsrothers, 0.92, 1.05)
-                    sample.setParamEffect(isrothers, 0.94, 1.05)
+                    sample.setParamEffect(fsrothers, 1.05, 0.92)
+                    sample.setParamEffect(isrothers, 1.05, 0.94)
 
             if sName == "ttbar" and "Bin1" in region:
                 if region == "passBin1":
@@ -246,14 +251,14 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(qcdScaleqqHH, 1.0003, 0.9996)
 
             # set mc stat uncs
-            print('INFO: setting autoMCStats for %s' % sName)
+            logging.info('setting autoMCStats for %s' % sName)
             sample.autoMCStats()
 
             # shape systematics
             valuesNominal = templ[0]
 
             for isyst, syst in enumerate(systs):
-                print('INFO: setting shape effect %s for %s' % (syst, sName))
+                logging.info('setting shape effect %s for %s' % (syst, sName))
                 valuesUp = get_hist(inputfile, '%s_%sUp' % (templateNames[sName], syst), obs=msd)[0]
                 valuesDown = get_hist(inputfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
@@ -271,13 +276,14 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         ch.setObservation(data_obs)
 
     for passChName, failChName in regionPairs:
-        print('INFO: setting transfer factor for pass region %s, fail region %s' % (passChName, failChName))
+        logging.info('setting transfer factor for pass region %s, fail region %s' % (passChName, failChName))
         failCh = model[failChName]
         passCh = model[passChName]
 
         # sideband fail
         initial_qcd = failCh.getObservation().astype(float)  # was integer, and numpy complained about subtracting float from it
         for sample in failCh:
+            logging.debug('subtracting %s from qcd' % sample._name)
             initial_qcd -= sample.getExpectation(nominal=True)
         if np.any(initial_qcd < 0.):
             raise ValueError("initial_qcd negative for some bins..", initial_qcd)
@@ -294,7 +300,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
         pickle.dump(model, fout)
 
-    print('INFO: rendering combine model')
+    logging.info('rendering combine model')
     model.renderCombine(os.path.join(str(carddir), 'HHModel'))
 
 
@@ -313,5 +319,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not os.path.exists(args.carddir):
         os.mkdir(args.carddir)
-    print(args.blinded)
     create_datacard(args.inputfile, args.carddir, args.nbins, args.nMCTF, args.nDataTF, args.passBinName, "fail", args.blinded)
