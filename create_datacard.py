@@ -31,7 +31,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     regions = [item for t in regionPairs for item in t]  # all regions
 
-    #luminosity unc https://gitlab.cern.ch/hh/naming-conventions#luminosity
+    # luminosity unc https://gitlab.cern.ch/hh/naming-conventions#luminosity
     lumi_13TeV_2016 = rl.NuisanceParameter('lumi_13TeV_2016', 'lnN')
     lumi_13TeV_2017 = rl.NuisanceParameter('lumi_13TeV_2017', 'lnN')
     lumi_13TeV_2018 = rl.NuisanceParameter('lumi_13TeV_2018', 'lnN')
@@ -67,10 +67,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdmodel.addChannel(fitfailCh)
     qcdmodel.addChannel(passCh)
 
-    # pseudodata MC template
-    passTeml_hist_name = 'histJet2Mass_'
-    if(add_blinded):
-        passTeml_hist_name = 'histJet2MassBlind_'
     passTempl = get_hist(inputfile, 'histJet2MassBlind_'+passBinName+'_QCD', obs=msd)
     fitfailTempl = get_hist(inputfile, 'histJet2Massfit_fail_QCD', obs=msd)
 
@@ -151,9 +147,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             'JMS2017': 'CMS_bbbb_boosted_jms_2017',
             'JMS2018': 'CMS_bbbb_boosted_jms_2018',
             'JMR': 'CMS_bbbb_boosted_jmr',
-            #'JMR2016': 'CMS_bbbb_boosted_jmr_2016',
-            #'JMR2017': 'CMS_bbbb_boosted_jmr_2017',
-            #'JMR2018': 'CMS_bbbb_boosted_jmr_2018',
+            # 'JMR2016': 'CMS_bbbb_boosted_jmr_2016',
+            # 'JMR2017': 'CMS_bbbb_boosted_jmr_2017',
+            # 'JMR2018': 'CMS_bbbb_boosted_jmr_2018',
             'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
             'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
             'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
@@ -176,11 +172,11 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
 
-            sample.setParamEffect(lumi_13TeV_2016, 1.0026) # 36330.0/137650.0*0.01+1
-            sample.setParamEffect(lumi_13TeV_2017, 1.0060) # 41480.0/137650.0*0.02+1
-            sample.setParamEffect(lumi_13TeV_2018, 1.0065) # 59830.0/137650.0*0.015+1
-            sample.setParamEffect(lumi_13TeV_correlated, 1.0130) # 59830.0/137650.0*0.020+41480.0/137650.0*0.009+0.006*36330.0/137650.0+1
-            sample.setParamEffect(lumi_13TeV_1718, 1.0118) # 59830.0/137650.0*0.016+41480.0/137650.0*0.016+1
+            sample.setParamEffect(lumi_13TeV_2016, 1.0026)  # 36330.0/137650.0*0.01+1
+            sample.setParamEffect(lumi_13TeV_2017, 1.0060)  # 41480.0/137650.0*0.02+1
+            sample.setParamEffect(lumi_13TeV_2018, 1.0065)  # 59830.0/137650.0*0.015+1
+            sample.setParamEffect(lumi_13TeV_correlated, 1.0130)  # 59830.0/137650.0*0.020+41480.0/137650.0*0.009+0.006*36330.0/137650.0+1
+            sample.setParamEffect(lumi_13TeV_1718, 1.0118)  # 59830.0/137650.0*0.016+41480.0/137650.0*0.016+1
             
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
