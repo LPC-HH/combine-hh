@@ -36,7 +36,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     lumi_13TeV_2017 = rl.NuisanceParameter('lumi_13TeV_2017', 'lnN')
     lumi_13TeV_2018 = rl.NuisanceParameter('lumi_13TeV_2018', 'lnN')
     lumi_13TeV_correlated = rl.NuisanceParameter('lumi_13TeV_correlated', 'lnN')
-    lumi_13TeV_1718 = rl.NuisanceParameter('lumi_13TeV_1718', 'lnN') 
+    lumi_13TeV_1718 = rl.NuisanceParameter('lumi_13TeV_1718', 'lnN')
     ttbarBin1MCstats = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_ttbarBin1_yieldMCStats', 'lnN')
     PNetHbbScaleFactorssyst = rl.NuisanceParameter('CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_correlated', 'lnN')
     brHbb = rl.NuisanceParameter('BR_hbb', 'lnN')
@@ -174,7 +174,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.setParamEffect(lumi_13TeV_2017, 1.0060)  # 41480.0/137650.0*0.02+1
             sample.setParamEffect(lumi_13TeV_2018, 1.0065)  # 59830.0/137650.0*0.015+1
             sample.setParamEffect(lumi_13TeV_correlated, 1.0130)  # 59830.0/137650.0*0.020+41480.0/137650.0*0.009+0.006*36330.0/137650.0+1
-            sample.setParamEffect(lumi_13TeV_1718, 1.0118)  # 59830.0/137650.0*0.016+41480.0/137650.0*0.016+1    
+            sample.setParamEffect(lumi_13TeV_1718, 1.0118)  # 59830.0/137650.0*0.016+41480.0/137650.0*0.016+1
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
                     sample.setParamEffect(thu_hh, 0.7822, 1.0556)
