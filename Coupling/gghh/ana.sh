@@ -21,7 +21,7 @@ combine -D $dataset -M MultiDimFit --saveWorkspace -m 125 ${ws}.root  --cminDefa
 combine -M FitDiagnostics -d ${ws}.root --rMin 0 --rMax 4 -n Bkgonly_${version} --cminDefaultMinimizerStrategy 1 --setParameters mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=1,mask_fail=1,r=0 --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --saveNormalizations --saveShapes --saveOverallShapes --ignoreCovWarning --saveWorkspace --redefineSignalPOIs r
 python ../script/diffNuisances.py -a fitDiagnosticsbkgonly${version}.root --skipFitS -g plots.root
 
-#echo "fit kl"
+echo "fit kl"
 combine -M MultiDimFit -t -1 ${postfitws} --snapshotName MultiDimFit --bypassFrequentistFit --redefineSignalPOIs kl --setParameters r=1,r_gghh=1,r_qqhh=1,kt=1,kl=1,CV=1,C2V=1,mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --toysFrequentist -m 125 -n kl_bestfit_${version} --freezeParameters r,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 echo "expected kl 1D scan"
@@ -45,7 +45,7 @@ python ../../../script/plot1DScan.py higgsCombineC2V_scan_${version}.MultiDimFit
 mv C2V_1Dscan.pdf C2V_1Dscan_${version}.pdf
 mv C2V_1Dscan.png C2V_1Dscan_${version}.png
 
-#echo "fit mu"
+echo "fit mu"
 combine -M MultiDimFit -t -1 ${postfitws} --snapshotName MultiDimFit --bypassFrequentistFit --redefineSignalPOIs r --setParameters r=1,r_gghh=1,r_qqhh=1,kt=1,kl=1,CV=1,C2V=1,mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_SRBin1=1,mask_SRBin2=1,mask_SRBin3=1 --toysFrequentist -m 125 -n mu_testfit_${version} --freezeParameters kl,r_gghh,r_qqhh,kt,CV,C2V --saveNLL --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1
 
 echo "expected mu 1D scan"
@@ -54,6 +54,9 @@ combine -M MultiDimFit -t -1 --algo grid --point 13 ${postfitws} --snapshotName 
 python ../../../script/plot1DScan.py higgsCombinemu_scan_${version}.MultiDimFit.mH125.root --POI r --main-label expected --main-color 4 --translate ../../../script/trans.json
 mv r_1Dscan.pdf r_1Dscan_${version}.pdf
 mv r_1Dscan.png r_1Dscan_${version}.png
+
+echo "expected significance"
+combine -M Significance -t -1 --snapshotName MultiDimFit --bypassFrequentistFit --redefineSignalPOIs r --setParameters r=1,r_gghh=1,r_qqhh=1,kt=1,kl=1,CV=1,C2V=1,mask_SRBin1=0,mask_SRBin2=0,mask_SRBin3=0,mask_fitfail=0,mask_passBin1=1,mask_passBin2=1,mask_passBin3=1,mask_fail=1 --toysFrequentist --signif -m 125 -n ${version} ${ws}.root --redefineSignalPOIs r --freezeParameters r_gghh,r_qqhh,kt,kl,CV,C2V --floatParameters r --cminDefaultMinimizerStrategy 1 --cminFallbackAlgo Minuit2,Migrad,1:0.1 --verbose -1
 
 #the output of the command above is higgsCombineTest.MultiDimFit.mH125.root, need to upload the snapshot "MultiDimFit" from the bkg-only fit 
 #expected limit for SM HH signal strength upper limit:
