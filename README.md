@@ -20,7 +20,7 @@ scram b
 
 pip install --user flake8
 pip install --user --upgrade numpy
-pip install --user https://github.com/jmduarte/rhalphalib/archive/coefsq.zip
+pip install --user https://github.com/jmduarte/rhalphalib/archive/coefsq_rebase.zip
 pip install --user --upgrade uproot # use uproot4
 ```
 
