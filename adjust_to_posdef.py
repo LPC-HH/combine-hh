@@ -130,7 +130,7 @@ def get_abs_err(shape, logn_err):
 def plot_shape(y, ynew, yerr, yerrnew, name):
     plt.figure()
     hep.histplot(y, range(0, len(y)+1), yerr=yerr, histtype='step', label='before')
-    hep.histplot(ynew, range(0, len(ynew)+1), yerr=yerrnew, histtype='step', label='after')
+    hep.histplot(ynew, range(0, len(ynew)+1), yerr=yerrnew, histtype='step', label='after', ls='--')
     plt.legend(title=name)
     plt.ylim(bottom=0)
     plt.savefig('{name}.png'.format(name=name))
@@ -199,8 +199,8 @@ if __name__ == "__main__":
             diff=adiff.max(),
             chi2=chi2)
         )
-        print("old norm: {norm}".format(norm=np.sum(shape)))
-        print("new norm: {norm}".format(norm=np.sum(ynew)))
+        print("old norm: {norm} +/- {err}".format(norm=np.sum(shape), err=np.sqrt(np.sum(np.square(err)))))
+        print("new norm: {norm} +/- {err}".format(norm=np.sum(ynew), err=np.sqrt(np.sum(np.square(err)))))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
         plot_shape(shape, newpts[name + channel], (logn_err-1)*shape, (newerrs[name + channel]-1)*newpts[name + channel], name)
@@ -229,8 +229,8 @@ if __name__ == "__main__":
             diff=adiff.max(),
             chi2=chi2)
         )
-        print("old norm: {norm}".format(norm=np.sum(shape)))
-        print("new norm: {norm}".format(norm=np.sum(ynew)))
+        print("old norm: {norm} +/- {err}".format(norm=np.sum(shape), err=np.sqrt(np.sum(np.square(err)))))
+        print("new norm: {norm} +/- {err}".format(norm=np.sum(ynew), err=np.sqrt(np.sum(np.square(err)))))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
         newpts[name + channel][ggHH_zero_bins] = 0
