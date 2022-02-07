@@ -5,11 +5,10 @@ import numpy as np
 import pickle
 import uproot
 import logging
-from adjust_to_posdef import BasisPointExpansion, ggHH_points, qqHH_points, plot_shape
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
-logging.basicConfig(level=logging.DEBUG)
-adjust_posdef_yields = True
+logging.basicConfig(level=logging.INFO)
+adjust_posdef_yields = False
 
 
 def get_hist(inputfile, name, obs):
@@ -134,6 +133,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             templates[temp] = get_hist(inputfile, templateNames[temp], obs=msd)
 
         if adjust_posdef_yields:
+            # requires python3 and cvxpy
+            from adjust_to_posdef import BasisPointExpansion, ggHH_points, qqHH_points, plot_shape
             channel = "_hbbhbb"
             # get qqHH points
             qqHHproc = BasisPointExpansion(3)
@@ -296,10 +297,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 valuesDown = get_hist(inputfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
-                for i in range(len(valuesNominal)):
-                    if valuesNominal[i] > 0.:
-                        effectUp[i] = valuesUp[i]/valuesNominal[i]
-                        effectDown[i] = valuesDown[i]/valuesNominal[i]
+                mask = (valuesNominal > 0)
+                effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
+                effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
                 sample.setParamEffect(syst_param_array[isyst], effectUp, effectDown)
             ch.addSample(sample)
 

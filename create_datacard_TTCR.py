@@ -54,11 +54,9 @@ def create_datacard_TTCR(inputfile, carddir, region):
             valuesDown = get_hist(inputfile, 'histJet2Mass_%s_%s_%sDown' % (region, sName, syst), obs=msd)[0]
             effectUp = np.ones_like(valuesNominal)
             effectDown = np.ones_like(valuesNominal)
-            for i in range(len(valuesNominal)):
-                if valuesNominal[i] > 0.:
-                    effectUp[i] = valuesUp[i]/valuesNominal[i]
-                    effectDown[i] = valuesDown[i]/valuesNominal[i]
-
+            mask = (valuesNominal > 0)
+            effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
+            effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
             syst_param = rl.NuisanceParameter(systs[syst], 'shape')
             sample.setParamEffect(syst_param, effectUp, effectDown)
 
