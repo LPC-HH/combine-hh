@@ -5,9 +5,11 @@ import numpy as np
 import pickle
 import uproot
 import logging
+from adjust_to_posdef import BasisPointExpansion, ggHH_points, qqHH_points, plot_shape
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 logging.basicConfig(level=logging.DEBUG)
+adjust_posdef_yields = True
 
 
 def get_hist(inputfile, name, obs):
@@ -130,6 +132,36 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         templates = {}
         for temp in templateNames:
             templates[temp] = get_hist(inputfile, templateNames[temp], obs=msd)
+
+        if adjust_posdef_yields:
+            channel = "_hbbhbb"
+            # get qqHH points
+            qqHHproc = BasisPointExpansion(3)
+            ggHHproc = BasisPointExpansion(2)
+            for HHproc, HH_points in zip([ggHHproc, qqHHproc], [ggHH_points, qqHH_points]):
+                for name, c in HH_points.items():
+                    shape = templates[name + channel][0]
+                    err = np.sqrt(templates[name + channel][3])
+                    # set 0 bin error to something non0
+                    err[err == 0] = err[err.nonzero()].min()
+                    logging.debug(name + channel)
+                    logging.debug("shape: {shape}".format(shape=shape))
+                    logging.debug("err: {err}".format(err=err))
+                    HHproc.add_point(c, shape, err)
+                # fit HH points with DCP
+                HHproc.solve("dcp")
+                # get new HH points
+                for name, c in HH_points.items():
+                    newshape = HHproc(c)
+                    shape = templates[name + channel][0]
+                    edges = templates[name + channel][1]
+                    obs_name = templates[name + channel][2]
+                    err = np.sqrt(templates[name + channel][3])
+                    # set error to 100% if shape orignally 0 and now not
+                    newerr = np.copy(err)
+                    newerr[(newshape > 0) & (newerr == 0)] = newshape[(newshape > 0) & (newerr == 0)]
+                    templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
+                    plot_shape(shape, newshape, err, newerr, name+"_"+region)
 
         # dictionary of systematics -> name in cards
         systs = {
