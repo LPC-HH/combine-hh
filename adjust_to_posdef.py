@@ -76,7 +76,8 @@ class BasisPointExpansion:
             if algo == "svd_pos":
                 eig, eigv = np.linalg.eigh(M)
                 eigp = np.maximum(eig, tol)  # magic happens here
-                M = (eigv * eigp[:, None, :]) @ np.swapaxes(eigv, 1, 2)
+                # M = (eigv * eigp[:, None, :]) @ np.swapaxes(eigv, 1, 2)
+                M = np.matmul(eigv * eigp[:, None, :], np.swapaxes(eigv, 1, 2))
             self._M = M
         elif algo == "dcp":
             import cvxpy as cp
@@ -94,10 +95,10 @@ class BasisPointExpansion:
                 if prob.status == cp.OPTIMAL:
                     pass
                 elif prob.status == cp.OPTIMAL_INACCURATE:
-                    warnings.warn(f"Inaccurate solution for bin {i} (rss={rss})")
+                    warnings.warn("Inaccurate solution for bin {i} (rss={rss})".format(i=i, rss=rss))
                 else:
                     raise RuntimeError(
-                        f"Unable to solve problem for bin {i} (rss={rss}, status={prob.status})"
+                        "Unable to solve problem for bin {i} (rss={rss}, status={status})".format(i=i, rss=rss, status=prob.status)
                     )
                 Mall[i] = M.value
             self._M = Mall
@@ -105,7 +106,8 @@ class BasisPointExpansion:
     def __call__(self, c):
         if self._M is None:
             raise RuntimeError("Please call solve() first")
-        return c @ self._M @ c
+        # return c @ self._M @ c
+        return np.matmul(np.matmul(c, self._M), c)
 
 
 def qqHH_coef(CV=0.0, kl=0.0, C2V=0.0):
@@ -131,7 +133,7 @@ def plot_shape(y, ynew, yerr, yerrnew, name):
     hep.histplot(ynew, range(0, len(ynew)+1), yerr=yerrnew, histtype='step', label='after')
     plt.legend(title=name)
     plt.ylim(bottom=0)
-    plt.savefig(f'{name}.png')
+    plt.savefig('{name}.png'.format(name=name))
     plt.close()
 
 
@@ -191,9 +193,14 @@ if __name__ == "__main__":
         adiff = abs(ynew - shape)
         chi = adiff / err
         chi2 = np.sum(chi * chi)
-        print(f"{name} lowest val {ynew.min()} max diff {adiff.max()} chi2 {chi2}")
-        print(f"old norm: {np.sum(shape)}")
-        print(f"new norm: {np.sum(ynew)}")
+        print("{name} lowest val {ymin} max diff {diff} chi2 {chi2}".format(
+            name=name,
+            ymin=ynew.min(),
+            diff=adiff.max(),
+            chi2=chi2)
+        )
+        print("old norm: {norm}".format(norm=np.sum(shape)))
+        print("new norm: {norm}".format(norm=np.sum(ynew)))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
         plot_shape(shape, newpts[name + channel], (logn_err-1)*shape, (newerrs[name + channel]-1)*newpts[name + channel], name)
@@ -216,9 +223,14 @@ if __name__ == "__main__":
         reldiff = adiff/shape
         chi = adiff / err
         chi2 = np.sum(chi * chi)
-        print(f"{name} lowest val {ynew.min()} max diff {adiff.max()} chi2 {chi2}")
-        print(f"old norm: {np.sum(shape)}")
-        print(f"new norm: {np.sum(ynew)}")
+        print("{name} lowest val {ymin} max diff {diff} chi2 {chi2}".format(
+            name=name,
+            ymin=ynew.min(),
+            diff=adiff.max(),
+            chi2=chi2)
+        )
+        print("old norm: {norm}".format(norm=np.sum(shape)))
+        print("new norm: {norm}".format(norm=np.sum(ynew)))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
         newpts[name + channel][ggHH_zero_bins] = 0
