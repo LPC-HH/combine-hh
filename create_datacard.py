@@ -7,7 +7,7 @@ import uproot
 import logging
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 adjust_posdef_yields = False
 
 
@@ -35,6 +35,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     regions = [item for t in regionPairs for item in t]  # all regions
 
     # luminosity unc https://gitlab.cern.ch/hh/naming-conventions#luminosity
+    lumi_16 = 36.33
+    lumi_17 = 41.48
+    lumi_18 = 59.83
+    lumi_run2 = lumi_16 + lumi_17 + lumi_18
     lumi_13TeV_2016 = rl.NuisanceParameter('lumi_13TeV_2016', 'lnN')
     lumi_13TeV_2017 = rl.NuisanceParameter('lumi_13TeV_2017', 'lnN')
     lumi_13TeV_2018 = rl.NuisanceParameter('lumi_13TeV_2018', 'lnN')
@@ -221,21 +225,24 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             syst_param_array.append(rl.NuisanceParameter(systs[syst], 'shape'))
 
         sNames = [proc for proc in templates.keys() if proc not in ['bbbb_boosted_ggf_qcd_datadriven', 'data']]
+
         for sName in sNames:
             logging.info('get templates for: %s' % sName)
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
-            lumi_16 = 36.33
-            lumi_17 = 41.48
-            lumi_18 = 59.83
-            lumi_run2 = lumi_16 + lumi_17 + lumi_18
-            sample.setParamEffect(lumi_13TeV_2016, 1.01 * lumi_16 / lumi_run2)
-            sample.setParamEffect(lumi_13TeV_2017, 1.02 * lumi_17 / lumi_run2)
-            sample.setParamEffect(lumi_13TeV_2018, 1.015 * lumi_18 / lumi_run2)
-            sample.setParamEffect(lumi_13TeV_correlated, (1.02 * lumi_18 + 1.009 * lumi_17 + 1.006 * lumi_16) / lumi_run2)
-            sample.setParamEffect(lumi_13TeV_1718, (1.006 * lumi_17 + 1.002 * lumi_18) / lumi_run2)
+            sample.setParamEffect(lumi_13TeV_2016, 1.01 ** (lumi_16 / lumi_run2))
+            sample.setParamEffect(lumi_13TeV_2017, 1.02 ** (lumi_17 / lumi_run2))
+            sample.setParamEffect(lumi_13TeV_2018, 1.015 ** (lumi_18 / lumi_run2))
+            sample.setParamEffect(
+                lumi_13TeV_correlated,
+                1.02 ** (lumi_18 / lumi_run2) * 1.009 ** (lumi_17 / lumi_run2) * 1.006 ** (lumi_16 / lumi_run2)
+             )
+            sample.setParamEffect(
+                lumi_13TeV_1718,
+                1.006 ** (lumi_17 / lumi_run2) * 1.002 ** (lumi_18 / lumi_run2)
+            )
             if not include_ac:
                 if sName == "ggHH_kl_1_kt_1_hbbhbb":
                     sample.setParamEffect(thu_hh, 1.0556, 0.7822)
@@ -300,6 +307,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 mask = (valuesNominal > 0)
                 effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
                 effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
+                logging.debug("nominal   : {nominal}".format(nominal=valuesNominal))
+                logging.debug("effectUp  : {effectUp}".format(effectUp=effectUp))
+                logging.debug("effectDown: {effectDown}".format(effectDown=effectDown))
                 sample.setParamEffect(syst_param_array[isyst], effectUp, effectDown)
             ch.addSample(sample)
 
