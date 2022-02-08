@@ -11,8 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 adjust_posdef_yields = False
 
 
-def get_hist(inputfile, name, obs):
-    upfile = uproot.open(inputfile)
+def get_hist(upfile, name, obs):
     hist_values = upfile[name].values()
     hist_edges = upfile[name].axis().edges()
     hist_uncs = upfile[name].variances()
@@ -27,6 +26,9 @@ def get_hist(inputfile, name, obs):
 
 
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
+
+    # open uproot file once
+    upfile = uproot.open(inputfile)
 
     regionPairs = [('SR'+passBinName, 'fit'+failBinName)]  # pass, fail region pairs
     if add_blinded:
@@ -73,8 +75,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdmodel.addChannel(fitfailCh)
     qcdmodel.addChannel(passCh)
 
-    passTempl = get_hist(inputfile, 'histJet2MassBlind_'+passBinName+'_QCD', obs=msd)
-    fitfailTempl = get_hist(inputfile, 'histJet2Massfit_fail_QCD', obs=msd)
+    passTempl = get_hist(upfile, 'histJet2MassBlind_'+passBinName+'_QCD', obs=msd)
+    fitfailTempl = get_hist(upfile, 'histJet2Massfit_fail_QCD', obs=msd)
 
     passCh.setObservation(passTempl[:-1])
     fitfailCh.setObservation(fitfailTempl[:-1])
@@ -90,6 +92,58 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
     # qcd params
     qcdparams = np.array([rl.IndependentParameter('CMS_bbbb_boosted_ggf_qcdparam_msdbin%d' % i, 0) for i in range(msd.nbins)])
+
+    # dictionary of shape systematics -> name in cards
+    systs = {
+        'mHHTHunc': 'CMS_bbbb_boosted_ggf_mHHTHunc',
+        'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
+        'FSRPartonShower': 'ps_fsr',
+        'ISRPartonShower': 'ps_isr',
+        'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
+        'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
+        'othersQCD': 'CMS_bbbb_boosted_ggf_othersQCD',
+        'pileupWeight2016': 'CMS_pileup_2016',
+        'pileupWeight2017': 'CMS_pileup_2017',
+        'pileupWeight2018': 'CMS_pileup_2018',
+        'JER2016': 'CMS_res_j_2016',
+        'JER2017': 'CMS_res_j_2017',
+        'JER2018': 'CMS_res_j_2018',
+        'JES_Abs': 'CMS_scale_j_Abs',
+        'JES_Abs_2016': 'CMS_scale_j_Abs_2016',
+        'JES_Abs_2017': 'CMS_scale_j_Abs_2017',
+        'JES_Abs_2018': 'CMS_scale_j_Abs_2018',
+        'JES_BBEC1': 'CMS_scale_j_BBEC1',
+        'JES_BBEC1_2016': 'CMS_scale_j_BBEC1_2016',
+        'JES_BBEC1_2017': 'CMS_scale_j_BBEC1_2017',
+        'JES_BBEC1_2018': 'CMS_scale_j_BBEC1_2018',
+        'JES_EC2': 'CMS_scale_j_EC2',
+        'JES_EC2_2016': 'CMS_scale_j_EC2_2016',
+        'JES_EC2_2017': 'CMS_scale_j_EC2_2017',
+        'JES_EC2_2018': 'CMS_scale_j_EC2_2018',
+        'JES_FlavQCD': 'CMS_scale_j_FlavQCD',
+        'JES_HF': 'CMS_scale_j_HF',
+        'JES_HF_2016': 'CMS_scale_j_HF_2016',
+        'JES_HF_2017': 'CMS_scale_j_HF_2017',
+        'JES_HF_2018': 'CMS_scale_j_HF_2018',
+        'JES_RelBal': 'CMS_scale_j_RelBal',
+        'JES_RelSample_2016': 'CMS_scale_j_RelSample_2016',
+        'JES_RelSample_2017': 'CMS_scale_j_RelSample_2017',
+        'JES_RelSample_2018': 'CMS_scale_j_RelSample_2018',
+        'JMS2016': 'CMS_bbbb_boosted_ggf_jms_2016',
+        'JMS2017': 'CMS_bbbb_boosted_ggf_jms_2017',
+        'JMS2018': 'CMS_bbbb_boosted_ggf_jms_2018',
+        'JMR2016': 'CMS_bbbb_boosted_ggf_jmr_2016',
+        'JMR2017': 'CMS_bbbb_boosted_ggf_jmr_2017',
+        'JMR2018': 'CMS_bbbb_boosted_ggf_jmr_2018',
+        'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
+        'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
+        'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
+        'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
+        'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
+        'trigCorrHH2016': 'CMS_bbbb_boosted_ggf_trigCorrHH2016',
+        'trigCorrHH2017': 'CMS_bbbb_boosted_ggf_trigCorrHH2017',
+        'trigCorrHH2018': 'CMS_bbbb_boosted_ggf_trigCorrHH2018'
+    }
 
     # build actual fit model now
     model = rl.Model("HHModel")
@@ -134,7 +188,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
         templates = {}
         for temp in templateNames:
-            templates[temp] = get_hist(inputfile, templateNames[temp], obs=msd)
+            templates[temp] = get_hist(upfile, templateNames[temp], obs=msd)
 
         if adjust_posdef_yields:
             # requires python3 and cvxpy
@@ -167,58 +221,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                     newerr[(newshape > 0) & (newerr == 0)] = newshape[(newshape > 0) & (newerr == 0)]
                     templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
                     plot_shape(shape, newshape, err, newerr, name+"_"+region)
-
-        # dictionary of systematics -> name in cards
-        systs = {
-            'mHHTHunc': 'CMS_bbbb_boosted_ggf_mHHTHunc',
-            'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
-            'FSRPartonShower': 'ps_fsr',
-            'ISRPartonShower': 'ps_isr',
-            'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
-            'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
-            'othersQCD': 'CMS_bbbb_boosted_ggf_othersQCD',
-            'pileupWeight2016': 'CMS_pileup_2016',
-            'pileupWeight2017': 'CMS_pileup_2017',
-            'pileupWeight2018': 'CMS_pileup_2018',
-            'JER2016': 'CMS_res_j_2016',
-            'JER2017': 'CMS_res_j_2017',
-            'JER2018': 'CMS_res_j_2018',
-            'JES_Abs': 'CMS_scale_j_Abs',
-            'JES_Abs_2016': 'CMS_scale_j_Abs_2016',
-            'JES_Abs_2017': 'CMS_scale_j_Abs_2017',
-            'JES_Abs_2018': 'CMS_scale_j_Abs_2018',
-            'JES_BBEC1': 'CMS_scale_j_BBEC1',
-            'JES_BBEC1_2016': 'CMS_scale_j_BBEC1_2016',
-            'JES_BBEC1_2017': 'CMS_scale_j_BBEC1_2017',
-            'JES_BBEC1_2018': 'CMS_scale_j_BBEC1_2018',
-            'JES_EC2': 'CMS_scale_j_EC2',
-            'JES_EC2_2016': 'CMS_scale_j_EC2_2016',
-            'JES_EC2_2017': 'CMS_scale_j_EC2_2017',
-            'JES_EC2_2018': 'CMS_scale_j_EC2_2018',
-            'JES_FlavQCD': 'CMS_scale_j_FlavQCD',
-            'JES_HF': 'CMS_scale_j_HF',
-            'JES_HF_2016': 'CMS_scale_j_HF_2016',
-            'JES_HF_2017': 'CMS_scale_j_HF_2017',
-            'JES_HF_2018': 'CMS_scale_j_HF_2018',
-            'JES_RelBal': 'CMS_scale_j_RelBal',
-            'JES_RelSample_2016': 'CMS_scale_j_RelSample_2016',
-            'JES_RelSample_2017': 'CMS_scale_j_RelSample_2017',
-            'JES_RelSample_2018': 'CMS_scale_j_RelSample_2018',
-            'JMS2016': 'CMS_bbbb_boosted_ggf_jms_2016',
-            'JMS2017': 'CMS_bbbb_boosted_ggf_jms_2017',
-            'JMS2018': 'CMS_bbbb_boosted_ggf_jms_2018',
-            'JMR2016': 'CMS_bbbb_boosted_ggf_jmr_2016',
-            'JMR2017': 'CMS_bbbb_boosted_ggf_jmr_2017',
-            'JMR2018': 'CMS_bbbb_boosted_ggf_jmr_2018',
-            'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
-            'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
-            'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
-            'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
-            'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
-            'trigCorrHH2016': 'CMS_bbbb_boosted_ggf_trigCorrHH2016',
-            'trigCorrHH2017': 'CMS_bbbb_boosted_ggf_trigCorrHH2017',
-            'trigCorrHH2018': 'CMS_bbbb_boosted_ggf_trigCorrHH2018'
-        }
 
         syst_param_array = []
         for syst in systs:
@@ -299,9 +301,22 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             valuesNominal = templ[0]
 
             for isyst, syst in enumerate(systs):
+                # add some easy skips
+                if (sName != 'ttbar') and (syst in ['ttJetsCorr', 'BDTShape', 'PNetShape']):
+                    continue
+                if ((sName != 'ttbar') or ('Bin1' not in region)) and (syst == 'ttbarBin1Jet2PNetCut'):
+                    continue
+                if ('ggHH' not in sName) and (syst in ['ggHHPDFacc', 'ggHHQCDacc']):
+                    continue
+                if ('others' not in sName) and (syst == 'othersQCD'):
+                    continue
+                if ('hbb' not in sName) and (syst == 'PNetHbbScaleFactors'):
+                    continue
+                if ('HH' not in sName) and (syst in ['trigCorrHH2016', 'trigCorrHH2017', 'trigCorrHH2018']):
+                    continue
                 logging.info('setting shape effect %s for %s' % (syst, sName))
-                valuesUp = get_hist(inputfile, '%s_%sUp' % (templateNames[sName], syst), obs=msd)[0]
-                valuesDown = get_hist(inputfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
+                valuesUp = get_hist(upfile, '%s_%sUp' % (templateNames[sName], syst), obs=msd)[0]
+                valuesDown = get_hist(upfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
                 mask = (valuesNominal > 0)
