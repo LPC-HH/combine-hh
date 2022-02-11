@@ -192,6 +192,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             templates[temp] = get_hist(upfile, templateNames[temp], obs=msd)
 
         if adjust_posdef_yields:
+            templates_posdef = {}
             # requires python3 and cvxpy
             if sys.version_info.major == 3:
                 from bpe import BasisPointExpansion
@@ -224,18 +225,22 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                         # set error to 100% if shape orignally 0 and now not
                         newerr = np.copy(err)
                         newerr[(newshape > 0) & (newerr == 0)] = newshape[(newshape > 0) & (newerr == 0)]
-                        templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
+                        templates_posdef[name + channel] = (newshape, edges, obs_name, np.square(newerr))
                         plot_shape(shape, newshape, err, newerr, name+"_"+region)
                         newpts[name + channel] = newshape
                         newerrs[name + channel] = newerr
                 np.savez("newshapes_{}.npz".format(region), **newpts)
                 np.savez("newerrors_{}.npz".format(region), **newerrs)
             else:
-                newpts = dict(np.load("newshapes_{}.npz".format(region)))
-                newerrs = dict(np.load("newerrors_{}.npz".format(region)))
-                newshape = newpts[name + channel]
-                newerr = newerrs[name + channel]
-                templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
+                for temp in templateNames:
+                    if "HH" in temp:
+                        newpts = dict(np.load("newshapes_{}.npz".format(region)))
+                        newerrs = dict(np.load("newerrors_{}.npz".format(region)))
+                        newshape = newpts[temp]
+                        newerr = newerrs[temp]
+                        edges = templates[temp][1]
+                        obs_name = templates[temp][2]
+                        templates_posdef[temp] = (newshape, edges, obs_name, np.square(newerr))
 
         syst_param_array = []
         for syst in systs:
@@ -248,7 +253,12 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             # get templates
             templ = templates[sName]
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
-            sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
+            if adjust_posdef_yields and "HH" in sName:
+                # use posdef as nominal, but keep original to get relative changes to systematics
+                templ_posdef = templates_posdef[sName]
+                sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ_posdef)
+            else:
+                sample = rl.TemplateSample(ch.name + '_' + sName, stype, templ)
             sample.setParamEffect(lumi_13TeV_2016, 1.01 ** (lumi_16 / lumi_run2))
             sample.setParamEffect(lumi_13TeV_2017, 1.02 ** (lumi_17 / lumi_run2))
             sample.setParamEffect(lumi_13TeV_2018, 1.015 ** (lumi_18 / lumi_run2))
@@ -329,7 +339,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                     continue
                 if ('HH' not in sName) and (syst in ['trigCorrHH2016', 'trigCorrHH2017', 'trigCorrHH2018']):
                     continue
-                logging.info('setting shape effect %s for %s' % (syst, sName))
+                logging.info('setting shape effect %s for %s in %s' % (syst, sName, region))
                 valuesUp = get_hist(upfile, '%s_%sUp' % (templateNames[sName], syst), obs=msd)[0]
                 valuesDown = get_hist(upfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
