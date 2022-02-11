@@ -12,7 +12,7 @@ if [ -d "$subdir" ]; then
   rm -r $subdir
 fi
 mkdir $subdir
-mkdir logs
+mkdir $subdir/logs
 
 cd $subdir
 
