@@ -8,7 +8,7 @@ import logging
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 logging.basicConfig(level=logging.DEBUG)
-adjust_posdef_yields = False
+adjust_posdef_yields = True
 
 
 def get_hist(upfile, name, obs):
@@ -192,14 +192,15 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
         if adjust_posdef_yields:
             # requires python3 and cvxpy
-            from adjust_to_posdef import BasisPointExpansion, ggHH_points, qqHH_points, plot_shape
+            from bpe import BasisPointExpansion
+            from adjust_to_posdef import ggHH_points, qqHH_points, plot_shape
             channel = "_hbbhbb"
             # get qqHH points
             qqHHproc = BasisPointExpansion(3)
             ggHHproc = BasisPointExpansion(2)
             for HHproc, HH_points in zip([ggHHproc, qqHHproc], [ggHH_points, qqHH_points]):
                 for name, c in HH_points.items():
-                    shape = templates[name + channel][0]
+                    shape = np.clip(templates[name + channel][0], 0, None)
                     err = np.sqrt(templates[name + channel][3])
                     # set 0 bin error to something non0
                     err[err == 0] = err[err.nonzero()].min()
@@ -207,8 +208,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                     logging.debug("shape: {shape}".format(shape=shape))
                     logging.debug("err: {err}".format(err=err))
                     HHproc.add_point(c, shape, err)
-                # fit HH points with DCP
-                HHproc.solve("dcp")
+                # fit HH points with SCS
+                HHproc.solve("scs", tol=1e-9)
                 # get new HH points
                 for name, c in HH_points.items():
                     newshape = HHproc(c)
