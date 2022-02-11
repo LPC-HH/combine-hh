@@ -16,8 +16,8 @@ def vec(S):
 def mat(s, n=None):
     """Inverse of vec() operation"""
     if n is None:
-        l = s.shape[-1]
-        n = int(0.5 * (np.sqrt(1 + 8 * l) - 1))
+        ls = s.shape[-1]
+        n = int(0.5 * (np.sqrt(1 + 8 * ls) - 1))
     S = np.empty(s.shape[:-1] + (n, n))
     j, i = np.triu_indices(n)
     scaled = np.where(i == j, 1.0, np.sqrt(0.5)) * s

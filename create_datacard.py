@@ -5,6 +5,7 @@ import numpy as np
 import pickle
 import uproot
 import logging
+import sys
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 logging.basicConfig(level=logging.DEBUG)
@@ -192,36 +193,49 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
 
         if adjust_posdef_yields:
             # requires python3 and cvxpy
-            from bpe import BasisPointExpansion
-            from adjust_to_posdef import ggHH_points, qqHH_points, plot_shape
-            channel = "_hbbhbb"
-            # get qqHH points
-            qqHHproc = BasisPointExpansion(3)
-            ggHHproc = BasisPointExpansion(2)
-            for HHproc, HH_points in zip([ggHHproc, qqHHproc], [ggHH_points, qqHH_points]):
-                for name, c in HH_points.items():
-                    shape = np.clip(templates[name + channel][0], 0, None)
-                    err = np.sqrt(templates[name + channel][3])
-                    # set 0 bin error to something non0
-                    err[err == 0] = err[err.nonzero()].min()
-                    logging.debug(name + channel)
-                    logging.debug("shape: {shape}".format(shape=shape))
-                    logging.debug("err: {err}".format(err=err))
-                    HHproc.add_point(c, shape, err)
-                # fit HH points with SCS
-                HHproc.solve("scs", tol=1e-9)
-                # get new HH points
-                for name, c in HH_points.items():
-                    newshape = HHproc(c)
-                    shape = templates[name + channel][0]
-                    edges = templates[name + channel][1]
-                    obs_name = templates[name + channel][2]
-                    err = np.sqrt(templates[name + channel][3])
-                    # set error to 100% if shape orignally 0 and now not
-                    newerr = np.copy(err)
-                    newerr[(newshape > 0) & (newerr == 0)] = newshape[(newshape > 0) & (newerr == 0)]
-                    templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
-                    plot_shape(shape, newshape, err, newerr, name+"_"+region)
+            if sys.version_info.major == 3:
+                from bpe import BasisPointExpansion
+                from adjust_to_posdef import ggHH_points, qqHH_points, plot_shape
+                channel = "_hbbhbb"
+                # get qqHH points
+                qqHHproc = BasisPointExpansion(3)
+                ggHHproc = BasisPointExpansion(2)
+                newpts = {}
+                newerrs = {}
+                for HHproc, HH_points in zip([ggHHproc, qqHHproc], [ggHH_points, qqHH_points]):
+                    for name, c in HH_points.items():
+                        shape = np.clip(templates[name + channel][0], 0, None)
+                        err = np.sqrt(templates[name + channel][3])
+                        # set 0 bin error to something non0
+                        err[err == 0] = err[err.nonzero()].min()
+                        logging.debug(name + channel)
+                        logging.debug("shape: {shape}".format(shape=shape))
+                        logging.debug("err: {err}".format(err=err))
+                        HHproc.add_point(c, shape, err)
+                    # fit HH points with SCS
+                    HHproc.solve("scs", tol=1e-9)
+                    # get new HH points
+                    for name, c in HH_points.items():
+                        newshape = HHproc(c)
+                        shape = templates[name + channel][0]
+                        edges = templates[name + channel][1]
+                        obs_name = templates[name + channel][2]
+                        err = np.sqrt(templates[name + channel][3])
+                        # set error to 100% if shape orignally 0 and now not
+                        newerr = np.copy(err)
+                        newerr[(newshape > 0) & (newerr == 0)] = newshape[(newshape > 0) & (newerr == 0)]
+                        templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
+                        plot_shape(shape, newshape, err, newerr, name+"_"+region)
+                        newpts[name + channel] = newshape
+                        newerrs[name + channel] = newerr
+                np.savez("newshapes_{}.npz".format(region), **newpts)
+                np.savez("newerrors_{}.npz".format(region), **newerrs)
+            else:
+                newpts = dict(np.load("newshapes_{}.npz".format(region)))
+                newerrs = dict(np.load("newerrors_{}.npz".format(region)))
+                newshape = newpts[name + channel]
+                newerr = newerrs[name + channel]
+                templates[name + channel] = (newshape, edges, obs_name, np.square(newerr))
 
         syst_param_array = []
         for syst in systs:
@@ -357,7 +371,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         passCh.addSample(pass_qcd)
 
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
-        pickle.dump(model, fout)
+        pickle.dump(model, fout, 2) # use python 2 compatible protocl
 
     logging.info('rendering combine model')
     model.renderCombine(os.path.join(str(carddir), 'HHModel'))
