@@ -9,7 +9,7 @@ import sys
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 logging.basicConfig(level=logging.DEBUG)
-adjust_posdef_yields = True
+adjust_posdef_yields = False
 
 
 def get_hist(upfile, name, obs):
@@ -322,10 +322,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             valuesNominal = templ[0]
             mask = (valuesNominal > 0)
             errorsNominal = np.ones_like(valuesNominal)
-            errorsNominal[mask] = 1+np.sqrt(templ[2][mask])/valuesNominal[mask]
+            errorsNominal[mask] = 1. + np.sqrt(templ[3][mask])/valuesNominal[mask]
 
             # set mc stat uncs
-            logging.info('setting autoMCStats for %s' % sName)
+            logging.info('setting autoMCStats for %s in %s' % (sName, region))
             logging.debug('nominal   : {nominal}'.format(nominal=valuesNominal))
             logging.debug('error     : {errors}'.format(errors=errorsNominal))
             sample.autoMCStats()
