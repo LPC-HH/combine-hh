@@ -318,12 +318,18 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(pdfqqHH, 1.021)
                 sample.setParamEffect(qcdScaleqqHH, 1.0003, 0.9996)
 
-            # set mc stat uncs
-            logging.info('setting autoMCStats for %s' % sName)
-            sample.autoMCStats()
-
             # shape systematics
             valuesNominal = templ[0]
+            mask = (valuesNominal > 0)
+            errorsNominal = np.ones_like(valuesNominal)
+            errorsNominal[mask] = 1+np.sqrt(templ[2][mask])/valuesNominal[mask]
+
+            # set mc stat uncs
+            logging.info('setting autoMCStats for %s' % sName)
+            logging.debug('nominal   : {nominal}'.format(nominal=valuesNominal))
+            logging.debug('error     : {errors}'.format(errors=errorsNominal))
+            sample.autoMCStats()
+
 
             for isyst, syst in enumerate(systs):
                 # add some easy skips
@@ -344,7 +350,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 valuesDown = get_hist(upfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
-                mask = (valuesNominal > 0)
                 effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
                 effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
                 logging.debug("nominal   : {nominal}".format(nominal=valuesNominal))
