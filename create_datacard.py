@@ -232,10 +232,12 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 np.savez("newshapes_{}.npz".format(region), **newpts)
                 np.savez("newerrors_{}.npz".format(region), **newerrs)
             else:
+                if not (os.path.exists("newshapes_{}.npz".format(region)) and os.path.exists("newerrors_{}.npz".format(region))):
+                    raise RuntimeError("Run script in python3 first to get shapes and errors")
+                newpts = dict(np.load("newshapes_{}.npz".format(region)))
+                newerrs = dict(np.load("newerrors_{}.npz".format(region)))
                 for temp in templateNames:
                     if "HH" in temp:
-                        newpts = dict(np.load("newshapes_{}.npz".format(region)))
-                        newerrs = dict(np.load("newerrors_{}.npz".format(region)))
                         newshape = newpts[temp]
                         newerr = newerrs[temp]
                         edges = templates[temp][1]
@@ -330,7 +332,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             logging.debug('error     : {errors}'.format(errors=errorsNominal))
             sample.autoMCStats()
 
-
             for isyst, syst in enumerate(systs):
                 # add some easy skips
                 if (sName != 'ttbar') and (syst in ['ttJetsCorr', 'BDTShape', 'PNetShape']):
@@ -386,7 +387,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         passCh.addSample(pass_qcd)
 
     with open(os.path.join(str(carddir), 'HHModel.pkl'), "wb") as fout:
-        pickle.dump(model, fout, 2) # use python 2 compatible protocl
+        pickle.dump(model, fout, 2)  # use python 2 compatible protocol
 
     logging.info('rendering combine model')
     model.renderCombine(os.path.join(str(carddir), 'HHModel'))

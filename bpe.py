@@ -1,6 +1,8 @@
 import warnings
 import numpy as np
 
+mm = np.matmul
+
 
 def vec(S):
     """Per scs definition, preserves inner product
@@ -83,7 +85,7 @@ class BasisPointExpansion:
             if algo == "svd_pos":
                 eig, eigv = np.linalg.eigh(M)
                 eigp = np.maximum(eig, tol)  # magic happens here
-                M = (eigv * eigp[:, None, :]) @ np.swapaxes(eigv, 1, 2)
+                M = mm(eigv * eigp[:, None, :], np.swapaxes(eigv, 1, 2))
             self._M = M
         elif algo == "dcp":
             import cvxpy as cp
@@ -123,9 +125,9 @@ class BasisPointExpansion:
                 cw = points * np.sqrt(weight[i, :, None])
                 yw = yields[i] * weight[i]
                 D = vec(cw[:, None, :] * cw[:, :, None])
-                data["P"] = scipy.sparse.csc_matrix(D.T @ D)
-                data["c"] = -yw @ D
-                ywsq = max(yw @ yw, 1.0)
+                data["P"] = scipy.sparse.csc_matrix(mm(D.T,  D))
+                data["c"] = -mm(yw, D)
+                ywsq = max(mm(yw, yw), 1.0)
                 sol = scs.solve(
                     data, cone, verbose=False, eps_abs=tol, eps_rel=min(tol, 1 / ywsq)
                 )
@@ -133,7 +135,7 @@ class BasisPointExpansion:
                 if sol["info"]["status_val"] == 1:
                     pass
                 else:
-                    rss = sol["s"] @ D.T @ D @ sol["s"] - 2 * yw @ D @ sol["s"] + ywsq
+                    rss = mm(mm(mm(sol["s"], D.T), D), sol["s"]) - 2 * mm(mm(yw, D), sol["s"]) + ywsq
                     raise RuntimeError(
                         f"Unable to solve problem for bin {i} (rss={rss}, status={sol['info']})"
                     )
@@ -143,4 +145,4 @@ class BasisPointExpansion:
     def __call__(self, c):
         if self._M is None:
             raise RuntimeError("Please call solve() first")
-        return c @ self._M @ c
+        return mm(mm(c, self._M), c)
