@@ -1,4 +1,3 @@
-import warnings
 import numpy as np
 from collections import OrderedDict
 from bpe import BasisPointExpansion
@@ -78,7 +77,6 @@ if __name__ == "__main__":
         err = get_abs_err(shape, logn_err)
         qqHHproc.add_point(c, shape, err)
 
-
     ggHHproc = BasisPointExpansion(2)
     for name, c in ggHH_points.items():
         shape = shapes[name + channel]
@@ -109,7 +107,7 @@ if __name__ == "__main__":
         print("new norm: {norm} +/- {err}".format(norm=np.sum(ynew), err=np.sqrt(np.sum(np.square(err)))))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
-        newerrs[name + channel][ynew==0] = 1
+        newerrs[name + channel][ynew == 0] = 1
         plot_shape(shape, newpts[name + channel], (logn_err-1)*shape, (newerrs[name + channel]-1)*newpts[name + channel], name)
 
     for name, c in ggHH_points.items():
@@ -131,7 +129,7 @@ if __name__ == "__main__":
         print("new norm: {norm} +/- {err}".format(norm=np.sum(ynew), err=np.sqrt(np.sum(np.square(err)))))
         newpts[name + channel] = ynew
         newerrs[name + channel] = 1 + err/ynew
-        newerrs[name + channel][ynew==0] = 1
+        newerrs[name + channel][ynew == 0] = 1
         newpts[name + channel][ggHH_zero_bins] = 0
         newerrs[name + channel][ggHH_zero_bins] = 1
         plot_shape(shape, newpts[name + channel], (logn_err - 1)*shape, (newerrs[name + channel] - 1)*newpts[name + channel], name)
