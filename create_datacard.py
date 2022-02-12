@@ -26,6 +26,14 @@ def get_hist(upfile, name, obs):
     return (hist_values, hist_edges, obs.name, hist_uncs)
 
 
+def symmetrize(effectUp, effectDown):
+    # note assumes effectUp is always up and effectDown is always down
+    envelopeUp = np.maximum(effectUp, effectDown)
+    envelopeDown = np.minimum(effectUp, effectDown)
+    effectUpSym = np.sqrt(envelopeUp/envelopeDown)
+    effectDownSym = np.sqrt(envelopeDown/envelopeUp)
+    return effectUpSym, effectDownSym
+
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
 
     # open uproot file once
@@ -353,6 +361,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 effectDown = np.ones_like(valuesNominal)
                 effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
                 effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
+                if syst == 'ggHHQCDacc':
+                    effectUp, effectDown = symmetrize(effectUp, effectDown)
                 logging.debug("nominal   : {nominal}".format(nominal=valuesNominal))
                 logging.debug("effectUp  : {effectUp}".format(effectUp=effectUp))
                 logging.debug("effectDown: {effectDown}".format(effectDown=effectDown))
