@@ -56,7 +56,7 @@ def create_datacard_TTCR(inputfile, carddir, region):
         for syst in systs:
             valuesUp = get_hist(upfile, 'histJet2Mass_%s_%s_%sUp' % (region, sName, syst), obs=msd)[0]
             valuesDown = get_hist(upfile, 'histJet2Mass_%s_%s_%sDown' % (region, sName, syst), obs=msd)[0]
-            effectUp = np.ones_like(upfile)
+            effectUp = np.ones_like(valuesNominal)
             effectDown = np.ones_like(valuesNominal)
             mask = (valuesNominal > 0)
             effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
