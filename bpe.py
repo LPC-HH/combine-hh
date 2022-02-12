@@ -103,10 +103,10 @@ class BasisPointExpansion:
                 if prob.status == cp.OPTIMAL:
                     pass
                 elif prob.status == cp.OPTIMAL_INACCURATE:
-                    warnings.warn(f"Inaccurate solution for bin {i} (rss={rss})")
+                    warnings.warn("Inaccurate solution for bin {i} (rss={rss})".format(i=i, rss=rss))
                 else:
                     raise RuntimeError(
-                        f"Unable to solve problem for bin {i} (rss={rss}, status={prob.status})"
+                        "Unable to solve problem for bin {i} (rss={rss}, status={status})".format(i=i, rss=rss, status=prob.status)
                     )
                 Mall[i] = M.value
             self._M = Mall
@@ -137,7 +137,7 @@ class BasisPointExpansion:
                 else:
                     rss = mm(mm(mm(sol["s"], D.T), D), sol["s"]) - 2 * mm(mm(yw, D), sol["s"]) + ywsq
                     raise RuntimeError(
-                        f"Unable to solve problem for bin {i} (rss={rss}, status={sol['info']})"
+                        "Unable to solve problem for bin {i} (rss={rss}, status={status})".format(i=i, rss=rss, status=sol['info'])
                     )
                 Mall[i] = M
             self._M = Mall
