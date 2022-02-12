@@ -4,11 +4,15 @@ import os
 import rhalphalib as rl
 import numpy as np
 import pickle
+import uproot
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 
 
 def create_datacard_TTCR(inputfile, carddir, region):
+
+    # open uproot file once
+    upfile = uproot.open(inputfile)
 
     lumi = rl.NuisanceParameter('CMS_lumi', 'lnN')
 
@@ -23,10 +27,10 @@ def create_datacard_TTCR(inputfile, carddir, region):
     model.addChannel(ch)
 
     templates = {
-        'TTJets': get_hist(inputfile, 'histJet2Mass_%s_TTJets' % region, obs=msd),
-        'others': get_hist(inputfile, 'histJet2Mass_%s_others' % region, obs=msd),
-        'QCD': get_hist(inputfile, 'histJet2Mass_%s_QCD' % region, obs=msd),
-        'Data': get_hist(inputfile, 'histJet2Mass_%s_Data' % region, obs=msd),
+        'TTJets': get_hist(upfile, 'histJet2Mass_%s_TTJets' % region, obs=msd),
+        'others': get_hist(upfile, 'histJet2Mass_%s_others' % region, obs=msd),
+        'QCD': get_hist(upfile, 'histJet2Mass_%s_QCD' % region, obs=msd),
+        'Data': get_hist(upfile, 'histJet2Mass_%s_Data' % region, obs=msd),
     }
     for sName in ['TTJets', 'others', 'QCD']:
         # get templates
@@ -50,15 +54,13 @@ def create_datacard_TTCR(inputfile, carddir, region):
         }
 
         for syst in systs:
-            valuesUp = get_hist(inputfile, 'histJet2Mass_%s_%s_%sUp' % (region, sName, syst), obs=msd)[0]
-            valuesDown = get_hist(inputfile, 'histJet2Mass_%s_%s_%sDown' % (region, sName, syst), obs=msd)[0]
+            valuesUp = get_hist(upfile, 'histJet2Mass_%s_%s_%sUp' % (region, sName, syst), obs=msd)[0]
+            valuesDown = get_hist(upfile, 'histJet2Mass_%s_%s_%sDown' % (region, sName, syst), obs=msd)[0]
             effectUp = np.ones_like(valuesNominal)
             effectDown = np.ones_like(valuesNominal)
-            for i in range(len(valuesNominal)):
-                if valuesNominal[i] > 0.:
-                    effectUp[i] = valuesUp[i]/valuesNominal[i]
-                    effectDown[i] = valuesDown[i]/valuesNominal[i]
-
+            mask = (valuesNominal > 0)
+            effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
+            effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
             syst_param = rl.NuisanceParameter(systs[syst], 'shape')
             sample.setParamEffect(syst_param, effectUp, effectDown)
 
