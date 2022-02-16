@@ -6,6 +6,7 @@ import pickle
 import uproot
 import logging
 import sys
+from collections import OrderedDict
 rl.util.install_roofit_helpers()
 rl.ParametericSample.PreferRooParametricHist = False
 logging.basicConfig(level=logging.DEBUG)
@@ -27,12 +28,12 @@ def get_hist(upfile, name, obs):
 
 
 def symmetrize(effectUp, effectDown):
-    # note assumes effectUp is always up and effectDown is always down
     envelopeUp = np.maximum(effectUp, effectDown)
     envelopeDown = np.minimum(effectUp, effectDown)
     effectUpSym = np.sqrt(envelopeUp/envelopeDown)
     effectDownSym = np.sqrt(envelopeDown/envelopeUp)
     return effectUpSym, effectDownSym
+
 
 def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, failBinName='fail', add_blinded=False, include_ac=False):
 
@@ -103,56 +104,56 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
     qcdparams = np.array([rl.IndependentParameter('CMS_bbbb_boosted_ggf_qcdparam_msdbin%d' % i, 0) for i in range(msd.nbins)])
 
     # dictionary of shape systematics -> name in cards
-    systs = {
-        'mHHTHunc': 'CMS_bbbb_boosted_ggf_mHHTHunc',
-        'ttbarBin1Jet2PNetCut': 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut',
-        'FSRPartonShower': 'ps_fsr',
-        'ISRPartonShower': 'ps_isr',
-        'ggHHPDFacc': 'CMS_bbbb_boosted_ggf_ggHHPDFacc',
-        'ggHHQCDacc': 'CMS_bbbb_boosted_ggf_ggHHQCDacc',
-        'othersQCD': 'CMS_bbbb_boosted_ggf_othersQCD',
-        'pileupWeight2016': 'CMS_pileup_2016',
-        'pileupWeight2017': 'CMS_pileup_2017',
-        'pileupWeight2018': 'CMS_pileup_2018',
-        'JER2016': 'CMS_res_j_2016',
-        'JER2017': 'CMS_res_j_2017',
-        'JER2018': 'CMS_res_j_2018',
-        'JES_Abs': 'CMS_scale_j_Abs',
-        'JES_Abs_2016': 'CMS_scale_j_Abs_2016',
-        'JES_Abs_2017': 'CMS_scale_j_Abs_2017',
-        'JES_Abs_2018': 'CMS_scale_j_Abs_2018',
-        'JES_BBEC1': 'CMS_scale_j_BBEC1',
-        'JES_BBEC1_2016': 'CMS_scale_j_BBEC1_2016',
-        'JES_BBEC1_2017': 'CMS_scale_j_BBEC1_2017',
-        'JES_BBEC1_2018': 'CMS_scale_j_BBEC1_2018',
-        'JES_EC2': 'CMS_scale_j_EC2',
-        'JES_EC2_2016': 'CMS_scale_j_EC2_2016',
-        'JES_EC2_2017': 'CMS_scale_j_EC2_2017',
-        'JES_EC2_2018': 'CMS_scale_j_EC2_2018',
-        'JES_FlavQCD': 'CMS_scale_j_FlavQCD',
-        'JES_HF': 'CMS_scale_j_HF',
-        'JES_HF_2016': 'CMS_scale_j_HF_2016',
-        'JES_HF_2017': 'CMS_scale_j_HF_2017',
-        'JES_HF_2018': 'CMS_scale_j_HF_2018',
-        'JES_RelBal': 'CMS_scale_j_RelBal',
-        'JES_RelSample_2016': 'CMS_scale_j_RelSample_2016',
-        'JES_RelSample_2017': 'CMS_scale_j_RelSample_2017',
-        'JES_RelSample_2018': 'CMS_scale_j_RelSample_2018',
-        'JMS2016': 'CMS_bbbb_boosted_ggf_jms_2016',
-        'JMS2017': 'CMS_bbbb_boosted_ggf_jms_2017',
-        'JMS2018': 'CMS_bbbb_boosted_ggf_jms_2018',
-        'JMR2016': 'CMS_bbbb_boosted_ggf_jmr_2016',
-        'JMR2017': 'CMS_bbbb_boosted_ggf_jmr_2017',
-        'JMR2018': 'CMS_bbbb_boosted_ggf_jmr_2018',
-        'ttJetsCorr': 'CMS_bbbb_boosted_ggf_ttJetsCorr',
-        'BDTShape': 'CMS_bbbb_boosted_ggf_ttJetsBDTShape',
-        'PNetShape': 'CMS_bbbb_boosted_ggf_ttJetsPNetShape',
-        'PNetHbbScaleFactors': 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated',
-        'triggerEffSF': 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated',
-        'trigCorrHH2016': 'CMS_bbbb_boosted_ggf_trigCorrHH2016',
-        'trigCorrHH2017': 'CMS_bbbb_boosted_ggf_trigCorrHH2017',
-        'trigCorrHH2018': 'CMS_bbbb_boosted_ggf_trigCorrHH2018'
-    }
+    systs = OrderedDict([
+        ('mHHTHunc', 'CMS_bbbb_boosted_ggf_mHHTHunc'),
+        ('FSRPartonShower', 'ps_fsr'),
+        ('ISRPartonShower', 'ps_isr'),
+        ('ggHHPDFacc', 'CMS_bbbb_boosted_ggf_ggHHPDFacc'),
+        ('ggHHQCDacc', 'CMS_bbbb_boosted_ggf_ggHHQCDacc'),
+        ('othersQCD', 'CMS_bbbb_boosted_ggf_othersQCD'),
+        ('pileupWeight2016', 'CMS_pileup_2016'),
+        ('pileupWeight2017', 'CMS_pileup_2017'),
+        ('pileupWeight2018', 'CMS_pileup_2018'),
+        ('JER2016', 'CMS_res_j_2016'),
+        ('JER2017', 'CMS_res_j_2017'),
+        ('JER2018', 'CMS_res_j_2018'),
+        ('JES_Abs', 'CMS_scale_j_Abs'),
+        ('JES_Abs_2016', 'CMS_scale_j_Abs_2016'),
+        ('JES_Abs_2017', 'CMS_scale_j_Abs_2017'),
+        ('JES_Abs_2018', 'CMS_scale_j_Abs_2018'),
+        ('JES_BBEC1', 'CMS_scale_j_BBEC1'),
+        ('JES_BBEC1_2016', 'CMS_scale_j_BBEC1_2016'),
+        ('JES_BBEC1_2017', 'CMS_scale_j_BBEC1_2017'),
+        ('JES_BBEC1_2018', 'CMS_scale_j_BBEC1_2018'),
+        ('JES_EC2', 'CMS_scale_j_EC2'),
+        ('JES_EC2_2016', 'CMS_scale_j_EC2_2016'),
+        ('JES_EC2_2017', 'CMS_scale_j_EC2_2017'),
+        ('JES_EC2_2018', 'CMS_scale_j_EC2_2018'),
+        ('JES_FlavQCD', 'CMS_scale_j_FlavQCD'),
+        ('JES_HF', 'CMS_scale_j_HF'),
+        ('JES_HF_2016', 'CMS_scale_j_HF_2016'),
+        ('JES_HF_2017', 'CMS_scale_j_HF_2017'),
+        ('JES_HF_2018', 'CMS_scale_j_HF_2018'),
+        ('JES_RelBal', 'CMS_scale_j_RelBal'),
+        ('JES_RelSample_2016', 'CMS_scale_j_RelSample_2016'),
+        ('JES_RelSample_2017', 'CMS_scale_j_RelSample_2017'),
+        ('JES_RelSample_2018', 'CMS_scale_j_RelSample_2018'),
+        ('JMS2016', 'CMS_bbbb_boosted_ggf_jms_2016'),
+        ('JMS2017', 'CMS_bbbb_boosted_ggf_jms_2017'),
+        ('JMS2018', 'CMS_bbbb_boosted_ggf_jms_2018'),
+        ('JMR2016', 'CMS_bbbb_boosted_ggf_jmr_2016'),
+        ('JMR2017', 'CMS_bbbb_boosted_ggf_jmr_2017'),
+        ('JMR2018', 'CMS_bbbb_boosted_ggf_jmr_2018'),
+        ('ttbarBin1Jet2PNetCut', 'CMS_bbbb_boosted_ggf_ttbarBin1Jet2PNetCut'),
+        ('ttJetsCorr', 'CMS_bbbb_boosted_ggf_ttJetsCorr'),
+        ('BDTShape', 'CMS_bbbb_boosted_ggf_ttJetsBDTShape'),
+        ('PNetShape', 'CMS_bbbb_boosted_ggf_ttJetsPNetShape'),
+        ('PNetHbbScaleFactors', 'CMS_bbbb_boosted_ggf_PNetHbbScaleFactors_uncorrelated'),
+        ('triggerEffSF', 'CMS_bbbb_boosted_ggf_triggerEffSF_uncorrelated'),
+        ('trigCorrHH2016', 'CMS_bbbb_boosted_ggf_trigCorrHH2016'),
+        ('trigCorrHH2017', 'CMS_bbbb_boosted_ggf_trigCorrHH2017'),
+        ('trigCorrHH2018', 'CMS_bbbb_boosted_ggf_trigCorrHH2018'),
+    ])
 
     # build actual fit model now
     model = rl.Model("HHModel")
@@ -171,29 +172,29 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             catn = 'Blind_'+failBinName
 
         # dictionary of name in datacards -> name in ROOT file
-        templateNames = {
-            'ttbar': 'histJet2Mass'+catn+'_TTJets',
-            'ggHH_kl_1_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_1_kt_1_boost4b',
-            'qqHH_CV_1_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_1_boost4b',
-            'VH_hbb': 'histJet2Mass'+catn+'_VH',
-            'ttH_hbb': 'histJet2Mass'+catn+'_ttH',
-            'bbbb_boosted_ggf_others': 'histJet2Mass'+catn+'_others',
-            'bbbb_boosted_ggf_qcd_datadriven': 'histJet2Mass'+catn+'_QCD',
-            'data': 'histJet2Mass'+catn+'_Data',
-        }
+        templateNames = OrderedDict([
+            ('ttbar', 'histJet2Mass'+catn+'_TTJets'),
+            ('VH_hbb', 'histJet2Mass'+catn+'_VH'),
+            ('ttH_hbb', 'histJet2Mass'+catn+'_ttH'),
+            ('bbbb_boosted_ggf_others', 'histJet2Mass'+catn+'_others'),
+            ('bbbb_boosted_ggf_qcd_datadriven', 'histJet2Mass'+catn+'_QCD'),
+            ('data', 'histJet2Mass'+catn+'_Data'),
+            ('ggHH_kl_1_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_1_kt_1_boost4b'),
+            ('qqHH_CV_1_C2V_1_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_1_boost4b'),
+        ])
 
         if include_ac:
-            templateNames.update({
-                'ggHH_kl_2p45_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b',
-                'ggHH_kl_5_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b',
-                'ggHH_kl_0_kt_1_hbbhbb': 'histJet2Mass'+catn+'_ggHH_kl_0_kt_1_boost4b',
-                'qqHH_CV_1_C2V_0_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_0_kl_1_boost4b',
-                'qqHH_CV_1p5_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1p5_C2V_1_kl_1_boost4b',
-                'qqHH_CV_1_C2V_1_kl_2_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b',
-                'qqHH_CV_1_C2V_2_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b',
-                'qqHH_CV_1_C2V_1_kl_0_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b',
-                'qqHH_CV_0p5_C2V_1_kl_1_hbbhbb': 'histJet2Mass'+catn+'_qqHH_CV_0p5_C2V_1_kl_1_boost4b'
-            })
+            templateNames.update(OrderedDict([
+                ('ggHH_kl_2p45_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b'),
+                ('ggHH_kl_5_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b'),
+                ('ggHH_kl_0_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_0_kt_1_boost4b'),
+                ('qqHH_CV_1_C2V_0_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_0_kl_1_boost4b'),
+                ('qqHH_CV_1p5_C2V_1_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1p5_C2V_1_kl_1_boost4b'),
+                ('qqHH_CV_1_C2V_1_kl_2_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_2_boost4b'),
+                ('qqHH_CV_1_C2V_2_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b'),
+                ('qqHH_CV_1_C2V_1_kl_0_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b'),
+                ('qqHH_CV_0p5_C2V_1_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_0p5_C2V_1_kl_1_boost4b'),
+            ]))
 
         templates = {}
         for temp in templateNames:
@@ -346,7 +347,7 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                     continue
                 if ((sName != 'ttbar') or ('Bin1' not in region)) and (syst == 'ttbarBin1Jet2PNetCut'):
                     continue
-                if ('ggHH' not in sName) and (syst in ['ggHHPDFacc', 'ggHHQCDacc']):
+                if ('ggHH' not in sName) and (syst in ['ggHHPDFacc', 'ggHHQCDacc', 'mHHTHunc']):
                     continue
                 if ('others' not in sName) and (syst == 'othersQCD'):
                     continue
@@ -361,8 +362,34 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 effectDown = np.ones_like(valuesNominal)
                 effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
                 effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
-                if syst == 'ggHHQCDacc':
-                    effectUp, effectDown = symmetrize(effectUp, effectDown)
+                # do shape checks
+                normUp = np.sum(valuesUp)
+                normDown = np.sum(valuesDown)
+                normNominal = np.sum(valuesNominal)
+                probUp = valuesUp/normUp
+                probDown = valuesDown/normDown
+                probNominal = valuesNominal/normNominal
+                shapeEffectUp = np.sum(np.abs(probUp - probNominal)/(np.abs(probUp)+np.abs(probNominal)))
+                shapeEffectDown = np.sum(np.abs(probDown - probNominal)/(np.abs(probDown)+np.abs(probNominal)))
+                logger = logging.getLogger("validate_shapes_{}_{}_{}".format(region, sName, syst))
+                valid = True
+                if np.allclose(effectUp, 1.) and np.allclose(effectDown, 1.):
+                    valid = False
+                    logger.warning("No shape effect")
+                elif np.allclose(effectUp, effectDown):
+                    valid = False
+                    logger.warning("Up is the same as Down, but different from nominal")
+                elif np.allclose(effectUp, 1.) or np.allclose(effectDown, 1.):
+                    valid = False
+                    logger.warning("Up or Down is the same as nominal (one-sided)")
+                elif shapeEffectUp < 0.001 and shapeEffectDown < 0.001:
+                    valid = False
+                    logger.warning("No genuine shape effect (just norm)")
+                elif (normUp > normNominal and normDown > normNominal) or (normUp < normNominal and normDown < normNominal):
+                    valid = False
+                    logger.warning("Up and Down vary norm in the same direction")
+                if valid:
+                    logger.info("Shapes are valid")
                 logging.debug("nominal   : {nominal}".format(nominal=valuesNominal))
                 logging.debug("effectUp  : {effectUp}".format(effectUp=effectUp))
                 logging.debug("effectDown: {effectDown}".format(effectDown=effectDown))
