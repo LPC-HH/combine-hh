@@ -182,9 +182,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             ('ggHH_kl_1_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_1_kt_1_boost4b'),
             ('qqHH_CV_1_C2V_1_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_1_boost4b'),
         ])
-
+        ac_signals = OrderedDict()
         if include_ac:
-            templateNames.update(OrderedDict([
+            ac_signals = OrderedDict([
                 ('ggHH_kl_2p45_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_2p45_kt_1_boost4b'),
                 ('ggHH_kl_5_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_5_kt_1_boost4b'),
                 ('ggHH_kl_0_kt_1_hbbhbb', 'histJet2Mass'+catn+'_ggHH_kl_0_kt_1_boost4b'),
@@ -194,7 +194,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 ('qqHH_CV_1_C2V_2_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_2_kl_1_boost4b'),
                 ('qqHH_CV_1_C2V_1_kl_0_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_1_C2V_1_kl_0_boost4b'),
                 ('qqHH_CV_0p5_C2V_1_kl_1_hbbhbb', 'histJet2Mass'+catn+'_qqHH_CV_0p5_C2V_1_kl_1_boost4b'),
-            ]))
+            ])
+            templateNames.update(ac_signals)
 
         templates = {}
         for temp in templateNames:
@@ -263,6 +264,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             logging.info('get templates for: %s' % sName)
             # get templates
             templ = templates[sName]
+            # don't allow them to go negative
+            valuesNominal = np.maximum(templ[0], 0.)
+            templ = (valuesNominal, templ[1], templ[2], templ[3])
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             if adjust_posdef_yields and "HH" in sName:
                 # use posdef as nominal, but keep original to get relative changes to systematics
@@ -330,7 +334,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(qcdScaleqqHH, 1.0003, 0.9996)
 
             # shape systematics
-            valuesNominal = templ[0]
             mask = (valuesNominal > 0)
             errorsNominal = np.ones_like(valuesNominal)
             errorsNominal[mask] = 1. + np.sqrt(templ[3][mask])/valuesNominal[mask]
@@ -360,8 +363,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 valuesDown = get_hist(upfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
-                effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
-                effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
+                maskUp = (valuesUp >= 0)
+                maskDown = (valuesDown >= 0)
+                effectUp[mask & maskUp] = valuesUp[mask & maskUp]/valuesNominal[mask & maskUp]
+                effectDown[mask & maskDown] = valuesDown[mask & maskDown]/valuesNominal[mask & maskDown]
                 # do shape checks
                 normUp = np.sum(valuesUp)
                 normDown = np.sum(valuesDown)
@@ -409,6 +414,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         # sideband fail
         initial_qcd = failCh.getObservation().astype(float)  # was integer, and numpy complained about subtracting float from it
         for sample in failCh:
+            if sample._name in [failChName+"_"+signalName for signalName in ac_signals.keys()]: 
+                continue
             logging.debug('subtracting %s from qcd' % sample._name)
             initial_qcd -= sample.getExpectation(nominal=True)
         if np.any(initial_qcd < 0.):
