@@ -414,7 +414,8 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
         # sideband fail
         initial_qcd = failCh.getObservation().astype(float)  # was integer, and numpy complained about subtracting float from it
         for sample in failCh:
-            if sample._name in [failChName+"_"+signalName for signalName in ac_signals.keys()]: continue
+            if sample._name in [failChName+"_"+signalName for signalName in ac_signals.keys()]: 
+                continue
             logging.debug('subtracting %s from qcd' % sample._name)
             initial_qcd -= sample.getExpectation(nominal=True)
         if np.any(initial_qcd < 0.):
