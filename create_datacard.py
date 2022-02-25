@@ -263,6 +263,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             logging.info('get templates for: %s' % sName)
             # get templates
             templ = templates[sName]
+            # don't allow them to go negative
+            valuesNominal = np.maximum(templ[0], 0.)
+            templ = (valuesNominal, templ[1], templ[2], templ[3])
             stype = rl.Sample.SIGNAL if 'HH' in sName else rl.Sample.BACKGROUND
             if adjust_posdef_yields and "HH" in sName:
                 # use posdef as nominal, but keep original to get relative changes to systematics
@@ -330,7 +333,6 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 sample.setParamEffect(qcdScaleqqHH, 1.0003, 0.9996)
 
             # shape systematics
-            valuesNominal = templ[0]
             mask = (valuesNominal > 0)
             errorsNominal = np.ones_like(valuesNominal)
             errorsNominal[mask] = 1. + np.sqrt(templ[3][mask])/valuesNominal[mask]
@@ -360,8 +362,10 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
                 valuesDown = get_hist(upfile, '%s_%sDown' % (templateNames[sName], syst), obs=msd)[0]
                 effectUp = np.ones_like(valuesNominal)
                 effectDown = np.ones_like(valuesNominal)
-                effectUp[mask] = valuesUp[mask]/valuesNominal[mask]
-                effectDown[mask] = valuesDown[mask]/valuesNominal[mask]
+                maskUp = (valuesUp >= 0)
+                maskDown = (valuesDown >= 0)
+                effectUp[mask & maskUp] = valuesUp[mask & maskUp]/valuesNominal[mask & maskUp]
+                effectDown[mask & maskDown] = valuesDown[mask & maskDown]/valuesNominal[mask & maskDown]
                 # do shape checks
                 normUp = np.sum(valuesUp)
                 normDown = np.sum(valuesDown)
