@@ -345,6 +345,9 @@ def create_datacard(inputfile, carddir, nbins, nMCTF, nDataTF, passBinName, fail
             sample.autoMCStats()
 
             for isyst, syst in enumerate(systs):
+                # negligible uncertainty
+                if 'JES_EC2' in syst or 'JES_HF' in syst:
+                    continue
                 # add some easy skips
                 if (sName != 'ttbar') and (syst in ['ttJetsCorr', 'BDTShape', 'PNetShape']):
                     continue
